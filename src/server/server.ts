@@ -11,6 +11,13 @@ Bun.serve({
       return new Response("OK")
     }
 
+    if (url.pathname === "/memoryUsage") {
+      const memoryUsageMB = Math.trunc(process.memoryUsage().rss / 1024 / 1024)
+      return new Response(JSON.stringify({ memoryUsageMB }), {
+        headers: { "Content-Type": "application/json" },
+      })
+    }
+
     if (req.method !== "POST") {
       return new Response("Method not allowed", { status: 405 })
     }
@@ -22,7 +29,7 @@ Bun.serve({
       }
     }
 
-    return new Response("Api route found", { status: 404 })
+    return new Response("API route found", { status: 404 })
   },
 })
 
