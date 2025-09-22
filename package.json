@@ -4,14 +4,16 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "email dev",
-    "start": "bun ./src/server.ts"
+    "dev": "email dev --dir=./src/templates",
+    "start": "bun ./src/server/server.ts"
   },
   "dependencies": {
     "@react-email/components": "^0.5.3",
     "@react-email/render": "^1.2.3",
     "@types/bun": "latest",
     "clsx": "^2.1.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "react-email": "^4.2.11",
     "tailwind-merge": "^3.3.1",
     "typescript": "^5",
@@ -21,5 +23,8 @@
     "semi": false,
     "printWidth": 120,
     "trailingComma": "all"
+  },
+  "devDependencies": {
+    "@react-email/preview-server": "^4.2.11"
   }
 }
