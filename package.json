@@ -1,12 +1,25 @@
 {
   "name": "email-template-service",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "type": "module",
   "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
+  "scripts": {
+    "dev": "email dev",
+    "start": "bun ./src/server.ts"
   },
-  "peerDependencies": {
-    "typescript": "^5"
+  "dependencies": {
+    "@react-email/components": "^0.5.3",
+    "@react-email/render": "^1.2.3",
+    "@types/bun": "latest",
+    "clsx": "^2.1.1",
+    "react-email": "^4.2.11",
+    "tailwind-merge": "^3.3.1",
+    "typescript": "^5",
+    "valibot": "^1.1.0"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 120,
+    "trailingComma": "all"
   }
 }
