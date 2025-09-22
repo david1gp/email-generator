@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "email dev --dir=./src/templates",
-    "start": "bun ./src/server/server.ts"
+    "start": "bun ./src/server/server.ts",
+    "test": "bun test",
+    "test:w": "bun test --watch"
   },
   "dependencies": {
     "@react-email/components": "^0.5.3",
