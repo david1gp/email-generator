@@ -1,9 +1,9 @@
 import { apiRouteDef } from "@/server/apiRouteDef"
 import { handleRenderRequest } from "@/server/handleRenderRequest"
-import { serverPort } from "@/server/serverPort"
+import { serverPortBun } from "@/server/serverPortBun"
 
 Bun.serve({
-  port: serverPort,
+  port: serverPortBun,
   async fetch(req) {
     const url = new URL(req.url)
 
@@ -33,4 +33,4 @@ Bun.serve({
   },
 })
 
-console.log("Server running on http://localhost:" + serverPort)
+console.log("Server running on http://localhost:" + serverPortBun)

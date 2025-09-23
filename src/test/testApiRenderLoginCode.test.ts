@@ -1,7 +1,7 @@
 import { apiDefLoginCodeV1 } from "@/server/apiRouteDef"
-import { serverPort } from "@/server/serverPort"
 import { describe, expect, test } from "bun:test"
 import * as v from "valibot"
+import { targetEnv } from "../env/targetEnv"
 
 const successResponseSchema = v.object({
   success: v.literal(true),
@@ -24,7 +24,9 @@ const testProps = {
 
 describe("API Render Login Code", () => {
   test("should render email template and contain code in response", async () => {
-    const response = await fetch("http://localhost:" + serverPort + "/renderEmailTemplate/" + apiDefLoginCodeV1.name, {
+    const port = 8787
+    // const port = serverPort
+    const response = await fetch(targetEnv.productionWorker + "/renderEmailTemplate/" + apiDefLoginCodeV1.name, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

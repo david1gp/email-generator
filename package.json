@@ -1,32 +1,34 @@
 {
-  "name": "email-template-service",
+  "name": "email-generator",
   "module": "src/index.ts",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "email dev --dir=./src/templates",
+    "dev:worker": "wrangler dev",
     "start": "bun ./src/server/server.ts",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail email-generator-worker",
     "test": "bun test",
     "test:w": "bun test --watch"
   },
   "dependencies": {
-    "@react-email/components": "^0.5.3",
+    "@react-email/components": "0.5.3",
     "@react-email/render": "^1.2.3",
-    "@types/bun": "latest",
-    "clsx": "^2.1.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-email": "^4.2.11",
-    "tailwind-merge": "^3.3.1",
-    "typescript": "^5",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "valibot": "^1.1.0"
+  },
+  "devDependencies": {
+    "@react-email/preview-server": "^4.2.11",
+    "@types/bun": "latest",
+    "react-email": "^4.2.11",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.38.0"
   },
   "prettier": {
     "semi": false,
     "printWidth": 120,
     "trailingComma": "all"
-  },
-  "devDependencies": {
-    "@react-email/preview-server": "^4.2.11"
   }
 }
