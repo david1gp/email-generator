@@ -1,0 +1,12 @@
+name = "email-generator-worker"
+main = "src/server/worker.ts"
+compatibility_date = "2024-09-22"
+account_id = ""
+
+[[routes]]
+pattern = "email-generator-worker.my-domain.com"
+custom_domain = true
+
+[observability]
+enabled = true
+head_sampling_rate = 1
