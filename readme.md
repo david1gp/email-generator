@@ -2,6 +2,9 @@
 
 This service renders email templates for login codes and registration emails using React Email. It supports both a local Bun server for development and deployment to Cloudflare Workers for serverless execution.
 
+https://github.com/resend/react-email
+https://react.email/docs/getting-started/manual-setup
+
 ## Features
 
 - Renders HTML and plain text email templates.
@@ -23,24 +26,47 @@ This service renders email templates for login codes and registration emails usi
    ```
    bun install
    ```
-   (Or `npm install` if using Node.js.)
+
+## Linking as a Dependency
+
+To link this project globally with Bun for use in other projects:
+
+```
+bun link
+```
+
+Success! Registered "email-generator"
+
+In the consuming project, run:
+
+```
+bun link email-generator
+```
+
+Or add it in dependencies in your `package.json` file:
+
+```
+"email-generator": "link:email-generator"
+```
 
 ## Local Development
 
 ### With Bun Server
+
 - Start the development server:
   ```
   bun run start
   ```
-  The server runs on `http://localhost:3000` (port configurable via `src/server/serverPort.ts`).
+  The server runs on `http://localhost:3055` (port configurable via `src/server/serverPortBun.ts`).
 
 - For React Email preview (optional):
   ```
   bun run dev
   ```
-  This starts the preview server at `http://localhost:3000` for template development.
+  This starts the preview server at `http://localhost:3055` for template development.
 
 ### With Cloudflare Workers
+
 - Start the local Worker development server:
   ```
   bun run dev:worker
