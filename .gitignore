@@ -67,3 +67,7 @@ convex/_generated
 .roo/rules-code
 GEMINI.md
 docs/specs/
+
+# Cloudflare Wrangler
+.wrangler/
+wrangler.toml
