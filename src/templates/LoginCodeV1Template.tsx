@@ -1,15 +1,14 @@
-import { language } from "@/i18n/language"
 import { tt0, tt1 } from "@/i18n/tt0"
 import { CodeBlock } from "@/templates/parts/CodeBlock"
 import Footer from "@/templates/parts/Footer"
 import { LinkButton } from "@/templates/parts/LinkButton"
-import type { RegisterEmailProps } from "@/templates/registerEmailSchema"
-import { t4emailSignUp } from "@/templates/t4emailSignUp"
+import { t4emailSignIn } from "@/templates/t4emailSignIn"
 import { Body, Container, Head, Heading, Html, Preview, Section, Tailwind, Text } from "@react-email/components"
+import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
 
-export function RegisterEmailTemplate(p: RegisterEmailProps) {
-  const l = p.l ?? language.en
-  const previewText = tt1(l, t4emailSignUp.Sign_up_preview_x, p.code)
+export function LoginCodeV1Template(p: LoginCodeV1Type) {
+  const l = p.l
+  const previewText = tt1(l, t4emailSignIn.Sign_in_preview_x, p.code)
 
   return (
     <Html>
@@ -21,12 +20,12 @@ export function RegisterEmailTemplate(p: RegisterEmailProps) {
             className={"border border-solid border-[#eaeaea] rounded my-10 mb-0 mx-auto p-4 max-w-[600px] bg-white"}
           >
             <Heading className={"text-2xl font-semibold"}>{previewText}</Heading>
-            <Text>{tt0(l, t4emailSignUp.Sign_up_instructions)}</Text>
+            <Text>{tt0(l, t4emailSignIn.Sign_in_instructions)}</Text>
             <Section className={"w-full"}>
               <CodeBlock className={"px-2"} text={p.code} />
             </Section>
             <Section className={"pt-4"}>
-              <LinkButton url={p.url} text={tt0(l, t4emailSignUp.Sign_up_link)} />
+              <LinkButton url={p.url} text={tt0(l, t4emailSignIn.Sign_in_link)} />
             </Section>
           </Container>
           <Container className={"mx-auto pb-2 px-4 max-w-[600px]"}>
@@ -38,13 +37,13 @@ export function RegisterEmailTemplate(p: RegisterEmailProps) {
   )
 }
 
-RegisterEmailTemplate.PreviewProps = {
+LoginCodeV1Template.PreviewProps = {
   l: "en",
-  code: `ABC-123`,
   url: "https://sign-in.com",
+  code: `ABC-123`,
   homepageText: "https://example.com",
   homepageUrl: "https://example.com",
   mottoText: "Excellency by design",
-} as RegisterEmailProps
+} as LoginCodeV1Type
 
-export default RegisterEmailTemplate
+export default LoginCodeV1Template

@@ -1,12 +1,12 @@
-import type { RenderedEmail } from "@/render/RenderedEmail"
 import { setServerTimingHeader } from "@/server/headers/setServerTimingHeader"
 import { createResult, createResultError } from "@/utils/result/Result"
 import * as v from "valibot"
+import type { GeneratedEmailType } from "~/GeneratedEmailType"
 
 export async function handleRenderRequest(
   req: Request,
   schema: any,
-  renderFn: (props: any) => Promise<RenderedEmail>,
+  renderFn: (props: any) => Promise<GeneratedEmailType>,
   op: string,
 ): Promise<Response> {
   const opParsingInput = "parsingInput"

@@ -2,9 +2,9 @@ import { language } from "@/i18n/language"
 import { languageSchema } from "@/i18n/languageSchema"
 import * as v from "valibot"
 
-export type LoginCodeProps = v.InferOutput<typeof loginCodeSchema>
+export type RegisterEmailV1Type = v.InferOutput<typeof registerEmailV1Schema>
 
-export const loginCodeSchema = v.object({
+export const registerEmailV1Schema = v.object({
   l: v.fallback(languageSchema, language.en),
   code: v.string(),
   url: v.string(),

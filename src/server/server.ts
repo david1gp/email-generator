@@ -1,6 +1,6 @@
-import { apiRouteDef } from "@/server/apiRouteDef"
 import { handleRenderRequest } from "@/server/handleRenderRequest"
 import { serverPortBun } from "@/server/serverPortBun"
+import { apiRouteDef, apiRoutePathGenerateEmail } from "~/apiRouteDef"
 
 Bun.serve({
   port: serverPortBun,
@@ -23,7 +23,7 @@ Bun.serve({
     }
 
     for (const def of apiRouteDef) {
-      const apiPath = "/renderEmailTemplate/" + def.name
+      const apiPath = "/" + apiRoutePathGenerateEmail + "/" + def.name
       if (url.pathname === apiPath) {
         return await handleRenderRequest(req, def.schema, def.renderFn, def.name)
       }

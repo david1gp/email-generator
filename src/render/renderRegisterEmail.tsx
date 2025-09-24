@@ -1,11 +1,11 @@
-import type { RenderedEmail } from "@/render/RenderedEmail"
-import RegisterEmailTemplate from "@/templates/RegisterEmailTemplate"
-import type { RegisterEmailProps } from "@/templates/registerEmailSchema"
+import RegisterEmailV1Template from "@/templates/RegisterEmailV1Template"
 import { render } from "@react-email/render"
+import type { GeneratedEmailType } from "~/GeneratedEmailType"
+import type { RegisterEmailV1Type } from "~/registerEmailV1Schema"
 
-export async function renderRegisterEmail(p: RegisterEmailProps): Promise<RenderedEmail> {
+export async function renderRegisterEmail(p: RegisterEmailV1Type): Promise<GeneratedEmailType> {
   return {
-    text: await render(<RegisterEmailTemplate {...p} />, { plainText: true }),
-    html: await render(<RegisterEmailTemplate {...p} />),
+    text: await render(<RegisterEmailV1Template {...p} />, { plainText: true }),
+    html: await render(<RegisterEmailV1Template {...p} />),
   }
 }
