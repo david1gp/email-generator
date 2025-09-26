@@ -89,3 +89,6 @@ astro
 # ai, ethereal and auto generated
 .roo/rules-code
 AGENTS.md
+
+# project specific: wrangler
+wrangler.toml
