@@ -2,6 +2,7 @@ import * as v from "valibot"
 import { emailTemplate } from "~/emailTemplate"
 import { generatedEmailSchema } from "~/GeneratedEmailType"
 import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
+import type { RegisterEmailV1Type } from "~/registerEmailV1Schema"
 import { createError, createResult, type PromiseResult } from "~/result/Result"
 import { apiRoutePathGenerateEmail } from "./apiRoutePathGenerateEmail"
 
@@ -19,7 +20,7 @@ export async function apiGenerateEmailLoginCodeV1(props: LoginCodeV1Type): Promi
   return apiCall(op, emailTemplate.loginCodeV1, props)
 }
 
-export async function apiGenerateRegisterEmailV1(props: LoginCodeV1Type): PromiseResult<SuccessResponseType> {
+export async function apiGenerateRegisterEmailV1(props: RegisterEmailV1Type): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateRegisterEmailV1"
   return apiCall(op, emailTemplate.registerEmailV1, props)
 }
