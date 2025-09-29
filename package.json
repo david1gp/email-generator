@@ -7,6 +7,7 @@
     "dev:worker": "wrangler dev",
     "start": "bun ./src/server/server.ts",
     "deploy": "wrangler deploy",
+    "generateExports": "bun run src/generateExports.ts",
     "build": "bun tsc --build --clean && bun tsc -p ./tsconfig.lib.json",
     "tail": "wrangler tail email-generator-worker",
     "test": "bun test",
@@ -34,7 +35,54 @@
     "trailingComma": "all"
   },
   "exports": {
-    "./*": "./dist/*"
+    "./i18n/languageSchema": {
+      "types": "./dist/i18n/languageSchema.d.ts",
+      "default": "./dist/i18n/languageSchema.js"
+    },
+    "./i18n/tt0": {
+      "types": "./dist/i18n/tt0.d.ts",
+      "default": "./dist/i18n/tt0.js"
+    },
+    "./i18n/stringReplaceX": {
+      "types": "./dist/i18n/stringReplaceX.d.ts",
+      "default": "./dist/i18n/stringReplaceX.js"
+    },
+    "./i18n/TranslationBlock": {
+      "types": "./dist/i18n/TranslationBlock.d.ts",
+      "default": "./dist/i18n/TranslationBlock.js"
+    },
+    "./i18n/language": {
+      "types": "./dist/i18n/language.d.ts",
+      "default": "./dist/i18n/language.js"
+    },
+    "./apiRouteDef": {
+      "types": "./dist/apiRouteDef.d.ts",
+      "default": "./dist/apiRouteDef.js"
+    },
+    "./result/Result": {
+      "types": "./dist/result/Result.d.ts",
+      "default": "./dist/result/Result.js"
+    },
+    "./result/createResultErrorSchema": {
+      "types": "./dist/result/createResultErrorSchema.d.ts",
+      "default": "./dist/result/createResultErrorSchema.js"
+    },
+    "./loginCodeV1Schema": {
+      "types": "./dist/loginCodeV1Schema.d.ts",
+      "default": "./dist/loginCodeV1Schema.js"
+    },
+    "./GeneratedEmailType": {
+      "types": "./dist/GeneratedEmailType.d.ts",
+      "default": "./dist/GeneratedEmailType.js"
+    },
+    "./registerEmailV1Schema": {
+      "types": "./dist/registerEmailV1Schema.d.ts",
+      "default": "./dist/registerEmailV1Schema.js"
+    },
+    "./apiGenerateEmail": {
+      "types": "./dist/apiGenerateEmail.d.ts",
+      "default": "./dist/apiGenerateEmail.js"
+    }
   },
   "files": [
     "dist"
