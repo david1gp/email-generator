@@ -1,4 +1,4 @@
-import type { TranslationBlock } from "@/i18n/TranslationBlock"
+import type { TranslationBlock } from "~/i18n/TranslationBlock"
 
 export function stringReplaceX(s: string, x: string | number) {
   return s.replaceAll("[X]", x.toString())

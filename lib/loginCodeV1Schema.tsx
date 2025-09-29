@@ -1,6 +1,6 @@
-import { language } from "@/i18n/language"
-import { languageSchema } from "@/i18n/languageSchema"
 import * as v from "valibot"
+import { language } from "~/i18n/language"
+import { languageSchema } from "~/i18n/languageSchema"
 
 export type LoginCodeV1Type = v.InferOutput<typeof loginCodeV1Schema>
 
