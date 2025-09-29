@@ -1,6 +1,7 @@
+import { apiDefLoginCodeV1, apiDefRegisterEmailV1 } from "@/api/apiRouteDef"
 import { createError, createResult, type PromiseResult } from "@/utils/result/Result"
 import * as v from "valibot"
-import { apiDefLoginCodeV1, apiDefRegisterEmailV1, apiRoutePathGenerateEmail } from "~/apiRouteDef"
+import { apiRoutePathGenerateEmail } from "~/apiRouteDef"
 import { generatedEmailSchema } from "~/GeneratedEmailType"
 import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
 

@@ -1,4 +1,4 @@
-import { apiRouteDef } from "../../lib/apiRouteDef"
+import { apiRouteDef } from "@/api/apiRouteDef"
 import { handleRenderRequest } from "./handleRenderRequest"
 
 export default {

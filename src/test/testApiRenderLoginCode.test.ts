@@ -1,6 +1,7 @@
+import { apiDefLoginCodeV1 } from "@/api/apiRouteDef"
 import { describe, expect, test } from "bun:test"
 import * as v from "valibot"
-import { apiDefLoginCodeV1, apiRoutePathGenerateEmail } from "~/apiRouteDef"
+import { apiRoutePathGenerateEmail } from "~/apiRouteDef"
 import { targetEnv } from "../env/targetEnv"
 
 const successResponseSchema = v.object({
