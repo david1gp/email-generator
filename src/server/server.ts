@@ -1,7 +1,7 @@
 import { apiRouteDef } from "@/api/apiRouteDef"
 import { handleRenderRequest } from "@/server/handleRenderRequest"
 import { serverPortBun } from "@/server/serverPortBun"
-import { apiRoutePathGenerateEmail } from "~/apiRouteDef"
+import { apiRoutePathGenerateEmail } from "~/apiRoutePathGenerateEmail"
 
 Bun.serve({
   port: serverPortBun,

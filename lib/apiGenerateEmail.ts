@@ -1,8 +1,9 @@
 import * as v from "valibot"
-import { apiRoutePathGenerateEmail, emailTemplates } from "~/apiRouteDef"
+import { emailTemplate } from "~/emailTemplate"
 import { generatedEmailSchema } from "~/GeneratedEmailType"
 import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
 import { createError, createResult, type PromiseResult } from "~/result/Result"
+import { apiRoutePathGenerateEmail } from "./apiRoutePathGenerateEmail"
 
 export type SuccessResponseType = v.InferOutput<typeof successResponseSchema>
 
@@ -15,12 +16,12 @@ const baseUrl = "http://localhost:3055"
 
 export async function apiGenerateEmailLoginCodeV1(props: LoginCodeV1Type): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateEmailLoginCodeV1"
-  return apiCall(op, emailTemplates.loginCodeV1, props)
+  return apiCall(op, emailTemplate.loginCodeV1, props)
 }
 
 export async function apiGenerateRegisterEmailV1(props: LoginCodeV1Type): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateRegisterEmailV1"
-  return apiCall(op, emailTemplates.registerEmailV1, props)
+  return apiCall(op, emailTemplate.registerEmailV1, props)
 }
 
 async function apiCall<T>(op: string, name: string, props: T): PromiseResult<SuccessResponseType> {
