@@ -1,5 +1,5 @@
 import * as v from "valibot"
-import { emailTemplate } from "~/emailTemplate"
+import { emailTemplateName } from "~/emailTemplateName"
 import { generatedEmailSchema } from "~/GeneratedEmailType"
 import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
 import type { RegisterEmailV1Type } from "~/registerEmailV1Schema"
@@ -17,12 +17,12 @@ const baseUrl = "http://localhost:3055"
 
 export async function apiGenerateEmailLoginCodeV1(props: LoginCodeV1Type): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateEmailLoginCodeV1"
-  return apiCall(op, emailTemplate.loginCodeV1, props)
+  return apiCall(op, emailTemplateName.loginCodeV1, props)
 }
 
 export async function apiGenerateRegisterEmailV1(props: RegisterEmailV1Type): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateRegisterEmailV1"
-  return apiCall(op, emailTemplate.registerEmailV1, props)
+  return apiCall(op, emailTemplateName.registerEmailV1, props)
 }
 
 async function apiCall<T>(op: string, name: string, props: T): PromiseResult<SuccessResponseType> {
