@@ -1,5 +1,5 @@
 export * from "./apiGenerateEmail"
-export * from "./ApiRouteDef"
+export * from "./ApiRouteDefType"
 export * from "./apiRoutePathGenerateEmail"
 export * from "./emailTemplateName"
 export * from "./GeneratedEmailType"

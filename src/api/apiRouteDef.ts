@@ -1,6 +1,6 @@
 import { renderLoginCode } from "@/render/renderLoginCode"
 import { renderRegisterEmail } from "@/render/renderRegisterEmail"
-import { type ApiRouteDef } from "~/ApiRouteDef"
+import { type ApiRouteDefType } from "~/ApiRouteDefType"
 import { emailTemplateName } from "~/emailTemplateName"
 import { loginCodeV1Schema } from "~/loginCodeV1Schema"
 import { registerEmailV1Schema } from "~/registerEmailV1Schema"
@@ -17,4 +17,4 @@ export const apiDefLoginCodeV1 = {
   renderFn: renderLoginCode,
 }
 
-export const apiRouteDef = [apiDefRegisterEmailV1, apiDefLoginCodeV1] as const satisfies ApiRouteDef[]
+export const apiRouteDef = [apiDefRegisterEmailV1, apiDefLoginCodeV1] as const satisfies ApiRouteDefType[]
