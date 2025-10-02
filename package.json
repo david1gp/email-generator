@@ -9,7 +9,7 @@
     "deploy": "wrangler deploy",
     "generateExports": "bun run src/generateExports.ts",
     "generateBarrel": "bun run src/generateBarrelImports.ts",
-    "build": "bun tsc --build --clean && bun tsc -p ./tsconfig.lib.json",
+    "build": "rm -rf ./dist && bun tsc -p ./tsconfig.lib.json",
     "tail": "wrangler tail email-generator-worker",
     "test": "bun test",
     "test:w": "bun test --watch",
