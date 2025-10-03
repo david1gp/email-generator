@@ -1,7 +1,5 @@
 {
   "name": "@adaptive-sm/email-generator",
-  "type": "module",
-  "private": true,
   "scripts": {
     "dev": "email dev --dir=./src/templates",
     "dev:worker": "wrangler dev",
@@ -45,5 +43,20 @@
     "dist"
   ],
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/adaptive-shield-matrix/email-generator",
+  "description": "A lightweight, self-hostable service for rendering HTML emails with React Email",
+  "keywords": [
+    "email",
+    "templates",
+    "react-email",
+    "html-email",
+    "serverless",
+    "cloudflare-workers",
+    "bun",
+    "typescript"
+  ]
 }
