@@ -1,9 +1,19 @@
-# Email Template Service
+# 📧 Email Generator Microservice
 
-This service renders email templates for login codes and registration emails using React Email. It supports both a local Bun server for development and deployment to Cloudflare Workers for serverless execution.
+A lightweight, self-hostable service for rendering HTML emails with React Email.
 
-https://github.com/resend/react-email
-https://react.email/docs/getting-started/manual-setup
+* **Hassle-free & maintenance-free** – runs entirely on the free tier of Cloudflare Workers.
+* **Simple to use** – perfect for login codes, registration flows, and other transactional emails.
+* **Flexible** – develop locally with a Bun server, then deploy serverlessly with zero configuration.
+* **Clean separation** – does not pollute your project with `react` or `react-email` imports or dependencies.
+
+Whether you need a quick drop-in solution or a fully open-source foundation for your project, this microservice makes email generation easy and reliable.
+
+Quick Links
+
+- code - https://github.com/adaptive-shield-matrix/email-generator
+- npm - https://www.npmjs.com/package/@adaptive-sm/email-generator
+- Official React Email Docs - https://react.email/docs/getting-started/manual-setup
 
 ## Features
 
@@ -17,39 +27,14 @@ https://react.email/docs/getting-started/manual-setup
 
 - Node.js (for package management) or Bun.
 - Cloudflare account (for Workers deployment).
-- Install Wrangler CLI: `npm install -g wrangler` (or use `npx wrangler`).
 
-## Installation
+## Local Development
 
 1. Clone the repository.
 2. Install dependencies:
    ```
    bun install
    ```
-
-## Linking as a Dependency
-
-To link this project globally with Bun for use in other projects:
-
-```
-bun link
-```
-
-Success! Registered "email-generator"
-
-In the consuming project, run:
-
-```
-bun link email-generator
-```
-
-Or add it in dependencies in your `package.json` file:
-
-```
-"email-generator": "link:email-generator"
-```
-
-## Local Development
 
 ### With Bun Server
 
@@ -185,5 +170,4 @@ Tests cover API rendering for login codes (extend for registration as needed).
 - Workers do not support `/memoryUsage` endpoint (Bun-specific).
 - All code uses TypeScript with path aliases (`@/` resolves to `src/` via `tsconfig.json`).
 - Dependencies like `@react-email/render` are compatible with Workers' V8 environment.
-
-For issues, check Cloudflare dashboard for logs or run `wrangler tail` for real-time logs.
+- For issues, check Cloudflare dashboard for logs or run `wrangler tail` for real-time logs.
