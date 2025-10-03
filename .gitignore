@@ -86,6 +86,9 @@ convex/_generated
 .astro
 astro
 
+# npm publishing
+.npmrc
+
 # ai, ethereal and auto generated
 .roo/rules-code
 AGENTS.md
