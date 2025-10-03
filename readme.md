@@ -13,7 +13,7 @@ Quick Links
 
 - code - https://github.com/adaptive-shield-matrix/email-generator
 - npm - https://www.npmjs.com/package/@adaptive-sm/email-generator
-- Official React Email Docs - https://react.email/docs/getting-started/manual-setup
+- react email docs - https://react.email/docs/getting-started/manual-setup
 
 ## Features
 
