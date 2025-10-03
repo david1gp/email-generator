@@ -1,5 +1,6 @@
 {
   "name": "@adaptive-sm/email-generator",
+  "version": "0.1.0",
   "scripts": {
     "dev": "email dev --dir=./src/templates",
     "dev:worker": "wrangler dev",
@@ -60,7 +61,6 @@
     "typescript"
   ],
   "repository": {
-    "type": "git",
-    "url": "https://github.com/adaptive-shield-matrix/email-generator.git"
+    "url": "git+https://github.com/adaptive-shield-matrix/email-generator.git"
   }
 }
