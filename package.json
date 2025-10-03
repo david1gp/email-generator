@@ -12,6 +12,7 @@
     "tail": "wrangler tail email-generator-worker",
     "test": "bun test",
     "test:w": "bun test --watch",
+    "publish": "bunx npm publish --access public",
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./node_modules"
   },
