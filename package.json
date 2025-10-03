@@ -58,5 +58,9 @@
     "cloudflare-workers",
     "bun",
     "typescript"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adaptive-shield-matrix/email-generator.git"
+  }
 }
