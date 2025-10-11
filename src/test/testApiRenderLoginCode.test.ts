@@ -28,7 +28,7 @@ describe("API Render Login Code", () => {
     const port = 8787
     // const port = serverPort
     const response = await fetch(
-      targetEnv.productionWorker + "/" + apiRoutePathGenerateEmail + "/" + apiDefLoginCodeV1.name,
+      targetEnv.readFromEnv + "/" + apiRoutePathGenerateEmail + "/" + apiDefLoginCodeV1.name,
       {
         method: "POST",
         headers: {
