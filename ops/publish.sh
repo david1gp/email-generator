@@ -44,7 +44,9 @@ fi
 DATE=$(date +%Y-%m-%d)
 CHANGELOG_FILE="$CHANGELOGS_DIR/${DATE}_v${NEW_VERSION}.md"
 mkdir -p "$CHANGELOGS_DIR"
-FULL_CHANGELOG=$(git cliff --tag "$NEW_VERSION" --strip all)
+FULL_CHANGELOG="## [${NEW_VERSION}] - ${DATE}
+
+${CHANGELOG_BODY}"
 echo "$FULL_CHANGELOG" > "$CHANGELOG_FILE"
 echo "📄 Changelog saved to: $CHANGELOG_FILE"
 
@@ -67,7 +69,9 @@ git add "$CHANGELOG_FILE" "$PACKAGE_JSON"
 git commit -m "build(release): v$NEW_VERSION"
 git tag -a "$TAG" -m "Release v$NEW_VERSION"
 git push origin main
+git push origin --tags
 git push gitlab main
+git push gitlab --tags
 
 # --- Step 7: Create GitHub release ---
 echo "☁️ Creating GitHub release..."
