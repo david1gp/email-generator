@@ -27,7 +27,7 @@ echo "----------------------------------------"
 echo "📦 Current version: $CURRENT_VERSION"
 
 # --- Step 2: Prompt for new version ---
-read -p "🔖 Enter new version (e.g., 1.2.4): " NEW_VERSION
+read -p "🔖 Enter new version (e.g., 0.2.1): " NEW_VERSION
 
 if [[ -z "$NEW_VERSION" ]]; then
   echo "❌ Version is required. Aborting."
