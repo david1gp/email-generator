@@ -13,19 +13,23 @@ export const successResponseSchema = v.object({
   data: generatedEmailSchema,
 })
 
-const baseUrl = "http://localhost:3055"
-
-export async function apiGenerateEmailLoginCodeV1(props: LoginCodeV1Type): PromiseResult<SuccessResponseType> {
+export async function apiGenerateEmailLoginCodeV1(
+  props: LoginCodeV1Type,
+  baseUrl: string,
+): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateEmailLoginCodeV1"
-  return apiCall(op, emailTemplateName.loginCodeV1, props)
+  return apiCall(op, emailTemplateName.loginCodeV1, props, baseUrl)
 }
 
-export async function apiGenerateRegisterEmailV1(props: RegisterEmailV1Type): PromiseResult<SuccessResponseType> {
+export async function apiGenerateRegisterEmailV1(
+  props: RegisterEmailV1Type,
+  baseUrl: string,
+): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateRegisterEmailV1"
-  return apiCall(op, emailTemplateName.registerEmailV1, props)
+  return apiCall(op, emailTemplateName.registerEmailV1, props, baseUrl)
 }
 
-async function apiCall<T>(op: string, name: string, props: T): PromiseResult<SuccessResponseType> {
+async function apiCall<T>(op: string, name: string, props: T, baseUrl: string): PromiseResult<SuccessResponseType> {
   const response = await fetch(baseUrl + "/" + apiRoutePathGenerateEmail + "/" + name, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
