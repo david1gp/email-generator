@@ -77,7 +77,7 @@ git push gitlab --tags
 echo "☁️ Creating GitHub release..."
 gh release create "$TAG" \
   --title "v$NEW_VERSION" \
-  --notes-file "$FULL_CHANGELOG" \
+  --notes-file "$CHANGELOG_FILE" \
   --repo "$REPO_NAME"
 
 # --- Step 8: Publish to npm ---
