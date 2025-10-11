@@ -1,6 +1,6 @@
 name = "email-generator-worker"
 main = "src/server/worker.ts"
-compatibility_date = "2024-09-22"
+compatibility_date = "2025-10-10"
 
 [[routes]]
 pattern = "email-generator-worker.my-domain.com"
