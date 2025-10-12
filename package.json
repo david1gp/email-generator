@@ -12,7 +12,7 @@
     "tail": "wrangler tail email-generator-worker",
     "test": "bun test",
     "test:w": "bun test --watch",
-    "publish": "bash ./ops/publish.sh",
+    "release": "bash ./ops/release.sh",
     "update": "bun x npm-check-updates -u && bun i",
     "update:commit": "bun x npm-check-updates -u && bun i && git add package.json && bun run tsc && git commit -m \"chore(deps): update dependencies\" && git push",
     "clean": "rm -rf ./dist",
