@@ -4,10 +4,21 @@ import { serverPortWrangler } from "@/server/serverPortWrangler"
 export type TargetEnv = keyof typeof targetEnv
 
 export const targetEnv = {
-  localhostBun: "http://localhost:" + serverPortBun,
-  localhostWorker: "http://localhost:" + serverPortWrangler,
-  readFromEnv: readFromEnv(),
+  localhostBun: "localhostBun",
+  localhostWorker: "localhostWorker",
+  readFromEnv: "readFromEnv",
 } as const
+
+export function getTargetBaseUrl(e: TargetEnv): string {
+  switch (e) {
+    case targetEnv.localhostBun:
+      return "http://localhost:" + serverPortBun
+    case targetEnv.localhostWorker:
+      return "http://localhost:" + serverPortWrangler
+    case targetEnv.readFromEnv:
+      return readFromEnv()
+  }
+}
 
 function readFromEnv(): string {
   const read = process.env.EMAIL_GENERATOR_URL

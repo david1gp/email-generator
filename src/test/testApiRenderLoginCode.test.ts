@@ -2,7 +2,7 @@ import { apiDefLoginCodeV1 } from "@/api/apiRouteDef"
 import { describe, expect, test } from "bun:test"
 import * as v from "valibot"
 import { apiRoutePathGenerateEmail } from "~/apiRoutePathGenerateEmail"
-import { targetEnv } from "../env/targetEnv"
+import { getTargetBaseUrl, targetEnv } from "../env/targetEnv"
 
 const successResponseSchema = v.object({
   success: v.literal(true),
@@ -28,7 +28,7 @@ const testSuite = () => {
     const port = 8787
     // const port = serverPort
     const response = await fetch(
-      targetEnv.readFromEnv + "/" + apiRoutePathGenerateEmail + "/" + apiDefLoginCodeV1.name,
+      getTargetBaseUrl(targetEnv.readFromEnv) + "/" + apiRoutePathGenerateEmail + "/" + apiDefLoginCodeV1.name,
       {
         method: "POST",
         headers: {
