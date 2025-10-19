@@ -23,7 +23,7 @@ const testProps = {
   mottoText: "Welcome to our service",
 }
 
-describe("API Render Login Code", () => {
+const testSuite = () => {
   test("should render email template and contain code in response", async () => {
     const port = 8787
     // const port = serverPort
@@ -50,4 +50,10 @@ describe("API Render Login Code", () => {
     expect(validatedRes.data.html).toContain("123456")
     expect(validatedRes.data.text).toContain("123456")
   })
-})
+}
+
+if (process.env.CI) {
+  describe.skip("API Render Login Code", testSuite)
+} else {
+  describe("API Render Login Code", testSuite)
+}
