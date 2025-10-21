@@ -1,7 +1,0 @@
-export * from "./apiGenerateEmail"
-export * from "./ApiRouteDefType"
-export * from "./apiRoutePathGenerateEmail"
-export * from "./emailTemplateName"
-export * from "./GeneratedEmailType"
-export * from "./loginCodeV1Schema"
-export * from "./registerEmailV1Schema"
