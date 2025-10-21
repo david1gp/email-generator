@@ -1,10 +1,10 @@
 import * as v from "valibot"
-import { emailTemplateName } from "~/emailTemplateName"
-import { generatedEmailSchema } from "~/GeneratedEmailType"
-import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
-import type { RegisterEmailV1Type } from "~/registerEmailV1Schema"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { apiRoutePathGenerateEmail } from "./apiRoutePathGenerateEmail"
+import { emailTemplateName } from "./emailTemplateName"
+import { generatedEmailSchema } from "./GeneratedEmailType"
+import type { LoginCodeV1Type } from "./loginCodeV1Schema"
+import type { RegisterEmailV1Type } from "./registerEmailV1Schema"
 
 export type SuccessResponseType = v.InferOutput<typeof successResponseSchema>
 

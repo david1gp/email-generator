@@ -3,5 +3,5 @@ export const language = {
   en: "en",
   de: "de",
   ru: "ru",
-  tj: "tj"
+  tj: "tj",
 } as const
