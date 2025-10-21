@@ -1,9 +1,9 @@
+import { tt0, tt1 } from "@/i18n/tt0"
 import { CodeBlock } from "@/templates/parts/CodeBlock"
 import Footer from "@/templates/parts/Footer"
 import { LinkButton } from "@/templates/parts/LinkButton"
 import { t4emailSignIn } from "@/templates/t4emailSignIn"
 import { Body, Container, Head, Heading, Html, Preview, Section, Tailwind, Text } from "@react-email/components"
-import { tt0, tt1 } from "~/i18n/tt0"
 import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
 
 export function LoginCodeV1Template(p: LoginCodeV1Type) {

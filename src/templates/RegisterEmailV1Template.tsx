@@ -1,10 +1,10 @@
+import { tt0, tt1 } from "@/i18n/tt0"
 import { CodeBlock } from "@/templates/parts/CodeBlock"
 import Footer from "@/templates/parts/Footer"
 import { LinkButton } from "@/templates/parts/LinkButton"
 import { t4emailSignUp } from "@/templates/t4emailSignUp"
 import { Body, Container, Head, Heading, Html, Preview, Section, Tailwind, Text } from "@react-email/components"
 import { language } from "~/i18n/language"
-import { tt0, tt1 } from "~/i18n/tt0"
 import type { RegisterEmailV1Type } from "~/registerEmailV1Schema"
 
 export function RegisterEmailV1Template(p: RegisterEmailV1Type) {
