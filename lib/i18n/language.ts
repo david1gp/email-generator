@@ -5,10 +5,3 @@ export const language = {
   ru: "ru",
   tj: "tj"
 } as const
-
-export function isDe(l: Language) {
-  return l === language.de
-}
-export function isEn(l: Language) {
-  return l === language.en
-}
