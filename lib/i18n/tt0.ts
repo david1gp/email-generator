@@ -13,6 +13,8 @@ export function tt1p(b: TranslationBlock, x: string | number): TranslationBlock 
   return {
     en: stringReplaceX(b[language.en], x),
     de: stringReplaceX(b[language.de], x),
+    ru: stringReplaceX(b[language.ru], x),
+    tj: stringReplaceX(b[language.tj], x),
   }
 }
 export function tt2(l: Language, b: TranslationBlock, x1: string | number, x2: string | number): string {
