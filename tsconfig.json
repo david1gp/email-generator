@@ -27,7 +27,10 @@
       ],
       "~/*": [
         "./lib/*"
-      ]
+      ],
+      "~utils/*": [
+        "./node_modules/@adaptive-sm/utils/dist/*"
+      ],
     },
     //
     // https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/#the---erasablesyntaxonly-option
