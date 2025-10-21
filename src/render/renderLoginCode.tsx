@@ -1,7 +1,7 @@
 import LoginCodeV1Template from "@/templates/LoginCodeV1Template"
 import { render } from "@react-email/render"
 import type { GeneratedEmailType } from "~/GeneratedEmailType"
-import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
+import type { LoginCodeV1Type } from "~/LoginCodeV1Type"
 
 export async function renderLoginCode(p: LoginCodeV1Type): Promise<GeneratedEmailType> {
   return {

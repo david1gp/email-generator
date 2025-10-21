@@ -5,7 +5,7 @@ import { LinkButton } from "@/templates/parts/LinkButton"
 import { t4emailSignUp } from "@/templates/t4emailSignUp"
 import { Body, Container, Head, Heading, Html, Preview, Section, Tailwind, Text } from "@react-email/components"
 import { language } from "~/i18n/language"
-import type { RegisterEmailV1Type } from "~/registerEmailV1Schema"
+import type { RegisterEmailV1Type } from "~/RegisterEmailV1Type"
 
 export function RegisterEmailV1Template(p: RegisterEmailV1Type) {
   const l = p.l ?? language.en

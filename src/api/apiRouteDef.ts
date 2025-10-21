@@ -1,9 +1,9 @@
+import { loginCodeV1Schema } from "@/api/loginCodeV1Schema"
+import { registerEmailV1Schema } from "@/api/registerEmailV1Schema"
 import { renderLoginCode } from "@/render/renderLoginCode"
 import { renderRegisterEmail } from "@/render/renderRegisterEmail"
 import { type ApiRouteDefType } from "~/ApiRouteDefType"
 import { emailTemplateName } from "~/emailTemplateName"
-import { loginCodeV1Schema } from "~/loginCodeV1Schema"
-import { registerEmailV1Schema } from "~/registerEmailV1Schema"
 
 export const apiDefRegisterEmailV1 = {
   name: emailTemplateName.registerEmailV1,

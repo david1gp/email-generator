@@ -3,8 +3,8 @@ import { createError, createResult, type PromiseResult } from "~utils/result/Res
 import { apiRoutePathGenerateEmail } from "./apiRoutePathGenerateEmail"
 import { emailTemplateName } from "./emailTemplateName"
 import { generatedEmailSchema } from "./GeneratedEmailType"
-import type { LoginCodeV1Type } from "./loginCodeV1Schema"
-import type { RegisterEmailV1Type } from "./registerEmailV1Schema"
+import type { LoginCodeV1Type } from "./LoginCodeV1Type"
+import type { RegisterEmailV1Type } from "./RegisterEmailV1Type"
 
 export type SuccessResponseType = v.InferOutput<typeof successResponseSchema>
 

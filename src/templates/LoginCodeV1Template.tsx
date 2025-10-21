@@ -4,7 +4,7 @@ import Footer from "@/templates/parts/Footer"
 import { LinkButton } from "@/templates/parts/LinkButton"
 import { t4emailSignIn } from "@/templates/t4emailSignIn"
 import { Body, Container, Head, Heading, Html, Preview, Section, Tailwind, Text } from "@react-email/components"
-import type { LoginCodeV1Type } from "~/loginCodeV1Schema"
+import type { LoginCodeV1Type } from "~/LoginCodeV1Type"
 
 export function LoginCodeV1Template(p: LoginCodeV1Type) {
   const l = p.l
