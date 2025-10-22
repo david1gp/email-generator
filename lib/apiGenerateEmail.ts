@@ -1,24 +1,24 @@
 import * as v from "valibot"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
-import { apiRoutePathGenerateEmail } from "./apiRoutePathGenerateEmail"
+import { apiPathGenerateEmail } from "./apiPathGenerateEmail"
 import { emailTemplateName } from "./emailTemplateName"
-import { generatedEmailSchema } from "./GeneratedEmailType"
 import type { LoginCodeV1Type } from "./LoginCodeV1Type"
 import type { RegisterEmailV1Type } from "./RegisterEmailV1Type"
 
-export type SuccessResponseType = v.InferOutput<typeof successResponseSchema>
-
-export const successResponseSchema = v.object({
-  success: v.literal(true),
-  data: generatedEmailSchema,
-})
+export type SuccessResponseType = {
+  success: true
+  data: {
+    text: string
+    html: string
+  }
+}
 
 export async function apiGenerateEmailLoginCodeV1(
   props: LoginCodeV1Type,
   baseUrl: string,
 ): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateEmailLoginCodeV1"
-  return apiCall(op, emailTemplateName.loginCodeV1, props, baseUrl)
+  return generateEmailApiCall(op, emailTemplateName.loginCodeV1, props, baseUrl)
 }
 
 export async function apiGenerateRegisterEmailV1(
@@ -26,11 +26,16 @@ export async function apiGenerateRegisterEmailV1(
   baseUrl: string,
 ): PromiseResult<SuccessResponseType> {
   const op = "apiGenerateRegisterEmailV1"
-  return apiCall(op, emailTemplateName.registerEmailV1, props, baseUrl)
+  return generateEmailApiCall(op, emailTemplateName.registerEmailV1, props, baseUrl)
 }
 
-async function apiCall<T>(op: string, name: string, props: T, baseUrl: string): PromiseResult<SuccessResponseType> {
-  const response = await fetch(baseUrl + "/" + apiRoutePathGenerateEmail + "/" + name, {
+async function generateEmailApiCall<T>(
+  op: string,
+  name: string,
+  props: T,
+  baseUrl: string,
+): PromiseResult<SuccessResponseType> {
+  const response = await fetch(baseUrl + "/" + apiPathGenerateEmail + "/" + name, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(props),
@@ -46,3 +51,15 @@ async function apiCall<T>(op: string, name: string, props: T, baseUrl: string): 
   }
   return createResult(parsing.output)
 }
+
+type SuccessResponseTypeInferred = v.InferOutput<typeof successResponseSchema>
+
+export const generatedEmailSchema = v.object({
+  text: v.string(),
+  html: v.string(),
+})
+
+export const successResponseSchema = v.object({
+  success: v.literal(true),
+  data: generatedEmailSchema,
+})
