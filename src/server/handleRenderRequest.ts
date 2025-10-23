@@ -1,7 +1,7 @@
 import { setServerTimingHeader } from "@/server/headers/setServerTimingHeader"
 import * as v from "valibot"
 import type { GeneratedEmailType } from "~/GeneratedEmailType"
-import { createResult, createResultError } from "~utils/result/Result"
+import { createResultError } from "~utils/result/Result"
 
 export async function handleRenderRequest(
   req: Request,
@@ -41,8 +41,7 @@ export async function handleRenderRequest(
   const rendered = await renderFn(validated)
   const endRendering = performance.now()
   const renderingDuration = endRendering - startRendering
-  const result = createResult(rendered)
-  const response = new Response(JSON.stringify(result), {
+  const response = new Response(JSON.stringify(rendered), {
     headers: { "Content-Type": "application/json" },
   })
   return setServerTimingHeader(response, [

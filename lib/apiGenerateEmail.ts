@@ -1,22 +1,15 @@
 import * as v from "valibot"
+import type { GeneratedEmailType } from "~/GeneratedEmailType"
 import { createError, createResult, type PromiseResult } from "~utils/result/Result"
 import { apiPathGenerateEmail } from "./apiPathGenerateEmail"
 import { emailTemplateName } from "./emailTemplateName"
 import type { LoginCodeV1Type } from "./LoginCodeV1Type"
 import type { RegisterEmailV1Type } from "./RegisterEmailV1Type"
 
-export type SuccessResponseType = {
-  success: true
-  data: {
-    text: string
-    html: string
-  }
-}
-
 export async function apiGenerateEmailLoginCodeV1(
   props: LoginCodeV1Type,
   baseUrl: string,
-): PromiseResult<SuccessResponseType> {
+): PromiseResult<GeneratedEmailType> {
   const op = "apiGenerateEmailLoginCodeV1"
   return generateEmailApiCall(op, emailTemplateName.loginCodeV1, props, baseUrl)
 }
@@ -24,7 +17,7 @@ export async function apiGenerateEmailLoginCodeV1(
 export async function apiGenerateRegisterEmailV1(
   props: RegisterEmailV1Type,
   baseUrl: string,
-): PromiseResult<SuccessResponseType> {
+): PromiseResult<GeneratedEmailType> {
   const op = "apiGenerateRegisterEmailV1"
   return generateEmailApiCall(op, emailTemplateName.registerEmailV1, props, baseUrl)
 }
@@ -34,7 +27,7 @@ async function generateEmailApiCall<T>(
   name: string,
   props: T,
   baseUrl: string,
-): PromiseResult<SuccessResponseType> {
+): PromiseResult<GeneratedEmailType> {
   const response = await fetch(baseUrl + "/" + apiPathGenerateEmail + "/" + name, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -44,7 +37,7 @@ async function generateEmailApiCall<T>(
   if (!response.ok) {
     return createError(op, response.statusText, text)
   }
-  const schema = v.pipe(v.string(), v.parseJson(), successResponseSchema)
+  const schema = v.pipe(v.string(), v.parseJson(), generatedEmailSchema)
   const parsing = v.safeParse(schema, text)
   if (!parsing.success) {
     return createError(op, v.summarize(parsing.issues), text)
@@ -52,14 +45,7 @@ async function generateEmailApiCall<T>(
   return createResult(parsing.output)
 }
 
-type SuccessResponseTypeInferred = v.InferOutput<typeof successResponseSchema>
-
 export const generatedEmailSchema = v.object({
   text: v.string(),
   html: v.string(),
-})
-
-export const successResponseSchema = v.object({
-  success: v.literal(true),
-  data: generatedEmailSchema,
 })
