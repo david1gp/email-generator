@@ -8,6 +8,12 @@ REPO_URL=$(git remote get-url origin | sed 's/\.git$//')
 REPO_NAME=$(echo "$REPO_URL" | sed 's/.*://')
 PACKAGE_JSON="package.json"
 
+# --- Validate arguments ---
+if [ $# -gt 1 ]; then
+  echo "Error: Too many arguments. Provide 0 or 1 argument (the next version)."
+  exit 1
+fi
+
 # --- Helper: get current version from package.json ---
 CURRENT_VERSION=$(jq -r '.version' "$PACKAGE_JSON")
 
@@ -25,20 +31,24 @@ echo "----------------------------------------"
 echo "$CHANGELOG_BODY"
 echo "----------------------------------------"
 
-# --- Step 2: Generate new version automatically ---
-if echo "$CHANGELOG_BODY" | grep -q "### 🚀 Features"; then
-  echo "🚀 Features detected: bumping minor version"
-  # Bump minor version
-  IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
-  NEW_VERSION="$MAJOR.$((MINOR + 1)).0"
+# --- Step 2: Generate new version ---
+if [ $# -eq 1 ]; then
+  NEW_VERSION=$1
+  echo "🔖 Using provided version: $NEW_VERSION (previous: $CURRENT_VERSION)"
 else
-  echo "🐛 Patch changes: bumping patch version"
-  # Bump patch version
-  IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
-  NEW_VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
+  if echo "$CHANGELOG_BODY" | grep -q "### 🚀 Features"; then
+    echo "🚀 Features detected: bumping minor version"
+    # Bump minor version
+    IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+    NEW_VERSION="$MAJOR.$((MINOR + 1)).0"
+  else
+    echo "🐛 Patch changes: bumping patch version"
+    # Bump patch version
+    IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+    NEW_VERSION="$MAJOR.$MINOR.$((PATCH + 1))"
+  fi
+  echo "🔖 New version: $NEW_VERSION (previous: $CURRENT_VERSION)"
 fi
-
-echo "🔖 New version: $NEW_VERSION (previous: $CURRENT_VERSION)"
 
 # --- Step 3: Generate changelog file ---
 DATE=$(date +%Y-%m-%d)
