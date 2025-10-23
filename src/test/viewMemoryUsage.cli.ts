@@ -1,4 +1,4 @@
-import { getTargetBaseUrl, targetEnv } from "@/env/targetEnv"
+import { getTargetBaseUrl, targetEnv } from "@/test/targetEnv"
 
 const response = await fetch(getTargetBaseUrl(targetEnv.localhostBun) + "/memoryUsage", {
   method: "GET",
