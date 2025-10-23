@@ -3,15 +3,20 @@ name: Publish Package
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 permissions:
-  id-token: write  # Required for OIDC
+  id-token: write # Required for OIDC
   contents: read
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      # Checkout source code
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
       # Setup Bun for installation, building, and testing
       - uses: oven-sh/setup-bun@v1
         with:
@@ -20,11 +25,8 @@ jobs:
       # Setup Node.js only for npm publishing with OIDC until Bun adds support for it - https://github.com/oven-sh/bun/issues/15601
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
-
-      # Checkout source code
-      - uses: actions/checkout@v4
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
 
       # Use Bun for everything except publishing
       - run: bun install
