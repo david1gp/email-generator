@@ -1,14 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "es2022",
-    "lib": ["es2022",],
+    "target": "ES2024",
+    "lib": [
+      "ES2024",
+    ],
     "rootDir": "./lib",
     "outDir": "./dist",
     "noEmit": false,
     "declaration": true,
     "sourceMap": true,
-    "allowImportingTsExtensions":false
+    "allowImportingTsExtensions": false
   },
   "include": [
     "lib/**/*"
@@ -25,6 +27,8 @@
     "out",
     "data",
     ".idea",
-    ".vscode"
+    ".vscode",
+    "**/*.test.ts",
+    "**/*.cliTest.ts"
   ]
 }
