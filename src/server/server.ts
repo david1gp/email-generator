@@ -1,5 +1,6 @@
 import { apiRouteDef } from "@/api/apiRouteDef"
 import { handleRenderRequest } from "@/server/handleRenderRequest"
+import { setHeaderVersion } from "@/server/headers/setHeaderVersion"
 import { serverPortBun } from "@/server/serverPortBun"
 import { apiPathGenerateEmail } from "~/apiPathGenerateEmail"
 
@@ -9,28 +10,33 @@ Bun.serve({
     const url = new URL(req.url)
 
     if (url.pathname === "/health") {
-      return new Response("OK")
+      const r = new Response("OK")
+      return setHeaderVersion(r)
     }
 
     if (url.pathname === "/memoryUsage") {
       const memoryUsageMB = Math.trunc(process.memoryUsage().rss / 1024 / 1024)
-      return new Response(JSON.stringify({ memoryUsageMB }), {
+      const r = new Response(JSON.stringify({ memoryUsageMB }), {
         headers: { "Content-Type": "application/json" },
       })
+      return setHeaderVersion(r)
     }
 
     if (req.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 })
+      const r = new Response("Method not allowed", { status: 405 })
+      return setHeaderVersion(r)
     }
 
     for (const def of apiRouteDef) {
       const apiPath = "/" + apiPathGenerateEmail + "/" + def.name
       if (url.pathname === apiPath) {
-        return await handleRenderRequest(req, def.schema, def.renderFn, def.name)
+        const r = await handleRenderRequest(req, def.schema, def.renderFn, def.name)
+        return setHeaderVersion(r)
       }
     }
 
-    return new Response("API route found", { status: 404 })
+    const r = new Response("API route found", { status: 404 })
+    return setHeaderVersion(r)
   },
 })
 

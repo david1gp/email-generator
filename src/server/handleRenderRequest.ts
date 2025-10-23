@@ -1,4 +1,4 @@
-import { setServerTimingHeader } from "@/server/headers/setServerTimingHeader"
+import { setHeaderTiming } from "@/server/headers/setHeaderTiming"
 import * as v from "valibot"
 import type { GeneratedEmailType } from "~/GeneratedEmailType"
 import { createResultError } from "~utils/result/Result"
@@ -32,7 +32,7 @@ export async function handleRenderRequest(
       status: 400,
       headers: { "Content-Type": "application/json" },
     })
-    return setServerTimingHeader(response, [{ name: opParsingInput, amount: Math.trunc(parsingDuration) }])
+    return setHeaderTiming(response, [{ name: opParsingInput, amount: Math.trunc(parsingDuration) }])
   }
   const endParsing = performance.now()
   const parsingDuration = endParsing - startParsing
@@ -44,7 +44,7 @@ export async function handleRenderRequest(
   const response = new Response(JSON.stringify(rendered), {
     headers: { "Content-Type": "application/json" },
   })
-  return setServerTimingHeader(response, [
+  return setHeaderTiming(response, [
     { name: opParsingInput, amount: Math.trunc(parsingDuration) },
     { name: opRenderingTemplate, amount: Math.trunc(renderingDuration) },
   ])

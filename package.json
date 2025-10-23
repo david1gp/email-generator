@@ -5,7 +5,7 @@
     "dev": "email dev --dir=./src/templates",
     "dev:worker": "wrangler dev",
     "start": "bun ./src/server/server.ts",
-    "deploy": "wrangler deploy",
+    "deploy": "wrangler deploy --var VERSION=`bun pm pkg get version`",
     "generateExports": "bun run src/generateExports.ts",
     "generateBarrel": "bun run src/generateBarrelImports.ts",
     "build": "rm -rf ./dist && bun tsc -p ./tsconfig.lib.json",

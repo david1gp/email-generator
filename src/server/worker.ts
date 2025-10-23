@@ -1,25 +1,38 @@
 import { apiRouteDef } from "@/api/apiRouteDef"
+import { setHeaderVersion } from "@/server/headers/setHeaderVersion"
 import { handleRenderRequest } from "./handleRenderRequest"
+import { getPackageVersion } from "./headers/getPackageVersion"
+
+const VERSION = process.env.VERSION || getPackageVersion()
 
 export default {
   async fetch(req: Request): Promise<Response> {
     const url = new URL(req.url)
 
     if (url.pathname === "/health") {
-      return new Response("OK")
+      const r = new Response("OK")
+      return setHeaderVersion(r)
+    }
+
+    if (url.pathname === "/version") {
+      const r = new Response(VERSION)
+      return setHeaderVersion(r)
     }
 
     if (req.method !== "POST") {
-      return new Response("Method not allowed", { status: 405 })
+      const r = new Response("Method not allowed", { status: 405 })
+      return setHeaderVersion(r)
     }
 
     for (const def of apiRouteDef) {
       const apiPath = "/renderEmailTemplate/" + def.name
       if (url.pathname === apiPath) {
-        return await handleRenderRequest(req, def.schema, def.renderFn, def.name)
+        const r = await handleRenderRequest(req, def.schema, def.renderFn, def.name)
+        return setHeaderVersion(r)
       }
     }
 
-    return new Response("API route not found", { status: 404 })
+    const r = new Response("API route found", { status: 404 })
+    return setHeaderVersion(r)
   },
 }
