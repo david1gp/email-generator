@@ -12,8 +12,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
       # Setup Bun for installation, building, and testing
       - uses: oven-sh/setup-bun@v1
         with:
@@ -25,10 +23,14 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
+      # Checkout source code
+      - uses: actions/checkout@v4
+
       # Use Bun for everything except publishing
       - run: bun install
       - run: bun run build
       - run: bun test
+      - run: bun run getVersion
 
       # Ensure npm 11.5.1 or later is installed
       - name: Update npm
