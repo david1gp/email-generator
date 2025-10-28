@@ -2,17 +2,11 @@
  * https://demo.react.email/preview/magic-links/linear-login-code?view=desktop&lang=jsx
  */
 export const t4emailSignUp = {
-  Sign_up_preview_x: {
+  Sign_up_title_x: {
     en: "Your confirmation code is [X]",
     de: "Ihr Verifizierungscode ist [X]",
     ru: "Ваш код подтверждения: [X]",
     tj: "Рамзи тасдиқи шумо аст [X]",
-  },
-  Sign_up_title: {
-    en: "Your confirmation code",
-    de: "Ihr Verifizierungscode",
-    ru: "Ваш код подтверждения",
-    tj: "Рамзи тасдиқи шумо",
   },
   Sign_up_instructions: {
     en: "Copy and paste this sign up code, or use the magic link below:",

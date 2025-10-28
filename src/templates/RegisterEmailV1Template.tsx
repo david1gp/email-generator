@@ -9,18 +9,17 @@ import type { RegisterEmailV1Type } from "~/RegisterEmailV1Type"
 
 export function RegisterEmailV1Template(p: RegisterEmailV1Type) {
   const l = p.l ?? language.en
-  const previewText = tt1(l, t4emailSignUp.Sign_up_preview_x, p.code)
-
+  const title = tt1(l, t4emailSignUp.Sign_up_title_x, p.code)
   return (
     <Html>
       <Head />
-      <Preview>{previewText}</Preview>
+      <Preview>{title}</Preview>
       <Tailwind>
         <Body className={"bg-gray-50 my-auto mx-auto font-sans px-2"}>
           <Container
             className={"border border-solid border-[#eaeaea] rounded my-10 mb-0 mx-auto p-4 max-w-[600px] bg-white"}
           >
-            <Heading className={"text-2xl font-semibold"}>{previewText}</Heading>
+            <Heading className={"text-2xl font-semibold"}>{title}</Heading>
             <Text>{tt0(l, t4emailSignUp.Sign_up_instructions)}</Text>
             <Section className={"w-full"}>
               <CodeBlock className={"px-2"} text={p.code} />

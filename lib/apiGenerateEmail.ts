@@ -46,6 +46,7 @@ async function generateEmailApiCall<T>(
 }
 
 export const generatedEmailSchema = v.object({
+  subject: v.string(),
   text: v.string(),
   html: v.string(),
 })
