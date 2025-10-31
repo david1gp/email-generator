@@ -1,5 +1,5 @@
-import { serverPortBun } from "@/server/serverPortBun"
-import { serverPortWrangler } from "@/server/serverPortWrangler"
+import { serverPortBun } from "@/server/ports/serverPortBun"
+import { serverPortWrangler } from "@/server/ports/serverPortWrangler"
 
 export type TargetEnv = keyof typeof targetEnv
 

@@ -25,7 +25,7 @@ async function testFn() {
   expect(versionText).toBe(expectedVersion)
 }
 
-const name = "getVersion"
+const name = "apiVersion"
 if (process.env.CI) {
   test.skip(name, testFn)
 } else {
