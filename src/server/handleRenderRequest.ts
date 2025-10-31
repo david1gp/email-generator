@@ -1,6 +1,6 @@
 import { setHeaderTiming } from "@/server/headers/setHeaderTiming"
 import * as v from "valibot"
-import type { GeneratedEmailType } from "~/GeneratedEmailType"
+import type { GeneratedEmailType } from "~/types/GeneratedEmailType"
 import { createResultError } from "~utils/result/Result"
 
 export async function handleRenderRequest(
@@ -9,8 +9,8 @@ export async function handleRenderRequest(
   renderFn: (props: any) => Promise<GeneratedEmailType>,
   op: string,
 ): Promise<Response> {
-  const opParsingInput = "parsingInput"
-  const opRenderingTemplate = "renderingTemplate"
+  const opParsingInput = "parseSchema"
+  const opRenderingTemplate = "renderTemplate"
 
   const jsonText = await req.text()
   if (!jsonText) {
