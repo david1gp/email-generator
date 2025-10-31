@@ -69,12 +69,15 @@ if [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]]; then
   exit 1
 fi
 
-# --- Step 5: Update package.json ---
+# --- Step 5: Build ---
+bun run build
+
+# --- Step 6: Update package.json ---
 echo "🔄 Updating $PACKAGE_JSON to v$NEW_VERSION..."
 jq --arg v "$NEW_VERSION" '.version = $v' "$PACKAGE_JSON" > tmp.$$.json && mv tmp.$$.json "$PACKAGE_JSON"
 TAG="v$NEW_VERSION"
 
-# --- Step 6: Git Commit and push ---
+# --- Step 7: Git Commit and push ---
 git add "$CHANGELOG_FILE" "$PACKAGE_JSON"
 git commit -m "chore(release): v$NEW_VERSION"
 git tag -a "$TAG" -m "Release v$NEW_VERSION"
@@ -83,7 +86,7 @@ git push origin --tags
 git push gitlab main
 git push gitlab --tags
 
-# --- Step 7: Create GitHub release ---
+# --- Step 8: Create GitHub release ---
 echo "☁️ Creating GitHub release..."
 gh release create "$TAG" \
   --title "v$NEW_VERSION" \
@@ -95,5 +98,3 @@ git branch -f released
 echo "✅ Release v$NEW_VERSION complete!"
 echo "📄 Changelog: $CHANGELOG_FILE"
 echo "🔗 GitHub: https://github.com$(echo "$REPO_URL" | sed 's/.*github.com//')/releases/tag/$TAG"
-
-bun run deploy
