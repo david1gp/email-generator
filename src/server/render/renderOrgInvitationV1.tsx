@@ -8,7 +8,7 @@ import type { OrgInvitationV1Type } from "~/types/OrgInvitationV1Type"
 
 export async function renderOrgInvitationV1(p: OrgInvitationV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en
-  const subject = tt2(l, t4orgInvitation.Join_x2, p.invitedByPersonName, p.orgName)
+  const subject = tt2(l, t4orgInvitation.Join_x2, p.invitedByName, p.orgName)
   return {
     subject,
     text: await render(<OrgInvitationV1Template {...p} />, { plainText: true }),

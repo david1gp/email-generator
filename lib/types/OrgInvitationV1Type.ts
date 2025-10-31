@@ -3,8 +3,8 @@ import type { MayHaveLanguageType } from "~/types/MayHaveLanguageType"
 
 export interface OrgInvitationV1Type extends MayHaveLanguageType, FooterV1Type {
   invitedName: string
-  invitedByPersonName: string
-  invitedByEmail: string
+  invitedByName: string
+  invitedByEmail?: string
   orgName: string
   url: string
 }

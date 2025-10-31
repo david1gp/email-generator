@@ -26,7 +26,7 @@ export function RegisterEmailV1Template(p: OrgInvitationV1Type) {
     return tt2(l, tb, x1, x2)
   }
 
-  const title = t2(tt.Join_x2, p.invitedByPersonName, p.orgName)
+  const title = t2(tt.Join_x2, p.invitedByName, p.orgName)
   const hi = t1(tt.Hi_x, p.invitedName)
 
   const buttonText = t0(tt.Join_organization)
@@ -52,11 +52,17 @@ export function RegisterEmailV1Template(p: OrgInvitationV1Type) {
             <Text className="text-lg">{hi}</Text>
 
             <Text className="text-lg">
-              <strong>{p.invitedByPersonName}</strong> (
-              <Link href={`mailto:${p.invitedByEmail}`} className="text-blue-600 no-underline">
-                {p.invitedByEmail}
-              </Link>
-              ) {t0(tt.has_invited_you)} <strong>{p.orgName}</strong> {t0(tt.organization_in)}{" "}
+              <strong>{p.invitedByName}</strong>
+              {p.invitedByEmail && (
+                <>
+                  <span> (</span>
+                  <Link href={`mailto:${p.invitedByEmail}`} className="text-blue-600 no-underline">
+                    {p.invitedByEmail}
+                  </Link>
+                  <span>) </span>
+                </>
+              )}{" "}
+              {t0(tt.has_invited_you)} <strong>{p.orgName}</strong> {t0(tt.organization_in)}{" "}
               <strong>{p.homepageText}</strong>.
             </Text>
 
@@ -81,7 +87,7 @@ RegisterEmailV1Template.PreviewProps = {
   l: "en",
   // data
   invitedName: "Bob",
-  invitedByPersonName: "Alice",
+  invitedByName: "Alice",
   invitedByEmail: "Alice@example.com",
   orgName: "Alice Inc",
   url: "https://example.com/sign-in?code=ABC123",
