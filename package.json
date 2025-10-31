@@ -13,6 +13,8 @@
     "tail": "wrangler tail email-generator-worker",
     "test": "bun test",
     "test:w": "bun test --watch",
+    "uploadImages": "rclone sync -v --progress --track-renames ~/Coding/adaptive-email-generator-images email-generator-images:email-generator-images/",
+    "generateJpg": "bash ./ops/generateJpg.sh",
     "release": "bash ./ops/release.sh",
     "update": "bun x npm-check-updates -u && bun i",
     "update:commit": "bun x npm-check-updates -u && bun i && git add package.json && bun run tsc && git commit -m \"chore(deps): update dependencies\" && git push",
