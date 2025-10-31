@@ -1,6 +1,7 @@
 export type EmailTemplateName = keyof typeof emailTemplateName
 
 export const emailTemplateName = {
-  registerEmailV1: "registerEmailV1",
-  loginCodeV1: "loginCodeV1",
+  signUpV1: "signUpV1",
+  signInV1: "signInV1",
+  orgInvitationV1: "orgInvitationV1",
 } as const
