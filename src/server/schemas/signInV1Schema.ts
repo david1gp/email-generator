@@ -4,6 +4,7 @@ import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSche
 import * as v from "valibot"
 import { language } from "~/i18n/language"
 import { languageSchema } from "~/i18n/languageSchema"
+import type { SignInV1Type } from "~/types/SignInV1Type"
 
 export const signInV1Schema = v.object({
   ...languageSchemaFields,
@@ -12,3 +13,9 @@ export const signInV1Schema = v.object({
   url: stringSchema500,
   ...footerV1SchemaFields,
 })
+
+type SignInV1SchemaType = v.InferOutput<typeof signInV1Schema>
+
+function types1(d: SignInV1SchemaType): SignInV1Type {
+  return { ...d }
+}
