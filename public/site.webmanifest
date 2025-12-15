@@ -1,6 +1,6 @@
 {
-  "name": "email-generator",
-  "short_name": "email-generator",
+  "name": "Email Generator",
+  "short_name": "EG",
   "icons": [
     {
       "src": "/favicons/web-app-manifest-192x192.png",
