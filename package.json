@@ -22,19 +22,19 @@
     "reset": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@adaptive-sm/utils": "^0.4.2",
-    "valibot": "^1.1.0"
+    "@adaptive-sm/utils": "^0.7.0",
+    "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@react-email/components": "^0.5.7",
-    "@react-email/preview-server": "^4.3.2",
-    "@react-email/render": "^1.4.0",
+    "@react-email/components": "^1.0.3",
+    "@react-email/preview-server": "^5.1.1",
+    "@react-email/render": "^2.0.1",
     "@types/bun": "latest",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-email": "^4.3.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-email": "^5.1.1",
     "typescript": "^5.9.3",
-    "wrangler": "^4.45.3"
+    "wrangler": "^4.54.0"
   },
   "prettier": {
     "semi": false,
