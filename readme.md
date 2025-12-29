@@ -25,11 +25,13 @@ Quick Links
 
 ## Templates
 
-| Name                                           | Image                                                                                            |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| signUpV1: Sign-up registration email           | ![signUpV1](https://f003.backblazeb2.com/file/email-generator-images/signUpV1.jpg)               |
-| signInV1: Sign-in login email                  | ![signInV1](https://f003.backblazeb2.com/file/email-generator-images/signInV1.jpg)               |
-| orgInvitationV1: Organization invitation email | ![orgInvitationV1](https://f003.backblazeb2.com/file/email-generator-images/orgInvitationV1.jpg) |
+| Name             | Description                       | Image                                                                                              |
+| ---------------- | --------------------------------- | -------------------------------------------------------------------------------------------------- |
+| signUpV1         | Sign-up / Registration            | ![signUpV1](https://f003.backblazeb2.com/file/email-generator-images/signUpV1.jpg)                 |
+| signInV1         | Sign-in / Login / Forgot password | ![signInV1](https://f003.backblazeb2.com/file/email-generator-images/signInV1.jpg)                 |
+| orgInvitationV1  | Organization invitation           | ![orgInvitationV1](https://f003.backblazeb2.com/file/email-generator-images/orgInvitationV1.jpg)   |
+| passwordChangeV1 | Change/Reset Password             | ![passwordChangeV1](https://f003.backblazeb2.com/file/email-generator-images/PasswordChangeV1.jpg) |
+| emailChangeV1    | Change Email                      | ![EmailChangeV1](https://f003.backblazeb2.com/file/email-generator-images/EmailChangeV1.jpg)       |
 
 ## Prerequisites
 
