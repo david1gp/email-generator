@@ -5,9 +5,27 @@ export const t4passwordChange = {
     ru: "Установить новый пароль",
     tj: "Пароли нави гузошед",
   },
+  Hi_name: {
+    en: "Hi [X],",
+    de: "Hallo [X],",
+    ru: "Привет, [X],",
+    tj: "Салом [X],",
+  },
+  Hello: {
+    en: "Hello,",
+    de: "Hallo,",
+    ru: "Здравствуйте,",
+    tj: "Салом,",
+  },
+  You_requested_to_change_or_reset_your_password_on: {
+    en: "You requested to change or reset your password on",
+    de: "Sie haben angefordert, Ihr Passwort zu ändern oder zurückzusetzen auf",
+    ru: "Вы запросили изменение или сброс пароля на",
+    tj: "Шумо дархост кардед, ки пароли худро иваз ё аз нав созед дар",
+  },
   Password_change_code_x: {
-    en: "Password change code: [X]",
-    de: "Passwortänderungscode: [X]",
+    en: "Password change code is [X]",
+    de: "Passwortänderungscode ist [X]",
     ru: "Код смены пароля: [X]",
     tj: "Рамзи ивази парол: [X]",
   },
@@ -41,6 +59,12 @@ export const t4passwordChange = {
     ru: "Если вы не запрашивали это, проигнорируйте это письмо или немедленно свяжитесь с поддержкой.",
     tj: "Агар шумо инро дархошта набошед, лутфан ин имейлро нодида гузаред ё бо дастгирӣ тамос кунед.",
   },
+  If_you_didnt_request_this_change: {
+    en: "If you didn't request this, please ignore this email or",
+    de: "Wenn Sie dies nicht angefordert haben, ignorieren Sie diese E-Mail oder",
+    ru: "Если вы не запрашивали это, проигнорируйте это письмо или",
+    tj: "Агар шумо инро дархошта набошед, лутфан ин имейлро нодида гузаред ё",
+  },
   Hello_you_requested_to_change_your_password_on_x: {
     en: "Hello,\n\nYou requested to change or reset your password on [X].",
     de: "Hallo,\n\nSie haben angefordert, Ihr Passwort auf [X] zu ändern oder zurückzusetzen.",
@@ -55,7 +79,7 @@ export const t4passwordChange = {
   },
   Contact_support: {
     en: "contact support",
-    de: "den Support kontaktieren",
+    de: "kontaktieren Sie den Support",
     ru: "связаться с поддержкой",
     tj: "бо дастгирӣ тамос кунед",
   },

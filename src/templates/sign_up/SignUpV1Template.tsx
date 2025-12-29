@@ -1,16 +1,16 @@
 import type { TranslationBlock } from "@/i18n/TranslationBlock"
 import { tt0, tt1 } from "@/i18n/tt0"
-import { CodeBlock } from "@/templates/parts/CodeBlock"
-import Footer from "@/templates/parts/Footer"
-import { footerV1ExampleData } from "@/templates/parts/footerV1ExampleData"
-import { LinkButton } from "@/templates/parts/LinkButton"
-import { tbCopyAndPasteThisUrl } from "@/templates/parts/tbCopyAndPasteThisUrl"
+import { CodeBlock } from "@/template_parts/CodeBlock"
+import Footer from "@/template_parts/Footer"
+import { footerV1ExampleData } from "@/template_parts/footerV1ExampleData"
+import { LinkButton } from "@/template_parts/LinkButton"
+import { tbCopyAndPasteThisUrl } from "@/template_parts/tbCopyAndPasteThisUrl"
 import { t4signUp } from "@/templates/sign_up/t4signUp"
 import { classArr } from "@/utils/classArr"
 import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
 import { language } from "~/i18n/language"
 import type { SignUpV1Type } from "~/types/SignUpV1Type"
-import { tbOrUseTheMagicLinkBelow } from "../parts/tbOrUseTheMagicLinkBelow"
+import { tbOrUseTheMagicLinkBelow } from "../../template_parts/tbOrUseTheMagicLinkBelow"
 
 export function SignUpV1Template(p: SignUpV1Type) {
   const l = p.l ?? language.en

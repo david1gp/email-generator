@@ -5,16 +5,16 @@ import Footer from "@/template_parts/Footer"
 import { footerV1ExampleData } from "@/template_parts/footerV1ExampleData"
 import { LinkButton } from "@/template_parts/LinkButton"
 import { tbCopyAndPasteThisUrl } from "@/template_parts/tbCopyAndPasteThisUrl"
-import { t4passwordChange } from "@/templates/password_change/t4passwordChange"
+import { tbOrUseTheMagicLinkBelow } from "@/template_parts/tbOrUseTheMagicLinkBelow"
+import { t4emailChange } from "@/templates/email_change/t4emailChange"
 import { classArr } from "@/utils/classArr"
 import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
 import { language } from "~/i18n/language"
-import type { PasswordChangeV1Type } from "~/types/PasswordChangeV1Type"
-import { tbOrUseTheMagicLinkBelow } from "../../template_parts/tbOrUseTheMagicLinkBelow"
+import type { EmailChangeV1Type } from "~/types/EmailChangeV1Type"
 
-export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
+export function EmailChangeV1Template(p: EmailChangeV1Type) {
   const l = p.l ?? language.en
-  const tt = t4passwordChange
+  const tt = t4emailChange
 
   function t0(tb: TranslationBlock) {
     return tt0(l, tb)
@@ -24,10 +24,10 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
     return tt1(l, tb, x1)
   }
 
-  const appName = p.appName ?? "My-App"
+  const appName = p.appName ?? "Your App Name"
   const expiryMinutes = p.expiryMinutes ?? 10
 
-  const title = t1(tt.Password_change_code_x, p.code)
+  const title = t1(tt.Email_change_verification_code_x, p.code)
 
   const sectionClass = "mt-1"
   const sectionTextClass = "mb-1 text-lg"
@@ -51,20 +51,24 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
             <Section className={""}>
               <Text className={sectionTextClass}>
                 {p.userName ? <>{t1(tt.Hi_name, p.userName)}</> : <>{t0(tt.Hello)}</>}
-                <br />
-                {t0(tt.You_requested_to_change_or_reset_your_password_on)}{" "}
+              </Text>
+            </Section>
+
+            <Section className={""}>
+              <Text className={sectionTextClass}>
+                {t0(tt.You_requested_to_change_email_address_associated_with_your_account_in)}{" "}
                 <span className="text-blue-600 font-semibold">{appName}</span>.
               </Text>
             </Section>
 
             <Section className={""}>
-              <Text className={sectionTextClass}>{t0(tt.Your_password_change_code_is)}</Text>
+              <Text className={sectionTextClass}>{t0(tt.Your_one_time_verification_code_is)}</Text>
               <CodeBlock className={"px-2"} text={p.code} />
             </Section>
 
             <Section className={sectionClass}>
               <Text className={sectionTextClass}>{t0(tbOrUseTheMagicLinkBelow)} </Text>
-              <LinkButton url={p.url} text={t0(tt.Password_change_link)} />
+              <LinkButton url={p.url} text={t0(tt.Email_change_link)} />
             </Section>
 
             <Section className={sectionClass}>
@@ -75,10 +79,10 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
             </Section>
 
             <Section className={sectionClass}>
-              <Text className={"text-gray-600"}>
+              <Text className={"text-sm text-gray-600"}>
                 {t1(tt.This_code_expires_in_x_minutes, expiryMinutes.toString())}
               </Text>
-              <Text className={"text-gray-600"}>
+              <Text className={"text-sm text-gray-600"}>
                 {t0(tt.If_you_didnt_request_this_change)}{" "}
                 {p.supportUrl ? (
                   <Link href={p.supportUrl} className="text-blue-600 no-underline">
@@ -86,7 +90,8 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
                   </Link>
                 ) : (
                   t0(tt.Contact_support)
-                )}{"."}
+                )}
+                {"."}
               </Text>
             </Section>
           </Container>
@@ -98,17 +103,15 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
   )
 }
 
-PasswordChangeV1Template.PreviewProps = {
+EmailChangeV1Template.PreviewProps = {
   l: "en",
-  // data
   userName: "Bob",
-  code: "483920",
-  url: "https://example.com/reset-password?code=483920",
-  appName: "My-App",
+  code: "729481",
+  url: "https://example.com/change-email?code=729481",
+  appName: "Your App Name",
   expiryMinutes: 10,
   supportUrl: "mailto:example@example.com",
-  // footer
   ...footerV1ExampleData,
-} as PasswordChangeV1Type
+} as EmailChangeV1Type
 
-export default PasswordChangeV1Template
+export default EmailChangeV1Template
