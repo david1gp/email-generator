@@ -1,8 +1,10 @@
 import { type ApiRouteDefType } from "@/server/api/ApiRouteDefType"
 import { renderOrgInvitationV1 } from "@/server/render/renderOrgInvitationV1"
+import { renderPasswordChangeV1 } from "@/server/render/renderPasswordChangeV1"
 import { renderSignInV1 } from "@/server/render/renderSignInV1"
 import { renderSignUpV1 } from "@/server/render/renderSignUpV1"
 import { orgInvitationV1Schema } from "@/server/schemas/orgInvitationV1Schema"
+import { passwordChangeV1Schema } from "@/server/schemas/passwordChangeV1Schema"
 import { signInV1Schema } from "@/server/schemas/signInV1Schema"
 import { signUpV1Schema } from "@/server/schemas/signUpV1Schema"
 import { emailTemplateName } from "~/emailTemplateName"
@@ -25,8 +27,15 @@ export const apiDefOrgInvitationV1 = {
   renderFn: renderOrgInvitationV1,
 }
 
+export const apiDefPasswordChangeV1 = {
+  name: emailTemplateName.passwordChangeV1,
+  schema: passwordChangeV1Schema,
+  renderFn: renderPasswordChangeV1,
+}
+
 export const apiRouteDef = [
   apiDefRegisterEmailV1,
   apiDefLoginCodeV1,
   apiDefOrgInvitationV1,
+  apiDefPasswordChangeV1,
 ] as const satisfies ApiRouteDefType[]
