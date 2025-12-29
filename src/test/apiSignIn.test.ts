@@ -1,4 +1,4 @@
-import { footerV1ExampleData } from "@/templates/parts/footerV1ExampleData"
+import { footerV1ExampleData } from "@/template_parts/footerV1ExampleData"
 import { expect, test } from "bun:test"
 import { apiGenerateEmailSignInV1 } from "~/apiGenerateEmailSignInV1"
 import type { SignInV1Type } from "~/types/SignInV1Type"
