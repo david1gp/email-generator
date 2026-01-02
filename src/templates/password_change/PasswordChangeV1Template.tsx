@@ -24,7 +24,6 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
     return tt1(l, tb, x1)
   }
 
-  const appName = p.appName ?? "My-App"
   const expiryMinutes = p.expiryMinutes ?? 10
 
   const title = t1(tt.Password_change_code_x, p.code)
@@ -53,7 +52,7 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
                 {p.userName ? <>{t1(tt.Hi_name, p.userName)}</> : <>{t0(tt.Hello)}</>}
                 <br />
                 {t0(tt.You_requested_to_change_or_reset_your_password_on)}{" "}
-                <span className="text-blue-600 font-semibold">{appName}</span>.
+                <span className="text-blue-600 font-semibold">{p.homepageText}</span>.
               </Text>
             </Section>
 
@@ -75,9 +74,7 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
             </Section>
 
             <Section className={sectionClass}>
-              <Text className={"text-gray-600"}>
-                {t1(tt.This_code_expires_in_x_minutes, expiryMinutes.toString())}
-              </Text>
+              <Text className={"text-gray-600"}>{t1(tt.This_code_expires_in_x_minutes, expiryMinutes.toString())}</Text>
               <Text className={"text-gray-600"}>
                 {t0(tt.If_you_didnt_request_this_change)}{" "}
                 {p.supportUrl ? (
@@ -86,7 +83,8 @@ export function PasswordChangeV1Template(p: PasswordChangeV1Type) {
                   </Link>
                 ) : (
                   t0(tt.Contact_support)
-                )}{"."}
+                )}
+                {"."}
               </Text>
             </Section>
           </Container>
@@ -104,7 +102,6 @@ PasswordChangeV1Template.PreviewProps = {
   userName: "Bob",
   code: "483920",
   url: "https://example.com/reset-password?code=483920",
-  appName: "My-App",
   expiryMinutes: 10,
   supportUrl: "mailto:example@example.com",
   // footer

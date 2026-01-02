@@ -12,7 +12,6 @@ export const emailChangeV1Schema = v.object({
   userName: v.optional(stringSchema),
   code: stringSchema,
   url: stringSchema500,
-  appName: v.optional(stringSchema),
   expiryMinutes: v.optional(v.number()),
   supportUrl: v.optional(stringSchema),
   ...footerV1SchemaFields,

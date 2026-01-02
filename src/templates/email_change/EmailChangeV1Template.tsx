@@ -24,7 +24,6 @@ export function EmailChangeV1Template(p: EmailChangeV1Type) {
     return tt1(l, tb, x1)
   }
 
-  const appName = p.appName ?? "Your App Name"
   const expiryMinutes = p.expiryMinutes ?? 10
 
   const title = t1(tt.Email_change_verification_code_x, p.code)
@@ -57,7 +56,7 @@ export function EmailChangeV1Template(p: EmailChangeV1Type) {
             <Section className={""}>
               <Text className={sectionTextClass}>
                 {t0(tt.You_requested_to_change_email_address_associated_with_your_account_in)}{" "}
-                <span className="text-blue-600 font-semibold">{appName}</span>.
+                <span className="text-blue-600 font-semibold">{p.homepageText}</span>.
               </Text>
             </Section>
 
@@ -108,7 +107,6 @@ EmailChangeV1Template.PreviewProps = {
   userName: "Bob",
   code: "729481",
   url: "https://example.com/change-email?code=729481",
-  appName: "Your App Name",
   expiryMinutes: 10,
   supportUrl: "mailto:example@example.com",
   ...footerV1ExampleData,
