@@ -95,3 +95,7 @@ AGENTS.md
 
 # project specific: wrangler
 wrangler.toml
+
+# images
+/public-images
+/public-image-versions
