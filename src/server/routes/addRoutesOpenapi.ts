@@ -11,15 +11,19 @@ export function addRoutesOpenapi(app: HonoApp) {
         version: packageVersion,
         description: `A lightweight, self-hostable service for rendering HTML emails with React Email.
 
-Generate professional email templates with:
-- Sign-in codes
-- Sign-up confirmations
-- Password changes
-- Email changes
-- Organization invitations
+- **Hassle-free & maintenance-free** – runs entirely on the free tier of Cloudflare Workers.
+- **Simple to use** – perfect for login codes, registration flows, and other transactional emails.
+- **Flexible** – develop locally with a Bun server, then deploy serverlessly with zero configuration.
+- **Clean separation** – does not pollute your project with "react" or "react-email" imports or dependencies.
 
----
-**Links:** [code](https://github.com/adaptive-shield-matrix/email-generator)`,
+Whether you need a quick drop-in solution or a fully open-source foundation for your project, this microservice makes email generation easy and reliable.
+
+**Quick Links**
+
+- code - [https://github.com/adaptive-shield-matrix/email-generator](https://github.com/adaptive-shield-matrix/email-generator)
+- npm - [https://www.npmjs.com/package/@adaptive-sm/email-generator](https://www.npmjs.com/package/@adaptive-sm/email-generator)
+- react email docs - [https://react.email/docs/getting-started/manual-setup](https://react.email/docs/getting-started/manual-setup)
+`,
         components: {
           securitySchemes: {},
         },

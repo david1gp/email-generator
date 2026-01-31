@@ -9,7 +9,7 @@ A lightweight, self-hostable service for rendering HTML emails with React Email.
 
 Whether you need a quick drop-in solution or a fully open-source foundation for your project, this microservice makes email generation easy and reliable.
 
-Quick Links
+**Quick Links**
 
 - code - https://github.com/adaptive-shield-matrix/email-generator
 - npm - https://www.npmjs.com/package/@adaptive-sm/email-generator
