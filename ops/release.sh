@@ -83,8 +83,6 @@ git commit -m "chore(release): v$NEW_VERSION"
 git tag -a "$TAG" -m "Release v$NEW_VERSION"
 git push origin main
 git push origin --tags
-git push gitlab main
-git push gitlab --tags
 
 # --- Step 8: Create GitHub release ---
 echo "☁️ Creating GitHub release..."
