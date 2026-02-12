@@ -20,8 +20,8 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
 
 **Quick Links**
 
-- code - [https://github.com/adaptive-shield-matrix/email-generator](https://github.com/adaptive-shield-matrix/email-generator)
-- npm - [https://www.npmjs.com/package/@adaptive-sm/email-generator](https://www.npmjs.com/package/@adaptive-sm/email-generator)
+- code - [https://github.com/david1gp/email-generator](https://github.com/david1gp/email-generator)
+- npm - [https://www.npmjs.com/package/@adaptive-ds/email-generator](https://www.npmjs.com/package/@adaptive-ds/email-generator)
 - react email docs - [https://react.email/docs/getting-started/manual-setup](https://react.email/docs/getting-started/manual-setup)
 `,
         components: {

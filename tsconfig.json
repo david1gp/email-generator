@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ESNext",
-      "WebWorker"
-    ],
+    "lib": ["ESNext", "WebWorker"],
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
@@ -14,10 +11,7 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
-    "types": [
-      "@cloudflare/workers-types/latest",
-      "bun"
-    ],
+    "types": ["@cloudflare/workers-types/latest", "bun"],
     //
     // performance
     //
@@ -26,15 +20,9 @@
     // absolute import paths
     //
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "~/*": [
-        "./lib/*"
-      ],
-      "~utils/*": [
-        "./node_modules/@adaptive-sm/utils/dist/*"
-      ]
+      "@/*": ["./src/*"],
+      "~/*": ["./lib/*"],
+      "~utils/*": ["./node_modules/@adaptive-ds/utils/dist/*"],
     },
     //
     // https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/#the---erasablesyntaxonly-option
@@ -51,6 +39,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "noImplicitOverride": true
-  }
+    "noImplicitOverride": true,
+  },
 }

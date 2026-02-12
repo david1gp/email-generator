@@ -1,5 +1,5 @@
 {
-  "name": "@adaptive-sm/email-generator",
+  "name": "@adaptive-ds/email-generator",
   "version": "0.7.0",
   "scripts": {
     "dev:email": "email dev --dir=./src/templates",
@@ -22,7 +22,7 @@
     "reset": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@adaptive-sm/utils": "^0.7.0",
+    "@adaptive-ds/utils": "^0.7.0",
     "@hono/standard-validator": "^0.2.2",
     "@hono/swagger-ui": "^0.5.3",
     "@valibot/to-json-schema": "^1.5.0",
@@ -50,7 +50,7 @@
   "type": "module",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/adaptive-shield-matrix/email-generator",
+  "homepage": "https://github.com/david1gp/email-generator",
   "description": "A lightweight, self-hostable service for rendering HTML emails with React Email",
   "keywords": [
     "email",
@@ -63,7 +63,7 @@
     "typescript"
   ],
   "repository": {
-    "url": "git+https://github.com/adaptive-shield-matrix/email-generator.git"
+    "url": "git+https://github.com/david1gp/email-generator.git"
   },
   "exports": {
     "./*": "./dist/*"
