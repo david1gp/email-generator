@@ -1,27 +1,10 @@
 import { isOnlineHandler } from "@/server/handlers/technical/isOnlineHandler"
-import { rootHandler } from "@/server/handlers/technical/rootHandler"
 import { versionHandler } from "@/server/handlers/technical/versionHandler"
 import type { HonoApp } from "@/utils/HonoApp"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
 
 export function addRoutesServer(app: HonoApp) {
-  app.get(
-    "/",
-    describeRoute({
-      description: "Access denied for root path",
-      tags: ["server"],
-      responses: {
-        403: {
-          description: "Forbidden",
-          content: {
-            "text/plain": { schema: resolver(a.string()) },
-          },
-        },
-      },
-    }),
-    rootHandler,
-  )
   app.get(
     "/version",
     describeRoute({
