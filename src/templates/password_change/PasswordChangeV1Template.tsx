@@ -8,8 +8,8 @@ import { tbCopyAndPasteThisUrl } from "@/template_parts/tbCopyAndPasteThisUrl"
 import { t4passwordChange } from "@/templates/password_change/t4passwordChange"
 import { classArr } from "@/utils/classArr"
 import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
-import { language } from "~/i18n/language"
-import type { PasswordChangeV1Type } from "~/types/PasswordChangeV1Type"
+import { language } from "@client/i18n/language"
+import type { PasswordChangeV1Type } from "@client/types/PasswordChangeV1Type"
 import { tbOrUseTheMagicLinkBelow } from "../../template_parts/tbOrUseTheMagicLinkBelow"
 
 export function PasswordChangeV1Template(p: PasswordChangeV1Type) {

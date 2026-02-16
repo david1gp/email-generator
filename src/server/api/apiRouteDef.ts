@@ -9,8 +9,8 @@ import { orgInvitationV1Schema } from "@/server/schemas/orgInvitationV1Schema"
 import { passwordChangeV1Schema } from "@/server/schemas/passwordChangeV1Schema"
 import { signInV1Schema } from "@/server/schemas/signInV1Schema"
 import { signUpV1Schema } from "@/server/schemas/signUpV1Schema"
-import { emailTemplateName } from "~/emailTemplateName"
-import type { EmailChangeV1Type, OrgInvitationV1Type, PasswordChangeV1Type, SignInV1Type, SignUpV1Type } from "~/index"
+import { emailTemplateName } from "@client/emailTemplateName"
+import type { EmailChangeV1Type, OrgInvitationV1Type, PasswordChangeV1Type, SignInV1Type, SignUpV1Type } from "@client/index"
 
 export const apiDefRegisterEmailV1 = {
   name: emailTemplateName.signUpV1,

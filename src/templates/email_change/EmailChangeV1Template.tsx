@@ -9,8 +9,8 @@ import { tbOrUseTheMagicLinkBelow } from "@/template_parts/tbOrUseTheMagicLinkBe
 import { t4emailChange } from "@/templates/email_change/t4emailChange"
 import { classArr } from "@/utils/classArr"
 import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
-import { language } from "~/i18n/language"
-import type { EmailChangeV1Type } from "~/types/EmailChangeV1Type"
+import { language } from "@client/i18n/language"
+import type { EmailChangeV1Type } from "@client/types/EmailChangeV1Type"
 
 export function EmailChangeV1Template(p: EmailChangeV1Type) {
   const l = p.l ?? language.en

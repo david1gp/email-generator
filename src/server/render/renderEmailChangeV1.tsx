@@ -2,9 +2,9 @@ import { tt0, tt1 } from "@/i18n/tt0"
 import EmailChangeV1Template from "@/templates/email_change/EmailChangeV1Template"
 import { t4emailChange } from "@/templates/email_change/t4emailChange"
 import { render } from "@react-email/render"
-import { language } from "~/i18n/language"
-import type { GeneratedEmailType } from "~/types/GeneratedEmailType"
-import type { EmailChangeV1Type } from "~/types/EmailChangeV1Type"
+import { language } from "@client/i18n/language"
+import type { GeneratedEmailType } from "@client/types/GeneratedEmailType"
+import type { EmailChangeV1Type } from "@client/types/EmailChangeV1Type"
 
 export async function renderEmailChangeV1(p: EmailChangeV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en

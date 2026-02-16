@@ -7,8 +7,8 @@ import { tbCopyAndPasteThisUrl } from "@/template_parts/tbCopyAndPasteThisUrl"
 import { t4orgInvitation } from "@/templates/org_invitation/t4orgInvitation"
 import { classArr } from "@/utils/classArr"
 import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
-import { language } from "~/i18n/language"
-import type { OrgInvitationV1Type } from "~/types/OrgInvitationV1Type"
+import { language } from "@client/i18n/language"
+import type { OrgInvitationV1Type } from "@client/types/OrgInvitationV1Type"
 
 export function RegisterEmailV1Template(p: OrgInvitationV1Type) {
   const l = p.l ?? language.en

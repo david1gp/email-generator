@@ -2,9 +2,9 @@ import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaField
 import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
 import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
 import * as v from "valibot"
-import { language } from "~/i18n/language"
-import { languageSchema } from "~/i18n/languageSchema"
-import type { SignInV1Type } from "~/types/SignInV1Type"
+import { language } from "@client/i18n/language"
+import { languageSchema } from "@client/i18n/languageSchema"
+import type { SignInV1Type } from "@client/types/SignInV1Type"
 
 export const signInV1Schema = v.pipe(
   v.object({

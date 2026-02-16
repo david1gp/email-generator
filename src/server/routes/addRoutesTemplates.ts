@@ -3,7 +3,7 @@ import { toJsonSchema } from "@valibot/to-json-schema"
 import { describeRoute, resolver } from "hono-openapi"
 import type { BaseIssue, BaseSchema } from "valibot"
 import * as a from "valibot"
-import { apiPathRenderEmailTemplate } from "~/apiPathRenderEmailTemplate"
+import { apiPathRenderEmailTemplate } from "@client/apiPathRenderEmailTemplate"
 import { resultErrSchema } from "~utils/result/resultErrSchema"
 import type { ApiRouteDefType } from "../api/ApiRouteDefType"
 

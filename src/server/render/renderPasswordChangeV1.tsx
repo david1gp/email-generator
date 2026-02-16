@@ -2,9 +2,9 @@ import { tt0, tt1 } from "@/i18n/tt0"
 import PasswordChangeV1Template from "@/templates/password_change/PasswordChangeV1Template"
 import { t4passwordChange } from "@/templates/password_change/t4passwordChange"
 import { render } from "@react-email/render"
-import { language } from "~/i18n/language"
-import type { GeneratedEmailType } from "~/types/GeneratedEmailType"
-import type { PasswordChangeV1Type } from "~/types/PasswordChangeV1Type"
+import { language } from "@client/i18n/language"
+import type { GeneratedEmailType } from "@client/types/GeneratedEmailType"
+import type { PasswordChangeV1Type } from "@client/types/PasswordChangeV1Type"
 
 export async function renderPasswordChangeV1(p: PasswordChangeV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en

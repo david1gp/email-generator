@@ -8,8 +8,8 @@ import { tbCopyAndPasteThisUrl } from "@/template_parts/tbCopyAndPasteThisUrl"
 import { t4signUp } from "@/templates/sign_up/t4signUp"
 import { classArr } from "@/utils/classArr"
 import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
-import { language } from "~/i18n/language"
-import type { SignUpV1Type } from "~/types/SignUpV1Type"
+import { language } from "@client/i18n/language"
+import type { SignUpV1Type } from "@client/types/SignUpV1Type"
 import { tbOrUseTheMagicLinkBelow } from "../../template_parts/tbOrUseTheMagicLinkBelow"
 
 export function SignUpV1Template(p: SignUpV1Type) {

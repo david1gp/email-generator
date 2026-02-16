@@ -1,6 +1,6 @@
 import { apiRouteDef } from "@/server/api/apiRouteDef"
 import { setHeaderVersion } from "@/server/headers/setHeaderVersion"
-import { apiPathRenderEmailTemplate } from "~/apiPathRenderEmailTemplate"
+import { apiPathRenderEmailTemplate } from "@client/apiPathRenderEmailTemplate"
 import { handleRenderRequest } from "./handleRenderRequest"
 
 export async function handleRequest(req: Request, url: URL, version: string): Promise<Response> {

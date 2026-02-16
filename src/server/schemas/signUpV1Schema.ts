@@ -2,7 +2,7 @@ import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaField
 import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
 import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
 import * as v from "valibot"
-import type { SignUpV1Type } from "~/types/SignUpV1Type"
+import type { SignUpV1Type } from "@client/types/SignUpV1Type"
 
 export const signUpV1Schema = v.pipe(
   v.object({

@@ -21,7 +21,7 @@
     //
     "paths": {
       "@/*": ["./src/*"],
-      "~/*": ["./lib/*"],
+      "@client/*": ["./client/*"],
       "~utils/*": ["./node_modules/@adaptive-ds/utils/dist/*"],
     },
     //
@@ -41,4 +41,5 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
   },
+  "include": ["./client", "./src", "./ops", "./test"],
 }

@@ -1,5 +1,5 @@
-import type { FooterV1Type } from "~/types/FooterV1Type"
-import type { MayHaveLanguageType } from "~/types/MayHaveLanguageType"
+import type { FooterV1Type } from "@client/types/FooterV1Type"
+import type { MayHaveLanguageType } from "@client/types/MayHaveLanguageType"
 
 export interface OrgInvitationV1Type extends MayHaveLanguageType, FooterV1Type {
   invitedName: string
