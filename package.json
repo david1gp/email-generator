@@ -21,21 +21,22 @@
     "clean": "rm -rf ./dist",
     "reset": "rm -rf ./node_modules"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@adaptive-ds/utils": "^0.7.0",
-    "@hono/standard-validator": "^0.2.2",
-    "@hono/swagger-ui": "^0.5.3",
-    "@valibot/to-json-schema": "^1.5.0",
-    "hono": "^4.11.7",
-    "hono-openapi": "^1.2.0",
+    "dayjs": "*",
     "valibot": "^1.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260129.0",
+    "@hono/standard-validator": "^0.2.2",
+    "@hono/swagger-ui": "^0.5.3",
     "@react-email/components": "^1.0.3",
     "@react-email/preview-server": "^5.1.1",
     "@react-email/render": "^2.0.1",
     "@types/bun": "latest",
+    "@valibot/to-json-schema": "^1.5.0",
+    "hono": "^4.11.7",
+    "hono-openapi": "^1.2.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-email": "^5.1.1",
