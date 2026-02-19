@@ -49,24 +49,6 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
     openAPIRouteHandler(app, openApiOptions),
   )
 
-  app.get(
-    "/doc",
-    describeRoute({
-      description: "Get OpenAPI specification (redirect)",
-      tags: ["openapi"],
-      security: [],
-      responses: {
-        200: {
-          description: "OpenAPI JSON specification",
-          content: {
-            "application/json": { schema: resolver(a.string()) },
-          },
-        },
-      },
-    }),
-    openAPIRouteHandler(app, openApiOptions),
-  )
-
   addRoutesOpenapiSwagger(app)
 }
 
@@ -100,7 +82,7 @@ export function addRoutesOpenapiSwagger(app: HonoApp) {
   <script src="https://unpkg.com/swagger-ui-dist@5.31.0/swagger-ui-bundle.js"></script>
   <script>
     SwaggerUIBundle({
-      url: "/doc",
+      url: "/openapi",
       dom_id: "#swagger-ui",
       deepLinking: true,
       presets: [
