@@ -7,9 +7,9 @@ export function addRoutesOpenapi(app: HonoApp) {
   const openApiOptions = {
     documentation: {
       info: {
-        title: "📧 Email Generator Microservice API",
+        title: "@adaptive-ds/email-generator",
         version: packageVersion,
-        description: `A lightweight, self-hostable service for rendering HTML emails with React Email.
+        description: `📧 Email Generator Microservice API - A lightweight, self-hostable service for rendering HTML emails with React Email.
 
 - **Hassle-free & maintenance-free** – runs entirely on the free tier of Cloudflare Workers.
 - **Simple to use** – perfect for login codes, registration flows, and other transactional emails.
