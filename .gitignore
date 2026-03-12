@@ -80,7 +80,7 @@ convex/_generated
 .attach_*
 
 # Cloudflare / Deployment / Wrangler
-.wrangler
+wrangler.*
 
 # Astro
 .astro
@@ -92,9 +92,6 @@ astro
 # ai, ethereal and auto generated
 .roo/rules-code
 AGENTS.md
-
-# project specific: wrangler
-wrangler.toml
 
 # images
 /public-images
