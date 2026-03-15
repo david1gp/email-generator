@@ -1,5 +1,5 @@
 import { type PromiseResult, createError, createResult } from "@adaptive-ds/result"
-import * as v from "valibot"
+import * as a from "valibot"
 import { apiPathRenderEmailTemplate } from "./apiPathRenderEmailTemplate"
 import type { GeneratedEmailType } from "./types/GeneratedEmailType"
 
@@ -18,16 +18,16 @@ export async function generateEmailApiCall<T>(
   if (!response.ok) {
     return createError(op, response.statusText, text)
   }
-  const schema = v.pipe(v.string(), v.parseJson(), generatedEmailSchema)
-  const parsing = v.safeParse(schema, text)
+  const schema = a.pipe(a.string(), a.parseJson(), generatedEmailSchema)
+  const parsing = a.safeParse(schema, text)
   if (!parsing.success) {
-    return createError(op, v.summarize(parsing.issues), text)
+    return createError(op, a.summarize(parsing.issues), text)
   }
   return createResult(parsing.output)
 }
 
-export const generatedEmailSchema = v.object({
-  subject: v.string(),
-  text: v.string(),
-  html: v.string(),
+export const generatedEmailSchema = a.object({
+  subject: a.string(),
+  text: a.string(),
+  html: a.string(),
 })

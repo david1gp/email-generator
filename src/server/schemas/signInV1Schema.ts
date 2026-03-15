@@ -1,20 +1,20 @@
 import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaFields"
 import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
 import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import * as v from "valibot"
 import { language } from "@client/i18n/language"
 import { languageSchema } from "@client/i18n/languageSchema"
 import type { SignInV1Type } from "@client/types/SignInV1Type"
+import * as a from "valibot"
 
-export const signInV1Schema = v.pipe(
-  v.object({
+export const signInV1Schema = a.pipe(
+  a.object({
     ...languageSchemaFields,
-    l: v.fallback(languageSchema, language.en),
-    code: v.pipe(stringSchema, v.description("One-time login verification code")),
-    url: v.pipe(stringSchema500, v.description("URL to enter the verification code")),
+    l: a.fallback(languageSchema, language.en),
+    code: a.pipe(stringSchema, a.description("One-time login verification code")),
+    url: a.pipe(stringSchema500, a.description("URL to enter the verification code")),
     ...footerV1SchemaFields,
   }),
-  v.metadata({
+  a.metadata({
     title: "Sign In Email",
     description: "Email template for user sign-in with one-time verification code",
     examples: [
@@ -35,7 +35,7 @@ export const signInV1Schema = v.pipe(
   }),
 )
 
-type SignInV1SchemaType = v.InferOutput<typeof signInV1Schema>
+type SignInV1SchemaType = a.InferOutput<typeof signInV1Schema>
 
 function types1(d: SignInV1SchemaType): SignInV1Type {
   return { ...d }

@@ -1,6 +1,6 @@
 import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import * as v from "valibot"
 import type { FooterV1Type } from "@client/index"
+import * as a from "valibot"
 
 export const footerV1SchemaFields = {
   homepageText: stringSchema,
@@ -8,8 +8,8 @@ export const footerV1SchemaFields = {
   hompageSubtitle: stringSchema500,
 } as const
 
-const footerV1Schema = v.object(footerV1SchemaFields)
-type FooterV1T = v.InferOutput<typeof footerV1Schema>
+const footerV1Schema = a.object(footerV1SchemaFields)
+type FooterV1T = a.InferOutput<typeof footerV1Schema>
 
 function types1(a: FooterV1T): FooterV1Type {
   return a

@@ -1,4 +1,4 @@
-import * as v from "valibot"
+import * as a from "valibot"
 
-export const stringSchema = v.pipe(v.string(), v.trim(), v.maxLength(100))
-export const stringSchema500 = v.pipe(v.string(), v.trim(), v.maxLength(500))
+export const stringSchema = a.pipe(a.string(), a.trim(), a.maxLength(100))
+export const stringSchema500 = a.pipe(a.string(), a.trim(), a.maxLength(500))

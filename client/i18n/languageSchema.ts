@@ -1,4 +1,4 @@
-import * as v from "valibot"
+import * as a from "valibot"
 import { language } from "./language"
 
-export const languageSchema = v.enum(language)
+export const languageSchema = a.enum(language)

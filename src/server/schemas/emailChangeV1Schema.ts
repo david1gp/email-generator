@@ -1,23 +1,23 @@
 import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaFields"
 import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
 import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import * as v from "valibot"
 import { language } from "@client/i18n/language"
 import { languageSchema } from "@client/i18n/languageSchema"
 import type { EmailChangeV1Type } from "@client/types/EmailChangeV1Type"
+import * as a from "valibot"
 
-export const emailChangeV1Schema = v.pipe(
-  v.object({
+export const emailChangeV1Schema = a.pipe(
+  a.object({
     ...languageSchemaFields,
-    l: v.fallback(languageSchema, language.en),
-    userName: v.optional(v.pipe(stringSchema, v.description("Name of the user changing their email"))),
-    code: v.pipe(stringSchema, v.description("Verification code for email change")),
-    url: v.pipe(stringSchema500, v.description("URL to confirm the email change")),
-    expiryMinutes: v.optional(v.pipe(v.number(), v.description("Minutes until the verification code expires"))),
-    supportUrl: v.optional(v.pipe(stringSchema500, v.description("URL to get help with email change"))),
+    l: a.fallback(languageSchema, language.en),
+    userName: a.optional(a.pipe(stringSchema, a.description("Name of the user changing their email"))),
+    code: a.pipe(stringSchema, a.description("Verification code for email change")),
+    url: a.pipe(stringSchema500, a.description("URL to confirm the email change")),
+    expiryMinutes: a.optional(a.pipe(a.number(), a.description("Minutes until the verification code expires"))),
+    supportUrl: a.optional(a.pipe(stringSchema500, a.description("URL to get help with email change"))),
     ...footerV1SchemaFields,
   }),
-  v.metadata({
+  a.metadata({
     title: "Email Change Email",
     description: "Email template for email change confirmation",
     examples: [
@@ -41,7 +41,7 @@ export const emailChangeV1Schema = v.pipe(
   }),
 )
 
-type EmailChangeV1SchemaType = v.InferOutput<typeof emailChangeV1Schema>
+type EmailChangeV1SchemaType = a.InferOutput<typeof emailChangeV1Schema>
 
 function types1(d: EmailChangeV1SchemaType): EmailChangeV1Type {
   return { ...d }

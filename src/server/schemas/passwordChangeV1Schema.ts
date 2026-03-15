@@ -1,23 +1,23 @@
 import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaFields"
 import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
 import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import * as v from "valibot"
 import { language } from "@client/i18n/language"
 import { languageSchema } from "@client/i18n/languageSchema"
 import type { PasswordChangeV1Type } from "@client/types/PasswordChangeV1Type"
+import * as a from "valibot"
 
-export const passwordChangeV1Schema = v.pipe(
-  v.object({
+export const passwordChangeV1Schema = a.pipe(
+  a.object({
     ...languageSchemaFields,
-    l: v.fallback(languageSchema, language.en),
-    userName: v.optional(v.pipe(stringSchema, v.description("Name of the user requesting password change"))),
-    code: v.pipe(stringSchema, v.description("Verification code for password reset")),
-    url: v.pipe(stringSchema500, v.description("URL to reset the password")),
-    expiryMinutes: v.optional(v.pipe(v.number(), v.description("Minutes until the reset code expires"))),
-    supportUrl: v.optional(v.pipe(stringSchema500, v.description("URL to get help with password reset"))),
+    l: a.fallback(languageSchema, language.en),
+    userName: a.optional(a.pipe(stringSchema, a.description("Name of the user requesting password change"))),
+    code: a.pipe(stringSchema, a.description("Verification code for password reset")),
+    url: a.pipe(stringSchema500, a.description("URL to reset the password")),
+    expiryMinutes: a.optional(a.pipe(a.number(), a.description("Minutes until the reset code expires"))),
+    supportUrl: a.optional(a.pipe(stringSchema500, a.description("URL to get help with password reset"))),
     ...footerV1SchemaFields,
   }),
-  v.metadata({
+  a.metadata({
     title: "Password Change Email",
     description: "Email template for password reset requests",
     examples: [
@@ -41,7 +41,7 @@ export const passwordChangeV1Schema = v.pipe(
   }),
 )
 
-type PasswordChangeV1SchemaType = v.InferOutput<typeof passwordChangeV1Schema>
+type PasswordChangeV1SchemaType = a.InferOutput<typeof passwordChangeV1Schema>
 
 function types1(d: PasswordChangeV1SchemaType): PasswordChangeV1Type {
   return { ...d }

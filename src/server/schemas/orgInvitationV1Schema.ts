@@ -1,20 +1,20 @@
 import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaFields"
 import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
 import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import * as v from "valibot"
 import type { OrgInvitationV1Type } from "@client/types/OrgInvitationV1Type"
+import * as a from "valibot"
 
-export const orgInvitationV1Schema = v.pipe(
-  v.object({
+export const orgInvitationV1Schema = a.pipe(
+  a.object({
     ...languageSchemaFields,
-    invitedName: v.pipe(stringSchema, v.description("Name of the person being invited")),
-    invitedByName: v.pipe(stringSchema, v.description("Name of the person who sent the invitation")),
-    invitedByEmail: v.pipe(stringSchema, v.description("Email of the person who sent the invitation")),
-    orgName: v.pipe(stringSchema, v.description("Name of the organization sending the invitation")),
-    url: v.pipe(stringSchema500, v.description("URL to accept the organization invitation")),
+    invitedName: a.pipe(stringSchema, a.description("Name of the person being invited")),
+    invitedByName: a.pipe(stringSchema, a.description("Name of the person who sent the invitation")),
+    invitedByEmail: a.pipe(stringSchema, a.description("Email of the person who sent the invitation")),
+    orgName: a.pipe(stringSchema, a.description("Name of the organization sending the invitation")),
+    url: a.pipe(stringSchema500, a.description("URL to accept the organization invitation")),
     ...footerV1SchemaFields,
   }),
-  v.metadata({
+  a.metadata({
     title: "Organization Invitation Email",
     description: "Email template for organization invitations",
     examples: [
@@ -38,7 +38,7 @@ export const orgInvitationV1Schema = v.pipe(
   }),
 )
 
-type OrgInvitationV1SchemaType = v.InferOutput<typeof orgInvitationV1Schema>
+type OrgInvitationV1SchemaType = a.InferOutput<typeof orgInvitationV1Schema>
 
 function types1(d: OrgInvitationV1SchemaType): OrgInvitationV1Type {
   return { ...d }
