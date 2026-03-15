@@ -1,5 +1,5 @@
+import { type PromiseResult, createError, createResult } from "@adaptive-ds/result"
 import * as v from "valibot"
-import { type PromiseResult, createError, createResult } from "~result"
 import { apiPathRenderEmailTemplate } from "./apiPathRenderEmailTemplate"
 import type { GeneratedEmailType } from "./types/GeneratedEmailType"
 

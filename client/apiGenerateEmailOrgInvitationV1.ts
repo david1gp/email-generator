@@ -1,4 +1,4 @@
-import type { PromiseResult } from "~result"
+import type { PromiseResult } from "@adaptive-ds/result"
 import { emailTemplateName } from "./emailTemplateName"
 import { generateEmailApiCall } from "./generateEmailApiCall"
 import type { GeneratedEmailType } from "./types/GeneratedEmailType"
