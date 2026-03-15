@@ -1,4 +1,4 @@
-import type { PromiseResult } from "~utils/result/Result"
+import type { PromiseResult } from "~result"
 import { emailTemplateName } from "./emailTemplateName"
 import { generateEmailApiCall } from "./generateEmailApiCall"
 import type { GeneratedEmailType } from "./types/GeneratedEmailType"

@@ -1,5 +1,5 @@
 import * as v from "valibot"
-import { type PromiseResult, createError, createResult } from "~utils/result/Result"
+import { type PromiseResult, createError, createResult } from "~result"
 import { apiPathRenderEmailTemplate } from "./apiPathRenderEmailTemplate"
 import type { GeneratedEmailType } from "./types/GeneratedEmailType"
 

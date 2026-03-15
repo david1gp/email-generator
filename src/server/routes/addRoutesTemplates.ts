@@ -4,7 +4,7 @@ import { describeRoute, resolver } from "hono-openapi"
 import type { BaseIssue, BaseSchema } from "valibot"
 import * as a from "valibot"
 import { apiPathRenderEmailTemplate } from "@client/apiPathRenderEmailTemplate"
-import { resultErrSchema } from "~utils/result/resultErrSchema"
+import { resultErrSchema } from "~result/resultErrSchema"
 import type { ApiRouteDefType } from "../api/ApiRouteDefType"
 
 export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteDefType<any>[]) {

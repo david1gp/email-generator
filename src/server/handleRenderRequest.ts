@@ -1,7 +1,7 @@
 import { setHeaderTiming } from "@/server/headers/setHeaderTiming"
 import * as v from "valibot"
 import type { GeneratedEmailType } from "@client/types/GeneratedEmailType"
-import { createResultError } from "~utils/result/Result"
+import { createResultError } from "~result"
 
 export async function handleRenderRequest(
   req: Request,
