@@ -1,10 +1,10 @@
-import type { Env } from "@/env/Env"
-import { apiRouteDef } from "@/server/api/apiRouteDef"
-import { notAllowedHandler } from "@/server/handlers/technical/notAllowedHandler"
-import { getCorsHeaders } from "@/server/headers/getCorsHeaders"
-import { addRoutesOpenapi } from "@/server/routes/addRoutesOpenapi"
-import { addRoutesServer } from "@/server/routes/addRoutesServer"
-import { addRoutesTemplates } from "@/server/routes/addRoutesTemplates"
+import type { Env } from "../env/Env"
+import { apiRouteDef } from "./api/apiRouteDef"
+import { notAllowedHandler } from "./handlers/technical/notAllowedHandler"
+import { getCorsHeaders } from "./headers/getCorsHeaders"
+import { addRoutesOpenapi } from "./routes/addRoutesOpenapi"
+import { addRoutesServer } from "./routes/addRoutesServer"
+import { addRoutesTemplates } from "./routes/addRoutesTemplates"
 import { Hono } from "hono"
 
 export function createApp(): Hono<{ Bindings: Env }> {

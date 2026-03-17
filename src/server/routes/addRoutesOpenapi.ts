@@ -1,5 +1,5 @@
-import { packageVersion } from "@/env/packageVersion"
-import type { HonoApp } from "@/utils/HonoApp"
+import { packageVersion } from "../../env/packageVersion"
+import type { HonoApp } from "../../utils/HonoApp"
 import { describeRoute, openAPIRouteHandler, resolver } from "hono-openapi"
 import * as a from "valibot"
 

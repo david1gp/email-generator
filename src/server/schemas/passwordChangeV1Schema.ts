@@ -1,9 +1,9 @@
-import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaFields"
-import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
-import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import { language } from "@client/i18n/language"
-import { languageSchema } from "@client/i18n/languageSchema"
-import type { PasswordChangeV1Type } from "@client/types/PasswordChangeV1Type"
+import { footerV1SchemaFields } from "./parts/footerV1SchemaFields"
+import { languageSchemaFields } from "./parts/languageSchemaFields"
+import { stringSchema, stringSchema500 } from "./parts/stringSchema"
+import { language } from "../../../client/i18n/language"
+import { languageSchema } from "../../../client/i18n/languageSchema"
+import type { PasswordChangeV1Type } from "../../../client/types/PasswordChangeV1Type"
 import * as a from "valibot"
 
 export const passwordChangeV1Schema = a.pipe(

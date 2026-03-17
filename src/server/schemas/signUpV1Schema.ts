@@ -1,7 +1,7 @@
-import { footerV1SchemaFields } from "@/server/schemas/parts/footerV1SchemaFields"
-import { languageSchemaFields } from "@/server/schemas/parts/languageSchemaFields"
-import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import type { SignUpV1Type } from "@client/types/SignUpV1Type"
+import { footerV1SchemaFields } from "./parts/footerV1SchemaFields"
+import { languageSchemaFields } from "./parts/languageSchemaFields"
+import { stringSchema, stringSchema500 } from "./parts/stringSchema"
+import type { SignUpV1Type } from "../../../client/types/SignUpV1Type"
 import * as a from "valibot"
 
 export const signUpV1Schema = a.pipe(

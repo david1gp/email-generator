@@ -1,3 +1,3 @@
-import { getPackageVersion } from "@/ops/getPackageVersion"
+import { getPackageVersion } from "./getPackageVersion"
 
 console.log(getPackageVersion())

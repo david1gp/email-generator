@@ -1,4 +1,4 @@
-import type { TranslationBlock } from "@/i18n/TranslationBlock"
+import type { TranslationBlock } from "../i18n/TranslationBlock"
 
 export const tbOrUseTheMagicLinkBelow = {
   en: "or use the magic link:",

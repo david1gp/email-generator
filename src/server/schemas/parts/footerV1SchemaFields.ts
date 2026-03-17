@@ -1,5 +1,5 @@
-import { stringSchema, stringSchema500 } from "@/server/schemas/parts/stringSchema"
-import type { FooterV1Type } from "@client/index"
+import { stringSchema, stringSchema500 } from "./stringSchema"
+import type { FooterV1Type } from "../../../../client/index"
 import * as a from "valibot"
 
 export const footerV1SchemaFields = {

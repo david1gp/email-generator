@@ -1,6 +1,6 @@
-import { isOnlineHandler } from "@/server/handlers/technical/isOnlineHandler"
-import { versionHandler } from "@/server/handlers/technical/versionHandler"
-import type { HonoApp } from "@/utils/HonoApp"
+import { isOnlineHandler } from "../handlers/technical/isOnlineHandler"
+import { versionHandler } from "../handlers/technical/versionHandler"
+import type { HonoApp } from "../../utils/HonoApp"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
 

@@ -1,6 +1,6 @@
-import { stringReplaceX } from "@/i18n/stringReplaceX"
-import type { TranslationBlock } from "@/i18n/TranslationBlock"
-import { language, type Language } from "@client/i18n/language"
+import { stringReplaceX } from "./stringReplaceX"
+import type { TranslationBlock } from "./TranslationBlock"
+import { language, type Language } from "../../client/i18n/language"
 
 export function tt0(l: Language, b: TranslationBlock): string {
   if (!b) return ""
