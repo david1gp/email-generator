@@ -1,4 +1,4 @@
-import { getPackageVersion } from "@/ops/getPackageVersion"
+import { getPackageVersion } from "../src/ops/getPackageVersion"
 import { expect, test } from "bun:test"
 import { getTargetBaseUrl, targetEnv } from "./targetEnv"
 

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { serverPortBun } from "@/server/ports/serverPortBun"
+import { serverPortBun } from "../src/server/ports/serverPortBun"
 
 const BASE_URL = `http://localhost:${serverPortBun}`
 
@@ -11,7 +11,7 @@ describe("openapi endpoints", () => {
     const json = await response.json() as { openapi: string; info: { title: string } }
     expect(json).toHaveProperty("openapi")
     expect(json).toHaveProperty("info")
-    expect(json.info.title).toContain("Email")
+    expect(json.info.title).toContain("email-generator")
   })
 
   test("swagger ui endpoint returns HTML at root", async () => {
@@ -20,6 +20,6 @@ describe("openapi endpoints", () => {
     expect(response.headers.get("Content-Type")?.toLowerCase()).toContain("text/html")
     const html = await response.text()
     expect(html).toContain("swagger-ui")
-    expect(html).toContain("/doc")
+    expect(html).toContain("/openapi")
   })
 })

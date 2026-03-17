@@ -1,7 +1,7 @@
-import { footerV1ExampleData } from "@/template_parts/footerV1ExampleData"
+import { footerV1ExampleData } from "../src/template_parts/footerV1ExampleData"
 import { expect, test } from "bun:test"
-import { apiGenerateEmailSignInV1 } from "@client/apiGenerateEmailSignInV1"
-import type { SignInV1Type } from "@client/types/SignInV1Type"
+import { apiGenerateEmailSignInV1 } from "../client/apiGenerateEmailSignInV1"
+import type { SignInV1Type } from "../client/types/SignInV1Type"
 import { getTargetBaseUrl, targetEnv } from "./targetEnv"
 
 const exampleProps = {
