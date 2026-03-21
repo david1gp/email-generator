@@ -29,7 +29,6 @@
     "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": true,
     "downlevelIteration": true,
-    "moduleDetection": "force",
     "noUncheckedSideEffectImports": true,
     //
     // type imports - https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax
