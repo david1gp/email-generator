@@ -1,9 +1,9 @@
-import { footerV1SchemaFields } from "./parts/footerV1SchemaFields"
-import { languageSchemaFields } from "./parts/languageSchemaFields"
-import { stringSchema, stringSchema500 } from "./parts/stringSchema"
-import { language } from "../../../client/i18n/language"
-import { languageSchema } from "../../../client/i18n/languageSchema"
-import type { EmailChangeV1Type } from "../../../client/types/EmailChangeV1Type"
+import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
+import { languageSchemaFields } from "./parts/languageSchemaFields.js"
+import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
+import { language } from "../../../client/i18n/language.js"
+import { languageSchema } from "../../../client/i18n/languageSchema.js"
+import type { EmailChangeV1Type } from "../../../client/types/EmailChangeV1Type.js"
 import * as a from "valibot"
 
 export const emailChangeV1Schema = a.pipe(

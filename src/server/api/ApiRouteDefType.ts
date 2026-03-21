@@ -1,6 +1,6 @@
 import type { BaseIssue, BaseSchema } from "valibot"
-import type { EmailTemplateName } from "../../../client/emailTemplateName"
-import type { GeneratedEmailType } from "../../../client/types/GeneratedEmailType"
+import type { EmailTemplateName } from "../../../client/emailTemplateName.js"
+import type { GeneratedEmailType } from "../../../client/types/GeneratedEmailType.js"
 
 export type ApiRouteDefType<T> = {
   name: EmailTemplateName

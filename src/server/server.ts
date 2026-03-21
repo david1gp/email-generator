@@ -1,8 +1,8 @@
-import { getPackageVersion } from "../ops/getPackageVersion"
-import { setHeaderVersion } from "./headers/setHeaderVersion"
-import { setHeaderTimingSingleValue } from "./headers/setHeaderTimingSingleValue"
-import { createApp } from "./hono"
-import { serverPortBun } from "./ports/serverPortBun"
+import { getPackageVersion } from "../ops/getPackageVersion.js"
+import { setHeaderVersion } from "./headers/setHeaderVersion.js"
+import { setHeaderTimingSingleValue } from "./headers/setHeaderTimingSingleValue.js"
+import { createApp } from "./hono.js"
+import { serverPortBun } from "./ports/serverPortBun.js"
 
 const app = createApp()
 

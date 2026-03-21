@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { serverPortBun } from "../src/server/ports/serverPortBun"
+import { serverPortBun } from "../src/server/ports/serverPortBun.js"
 
 const BASE_URL = `http://localhost:${serverPortBun}`
 

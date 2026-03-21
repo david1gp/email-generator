@@ -1,6 +1,6 @@
-import { setHeaderTiming } from "./headers/setHeaderTiming"
+import { setHeaderTiming } from "./headers/setHeaderTiming.js"
 import { createResultError } from "@adaptive-ds/result"
-import type { GeneratedEmailType } from "../../client/types/GeneratedEmailType"
+import type { GeneratedEmailType } from "../../client/types/GeneratedEmailType.js"
 import * as a from "valibot"
 
 export async function handleRenderRequest(

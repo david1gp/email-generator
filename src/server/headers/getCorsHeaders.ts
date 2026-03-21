@@ -1,4 +1,4 @@
-import type { Env } from "../../env/Env"
+import type { Env } from "../../env/Env.js"
 
 export function getCorsHeaders(env: Env | undefined, request: Request): Headers {
   const headers = new Headers()

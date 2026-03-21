@@ -1,11 +1,11 @@
-import type { HonoApp } from "../../utils/HonoApp"
+import type { HonoApp } from "../../utils/HonoApp.js"
 import { resultErrSchema } from "@adaptive-ds/result/resultErrSchema.js"
-import { apiPathRenderEmailTemplate } from "../../../client/apiPathRenderEmailTemplate"
+import { apiPathRenderEmailTemplate } from "../../../client/apiPathRenderEmailTemplate.js"
 import { toJsonSchema } from "@valibot/to-json-schema"
 import { describeRoute, resolver } from "hono-openapi"
 import type { BaseIssue, BaseSchema } from "valibot"
 import * as a from "valibot"
-import type { ApiRouteDefType } from "../api/ApiRouteDefType"
+import type { ApiRouteDefType } from "../api/ApiRouteDefType.js"
 
 export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteDefType<any>[]) {
   for (const def of apiRouteDef) {

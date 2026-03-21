@@ -1,4 +1,4 @@
-import { type EmailTemplateName } from "../../client/emailTemplateName"
+import { type EmailTemplateName } from "../../client/emailTemplateName.js"
 
 export const imageHostingPrefix = "https://f003.backblazeb2.com/file/email-generator-images"
 

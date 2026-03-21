@@ -1,6 +1,6 @@
-import { stringReplaceX } from "./stringReplaceX"
-import type { TranslationBlock } from "./TranslationBlock"
-import { language, type Language } from "../../client/i18n/language"
+import { stringReplaceX } from "./stringReplaceX.js"
+import type { TranslationBlock } from "./TranslationBlock.js"
+import { language, type Language } from "../../client/i18n/language.js"
 
 export function tt0(l: Language, b: TranslationBlock): string {
   if (!b) return ""

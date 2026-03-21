@@ -1,7 +1,7 @@
-import { apiRouteDef } from "./api/apiRouteDef"
-import { setHeaderVersion } from "./headers/setHeaderVersion"
-import { apiPathRenderEmailTemplate } from "../../client/apiPathRenderEmailTemplate"
-import { handleRenderRequest } from "./handleRenderRequest"
+import { apiRouteDef } from "./api/apiRouteDef.js"
+import { setHeaderVersion } from "./headers/setHeaderVersion.js"
+import { apiPathRenderEmailTemplate } from "../../client/apiPathRenderEmailTemplate.js"
+import { handleRenderRequest } from "./handleRenderRequest.js"
 
 export async function handleRequest(req: Request, url: URL, version: string): Promise<Response> {
   if (url.pathname === "/health") {

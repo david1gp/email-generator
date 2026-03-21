@@ -1,4 +1,4 @@
-import type { TranslationBlock } from "../i18n/TranslationBlock"
+import type { TranslationBlock } from "../i18n/TranslationBlock.js"
 
 export const tbCopyAndPasteThisUrl = {
   en: "or copy and paste this URL into your browser:",

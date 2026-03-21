@@ -1,6 +1,6 @@
-import type { Env } from "../env/Env"
-import { setHeaderTimingSingleValue } from "./headers/setHeaderTimingSingleValue"
-import { createApp } from "./hono"
+import type { Env } from "../env/Env.js"
+import { setHeaderTimingSingleValue } from "./headers/setHeaderTimingSingleValue.js"
+import { createApp } from "./hono.js"
 
 const app = createApp()
 

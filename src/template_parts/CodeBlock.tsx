@@ -1,4 +1,4 @@
-import type { MayHaveClassName } from "../utils/MayHaveClassName"
+import type { MayHaveClassName } from "../utils/MayHaveClassName.js"
 
 export interface CodeBlockProps extends MayHaveClassName {
   text: string

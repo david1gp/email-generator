@@ -1,6 +1,6 @@
-import { serverPortBun } from "../src/server/ports/serverPortBun"
 import { afterAll, beforeAll } from "bun:test"
 import { spawn, type ChildProcess } from "node:child_process"
+import { serverPortBun } from "../src/server/ports/serverPortBun.js"
 
 const BASE_URL = `http://localhost:${serverPortBun}`
 const HEALTH_URL = BASE_URL + "/health"

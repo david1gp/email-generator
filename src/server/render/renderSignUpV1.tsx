@@ -1,10 +1,10 @@
-import { tt1 } from "../../i18n/tt0"
-import SignUpV1Template from "../../templates/sign_up/SignUpV1Template"
-import { t4signUp } from "../../templates/sign_up/t4signUp"
+import { tt1 } from "../../i18n/tt0.js"
+import SignUpV1Template from "../../templates/sign_up/SignUpV1Template.js"
+import { t4signUp } from "../../templates/sign_up/t4signUp.js"
 import { render } from "@react-email/render"
-import { language } from "../../../client/i18n/language"
-import type { GeneratedEmailType } from "../../../client/types/GeneratedEmailType"
-import type { SignUpV1Type } from "../../../client/types/SignUpV1Type"
+import { language } from "../../../client/i18n/language.js"
+import type { GeneratedEmailType } from "../../../client/types/GeneratedEmailType.js"
+import type { SignUpV1Type } from "../../../client/types/SignUpV1Type.js"
 
 export async function renderSignUpV1(p: SignUpV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en

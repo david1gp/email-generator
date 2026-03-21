@@ -1,8 +1,8 @@
-import { footerV1ExampleData } from "../src/template_parts/footerV1ExampleData"
 import { expect, test } from "bun:test"
-import { apiGenerateEmailSignInV1 } from "../client/apiGenerateEmailSignInV1"
-import type { SignInV1Type } from "../client/types/SignInV1Type"
-import { getTargetBaseUrl, targetEnv } from "./targetEnv"
+import { apiGenerateEmailSignInV1 } from "../client/apiGenerateEmailSignInV1.js"
+import type { SignInV1Type } from "../client/types/SignInV1Type.js"
+import { footerV1ExampleData } from "../src/template_parts/footerV1ExampleData.js"
+import { getTargetBaseUrl, targetEnv } from "./targetEnv.js"
 
 const exampleProps = {
   l: "en",

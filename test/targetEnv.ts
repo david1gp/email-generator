@@ -1,5 +1,5 @@
-import { serverPortBun } from "../src/server/ports/serverPortBun"
-import { serverPortWrangler } from "../src/server/ports/serverPortWrangler"
+import { serverPortBun } from "../src/server/ports/serverPortBun.js"
+import { serverPortWrangler } from "../src/server/ports/serverPortWrangler.js"
 
 export type TargetEnv = keyof typeof targetEnv
 

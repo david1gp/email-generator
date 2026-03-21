@@ -76,8 +76,8 @@ test("client dir must not import from @ (src) or relative paths outside client",
 })
 
 const EXAMPLES_INVALID_RELATIVE = [
-  `import { bar } from "../src/api"`,
-  `import { foo } from "../../src/utils"`,
+  `import { bar } from "../src/api.js"`,
+  `import { foo } from "../src/utils.js"`,
 ]
 
 const EXAMPLES_INVALID_ABSOLUTE = [

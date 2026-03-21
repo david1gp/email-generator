@@ -1,7 +1,7 @@
-import { footerV1SchemaFields } from "./parts/footerV1SchemaFields"
-import { languageSchemaFields } from "./parts/languageSchemaFields"
-import { stringSchema, stringSchema500 } from "./parts/stringSchema"
-import type { OrgInvitationV1Type } from "../../../client/types/OrgInvitationV1Type"
+import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
+import { languageSchemaFields } from "./parts/languageSchemaFields.js"
+import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
+import type { OrgInvitationV1Type } from "../../../client/types/OrgInvitationV1Type.js"
 import * as a from "valibot"
 
 export const orgInvitationV1Schema = a.pipe(

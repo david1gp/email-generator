@@ -1,6 +1,6 @@
-import { getPackageVersion } from "../src/ops/getPackageVersion"
+import { getPackageVersion } from "../src/ops/getPackageVersion.js"
 import { expect, test } from "bun:test"
-import { getTargetBaseUrl, targetEnv } from "./targetEnv"
+import { getTargetBaseUrl, targetEnv } from "./targetEnv.js"
 
 async function testFn() {
   const response = await fetch(getTargetBaseUrl(targetEnv.readFromEnv) + "/" + "version", {

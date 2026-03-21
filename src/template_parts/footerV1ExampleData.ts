@@ -1,4 +1,4 @@
-import type { FooterV1Type } from "../../client/index"
+import type { FooterV1Type } from "../../client/index.js"
 
 export const footerV1ExampleData = {
   homepageText: "example.com",

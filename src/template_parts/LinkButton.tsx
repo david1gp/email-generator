@@ -1,4 +1,4 @@
-import type { MayHaveClassName } from "../utils/MayHaveClassName"
+import type { MayHaveClassName } from "../utils/MayHaveClassName.js"
 import { Link } from "@react-email/components"
 
 export interface LinkButtonProps extends MayHaveClassName {
