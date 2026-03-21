@@ -3,14 +3,14 @@
   "compilerOptions": {
     "target": "ES2024",
     "lib": [
-      "ES2024",
+      "ES2024"
     ],
     "rootDir": "./client",
     "outDir": "./dist",
     "noEmit": false,
     "declaration": true,
     "sourceMap": true,
-    "allowImportingTsExtensions": false
+    "incremental": false,
   },
   "include": [
     "client/**/*"
@@ -29,6 +29,6 @@
     ".idea",
     ".vscode",
     "**/*.test.ts",
-    "**/*.cliTest.ts"
-  ]
+    "**/*.cliTest.ts",
+  ],
 }
