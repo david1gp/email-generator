@@ -1,21 +1,40 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "WebWorker"],
-    "target": "ESNext",
-    "module": "Preserve",
-    "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "allowJs": true,
-    // Bundler mode
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
     "noEmit": true,
+    "jsx": "react-jsx",
+    //
+    // dom
+    //
+    "lib": [
+      "esnext", "WebWorker"
+    ],
     "types": ["@cloudflare/workers-types/latest", "bun"],
     //
     // performance
     //
+    "isolatedModules": true,
     "skipLibCheck": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./build/tsconfig.tsbuildinfo",
+    //
+    // my configs
+    //
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": true,
+    "downlevelIteration": true,
+    "moduleDetection": "force",
+    "noUncheckedSideEffectImports": true,
+    //
+    // type imports - https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax
+    //
+    "verbatimModuleSyntax": true,
     //
     // https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/#the---erasablesyntaxonly-option
     //
@@ -30,8 +49,29 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["./client", "./src", "./ops", "./test"],
+  "include": [
+    "client",
+    "src",
+    "test"
+  ],
+  "exclude": [
+    ".github",
+    ".roo",
+    ".idea",
+    ".vscode",
+    ".wrangler",
+    "changelogs",
+    "build",
+    "dist",
+    "out",
+    "data",
+    "docs",
+    "node_modules",
+    "ops",
+    "public",
+    "public-image-versions",
+    "public-images"
+  ],
 }
