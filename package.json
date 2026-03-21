@@ -69,8 +69,20 @@
   "repository": {
     "url": "git+https://github.com/david1gp/email-generator.git"
   },
+  "types": "./dist/index.d.ts",
   "exports": {
-    "./*": "./dist/*"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js"
+    }
   },
   "files": [
     "dist"
