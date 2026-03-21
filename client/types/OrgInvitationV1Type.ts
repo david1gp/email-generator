@@ -1,5 +1,5 @@
-import type { FooterV1Type } from "./FooterV1Type"
-import type { MayHaveLanguageType } from "./MayHaveLanguageType"
+import type { FooterV1Type } from "./FooterV1Type.js"
+import type { MayHaveLanguageType } from "./MayHaveLanguageType.js"
 
 export interface OrgInvitationV1Type extends MayHaveLanguageType, FooterV1Type {
   invitedName: string

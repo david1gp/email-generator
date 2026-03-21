@@ -1,7 +1,7 @@
 import { type PromiseResult, createError, createResult } from "@adaptive-ds/result"
 import * as a from "valibot"
-import { apiPathRenderEmailTemplate } from "./apiPathRenderEmailTemplate"
-import type { GeneratedEmailType } from "./types/GeneratedEmailType"
+import { apiPathRenderEmailTemplate } from "./apiPathRenderEmailTemplate.js"
+import type { GeneratedEmailType } from "./types/GeneratedEmailType.js"
 
 export async function generateEmailApiCall<T>(
   op: string,

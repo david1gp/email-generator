@@ -1,8 +1,8 @@
 import type { PromiseResult } from "@adaptive-ds/result"
-import { emailTemplateName } from "./emailTemplateName"
-import { generateEmailApiCall } from "./generateEmailApiCall"
-import type { EmailChangeV1Type } from "./types/EmailChangeV1Type"
-import type { GeneratedEmailType } from "./types/GeneratedEmailType"
+import { emailTemplateName } from "./emailTemplateName.js"
+import { generateEmailApiCall } from "./generateEmailApiCall.js"
+import type { EmailChangeV1Type } from "./types/EmailChangeV1Type.js"
+import type { GeneratedEmailType } from "./types/GeneratedEmailType.js"
 
 export async function apiGenerateEmailEmailChangeV1(
   props: EmailChangeV1Type,

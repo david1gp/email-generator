@@ -1,8 +1,8 @@
 import type { PromiseResult } from "@adaptive-ds/result"
-import { emailTemplateName } from "./emailTemplateName"
-import { generateEmailApiCall } from "./generateEmailApiCall"
-import type { GeneratedEmailType } from "./types/GeneratedEmailType"
-import type { SignInV1Type } from "./types/SignInV1Type"
+import { emailTemplateName } from "./emailTemplateName.js"
+import { generateEmailApiCall } from "./generateEmailApiCall.js"
+import type { GeneratedEmailType } from "./types/GeneratedEmailType.js"
+import type { SignInV1Type } from "./types/SignInV1Type.js"
 
 
 export async function apiGenerateEmailSignInV1(
