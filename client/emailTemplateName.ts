@@ -4,6 +4,7 @@ export const emailTemplateName = {
   signUpV1: "signUpV1",
   signInV1: "signInV1",
   orgInvitationV1: "orgInvitationV1",
+  teamInvitationV1: "teamInvitationV1",
   passwordChangeV1: "passwordChangeV1",
   emailChangeV1: "emailChangeV1",
 } as const

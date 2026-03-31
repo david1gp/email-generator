@@ -21,15 +21,15 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
 - Supports internationalization (English and German).
 - Validates input using Valibot schemas.
 - Includes server timing headers for performance monitoring.
-- Endpoints: `/renderEmailTemplate/signUpV1`, `/renderEmailTemplate/signInV1`, and `/renderEmailTemplate/orgInvitationV1`.
+- Endpoints: `/renderEmailTemplate/signUpV1`, `/renderEmailTemplate/signInV1`, `/renderEmailTemplate/orgInvitationV1`, and `/renderEmailTemplate/teamInvitationV1`.
 
 ## Templates
 
 |                                                                                                        |                                                                                                        |
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | **signUpV1** - Sign-up / Registration<br>![signUpV1](https://f003.backblazeb2.com/file/email-generator-images/signUpV1.jpg) | **signInV1** - Sign-in / Login / Forgot password<br>![signInV1](https://f003.backblazeb2.com/file/email-generator-images/signInV1.jpg) |
-| **passwordChangeV1** - Change/Reset Password<br>![passwordChangeV1](https://f003.backblazeb2.com/file/email-generator-images/PasswordChangeV1.jpg) | **emailChangeV1** - Change Email<br>![EmailChangeV1](https://f003.backblazeb2.com/file/email-generator-images/EmailChangeV1.jpg) |
-| **orgInvitationV1** - Organization invitation<br>![orgInvitationV1](https://f003.backblazeb2.com/file/email-generator-images/orgInvitationV1.jpg) | |
+| **passwordChangeV1** - Change/Reset Password<br>![passwordChangeV1](https://f003.backblazeb2.com/file/email-generator-images/passwordChangeV1.jpg) | **emailChangeV1** - Change Email<br>![EmailChangeV1](https://f003.backblazeb2.com/file/email-generator-images/emailChangeV1.jpg) |
+| **orgInvitationV1** - Organization invitation<br>![orgInvitationV1](https://f003.backblazeb2.com/file/email-generator-images/orgInvitationV1.jpg) | **teamInvitationV1** - Team invitation<br>![teamInvitationV1](https://f003.backblazeb2.com/file/email-generator-images/teamInvitationV1.jpg) |
 
 ## Prerequisites
 
@@ -72,8 +72,6 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
 
 - To test endpoints, send POST requests to:
   - `http://localhost:8787/renderEmailTemplate/signUpV1`
-  - `http://localhost:8787/renderEmailTemplate/signInV1`
-  - `http://localhost:8787/renderEmailTemplate/orgInvitationV1`
 
 ## Testing
 

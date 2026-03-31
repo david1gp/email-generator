@@ -4,13 +4,15 @@ import { renderOrgInvitationV1 } from "../render/renderOrgInvitationV1.js"
 import { renderPasswordChangeV1 } from "../render/renderPasswordChangeV1.js"
 import { renderSignInV1 } from "../render/renderSignInV1.js"
 import { renderSignUpV1 } from "../render/renderSignUpV1.js"
+import { renderTeamInvitationV1 } from "../render/renderTeamInvitationV1.js"
 import { emailChangeV1Schema } from "../schemas/emailChangeV1Schema.js"
 import { orgInvitationV1Schema } from "../schemas/orgInvitationV1Schema.js"
 import { passwordChangeV1Schema } from "../schemas/passwordChangeV1Schema.js"
 import { signInV1Schema } from "../schemas/signInV1Schema.js"
 import { signUpV1Schema } from "../schemas/signUpV1Schema.js"
+import { teamInvitationV1Schema } from "../schemas/teamInvitationV1Schema.js"
 import { emailTemplateName } from "../../../client/emailTemplateName.js"
-import type { EmailChangeV1Type, OrgInvitationV1Type, PasswordChangeV1Type, SignInV1Type, SignUpV1Type } from "../../../client/index.js"
+import type { EmailChangeV1Type, OrgInvitationV1Type, PasswordChangeV1Type, SignInV1Type, SignUpV1Type, TeamInvitationV1Type } from "../../../client/index.js"
 
 export const apiDefRegisterEmailV1 = {
   name: emailTemplateName.signUpV1,
@@ -42,10 +44,17 @@ export const apiDefEmailChangeV1 = {
   renderFn: renderEmailChangeV1,
 } as const satisfies ApiRouteDefType<EmailChangeV1Type>
 
+export const apiDefTeamInvitationV1 = {
+  name: emailTemplateName.teamInvitationV1,
+  schema: teamInvitationV1Schema,
+  renderFn: renderTeamInvitationV1,
+} as const satisfies ApiRouteDefType<TeamInvitationV1Type>
+
 export const apiRouteDef = [
   apiDefRegisterEmailV1,
   apiDefLoginCodeV1,
   apiDefOrgInvitationV1,
+  apiDefTeamInvitationV1,
   apiDefPasswordChangeV1,
   apiDefEmailChangeV1,
 ] as const satisfies readonly ApiRouteDefType<any>[]
