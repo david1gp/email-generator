@@ -1,6 +1,6 @@
 {
   "name": "@adaptive-ds/email-generator",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "scripts": {
     "dev:email": "email dev --dir=./src/templates",
     "dev:bun": "bun ./src/server/server.ts --hot",
