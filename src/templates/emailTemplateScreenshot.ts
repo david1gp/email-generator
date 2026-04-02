@@ -5,6 +5,7 @@ export const imageHostingPrefix = "https://f003.backblazeb2.com/file/email-gener
 export const emailTemplateScreenshot = {
   signUpV1: `${imageHostingPrefix}/signUpV1.jpg`,
   signInV1: `${imageHostingPrefix}/signInV1.jpg`,
+  invitationV1: `${imageHostingPrefix}/invitationV1.jpg`,
   orgInvitationV1: `${imageHostingPrefix}/orgInvitationV1.jpg`,
   passwordChangeV1: `${imageHostingPrefix}/passwordChangeV1.jpg`,
   emailChangeV1: `${imageHostingPrefix}/emailChangeV1.jpg`,

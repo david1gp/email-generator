@@ -1,29 +1,31 @@
 import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
 import { languageSchemaFields } from "./parts/languageSchemaFields.js"
 import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
-import type { OrgInvitationV1Type } from "../../../client/types/OrgInvitationV1Type.js"
+import type { InvitationV1Type } from "../../../client/types/InvitationV1Type.js"
 import * as a from "valibot"
 
-export const orgInvitationV1Schema = a.pipe(
+export const invitationV1Schema = a.pipe(
   a.object({
     ...languageSchemaFields,
     invitedName: a.pipe(stringSchema, a.description("Name of the person being invited")),
     invitedByName: a.pipe(stringSchema, a.description("Name of the person who sent the invitation")),
     invitedByEmail: a.pipe(stringSchema, a.description("Email of the person who sent the invitation")),
-    orgName: a.pipe(stringSchema, a.description("Name of the organization sending the invitation")),
-    url: a.pipe(stringSchema500, a.description("URL to accept the organization invitation")),
+    entity: a.optional(a.pipe(stringSchema, a.description("Type of entity: team, organization, etc."))),
+    entityName: a.pipe(stringSchema, a.description("Name of the team or organization sending the invitation")),
+    url: a.pipe(stringSchema500, a.description("URL to accept the invitation")),
     ...footerV1SchemaFields,
   }),
   a.metadata({
-    title: "Organization Invitation Email",
-    description: "Email template for organization invitations",
+    title: "Invitation Email",
+    description: "Email template for team or organization invitations",
     examples: [
       {
         l: "en",
         invitedName: "John Doe",
         invitedByName: "Jane Smith",
         invitedByEmail: "jane@example.com",
-        orgName: "Acme Inc",
+        entity: "organization",
+        entityName: "Acme Inc",
         url: "https://example.com/invitation/abc123",
         homepageText: "You've been invited",
         homepageUrl: "https://example.com",
@@ -38,8 +40,11 @@ export const orgInvitationV1Schema = a.pipe(
   }),
 )
 
-type OrgInvitationV1SchemaType = a.InferOutput<typeof orgInvitationV1Schema>
+type InvitationV1SchemaType = a.InferOutput<typeof invitationV1Schema>
 
-function types1(d: OrgInvitationV1SchemaType): OrgInvitationV1Type {
+function types1(d: InvitationV1SchemaType): InvitationV1Type {
   return { ...d }
 }
+
+export const orgInvitationV1Schema = invitationV1Schema
+export const teamInvitationV1Schema = invitationV1Schema
