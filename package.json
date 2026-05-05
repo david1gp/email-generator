@@ -25,8 +25,8 @@
     "reset": "rm -rf ./node_modules"
   },
   "peerDependencies": {
-    "@adaptive-ds/result": "^0.4.0",
-    "@adaptive-ds/utils": "^0.7.0",
+    "@adaptive-ds/result": ">=0.4.0",
+    "@adaptive-ds/utils": ">=0.7.0",
     "dayjs": "^1.11.18",
     "valibot": "^1.2.0"
   },
