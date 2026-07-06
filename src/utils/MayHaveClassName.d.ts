@@ -1,3 +1,3 @@
 export interface MayHaveClassName {
-    className?: string;
+  className?: string
 }

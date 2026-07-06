@@ -1,5 +1,5 @@
-import { getPackageVersion } from "../src/ops/getPackageVersion.js"
 import { expect, test } from "bun:test"
+import { getPackageVersion } from "../src/ops/getPackageVersion.js"
 import { getTargetBaseUrl, targetEnv } from "./targetEnv.js"
 
 async function testFn() {

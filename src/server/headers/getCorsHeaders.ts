@@ -8,7 +8,7 @@ export function getCorsHeaders(env: Env | undefined, request: Request): Headers 
     headers.set("Access-Control-Allow-Origin", "*")
   } else {
     const requestOrigin = request.headers.get("Origin")
-    if (requestOrigin && allowOrigin.split(",").some(o => o.trim() === requestOrigin)) {
+    if (requestOrigin && allowOrigin.split(",").some((o) => o.trim() === requestOrigin)) {
       headers.set("Access-Control-Allow-Origin", requestOrigin)
     }
   }

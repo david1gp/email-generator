@@ -7,7 +7,7 @@ import type { OrgInvitationV1Type } from "./types/OrgInvitationV1Type.js"
 
 export async function apiGenerateEmailOrgInvitationV1(
   props: OrgInvitationV1Type,
-  baseUrl: string
+  baseUrl: string,
 ): PromiseResult<GeneratedEmailType> {
   const op = "apiGenerateEmailOrgInvitationV1"
   const serverProps: InvitationV1Type = {

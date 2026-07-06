@@ -1,6 +1,6 @@
 import { getPackageVersion } from "../ops/getPackageVersion.js"
-import { setHeaderVersion } from "./headers/setHeaderVersion.js"
 import { setHeaderTimingSingleValue } from "./headers/setHeaderTimingSingleValue.js"
+import { setHeaderVersion } from "./headers/setHeaderVersion.js"
 import { createApp } from "./hono.js"
 import { serverPortBun } from "./ports/serverPortBun.js"
 

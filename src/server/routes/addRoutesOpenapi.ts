@@ -1,7 +1,7 @@
-import { packageVersion } from "../../env/packageVersion.js"
-import type { HonoApp } from "../../utils/HonoApp.js"
 import { describeRoute, openAPIRouteHandler, resolver } from "hono-openapi"
 import * as a from "valibot"
+import { packageVersion } from "../../env/packageVersion.js"
+import type { HonoApp } from "../../utils/HonoApp.js"
 
 export function addRoutesOpenapi(app: HonoApp) {
   const openApiOptions = {

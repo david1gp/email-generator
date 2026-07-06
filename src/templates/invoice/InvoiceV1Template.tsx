@@ -1,13 +1,6 @@
-import type { TranslationBlock } from "../../i18n/TranslationBlock.js"
-import { tt0, tt1 } from "../../i18n/tt0.js"
-import Footer from "../../template_parts/Footer.js"
-import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
-import { LinkButton } from "../../template_parts/LinkButton.js"
-import { tbCopyAndPasteThisUrl } from "../../template_parts/tbCopyAndPasteThisUrl.js"
-import { t4invoice } from "./t4invoice.js"
-import { classArr } from "../../utils/classArr.js"
 import {
   Body,
+  Column,
   Container,
   Head,
   Heading,
@@ -15,13 +8,20 @@ import {
   Link,
   Preview,
   Row,
-  Column,
   Section,
   Tailwind,
   Text,
 } from "@react-email/components"
 import { language } from "../../../client/i18n/language.js"
 import type { InvoiceV1Type } from "../../../client/types/InvoiceV1Type.js"
+import type { TranslationBlock } from "../../i18n/TranslationBlock.js"
+import { tt0, tt1 } from "../../i18n/tt0.js"
+import Footer from "../../template_parts/Footer.js"
+import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
+import { LinkButton } from "../../template_parts/LinkButton.js"
+import { tbCopyAndPasteThisUrl } from "../../template_parts/tbCopyAndPasteThisUrl.js"
+import { classArr } from "../../utils/classArr.js"
+import { t4invoice } from "./t4invoice.js"
 
 export function InvoiceV1Template(p: InvoiceV1Type) {
   const l = p.l ?? language.en

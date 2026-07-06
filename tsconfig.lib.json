@@ -2,19 +2,15 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "ES2024",
-    "lib": [
-      "ES2024"
-    ],
+    "lib": ["ES2024"],
     "rootDir": "./client",
     "outDir": "./dist",
     "noEmit": false,
     "declaration": true,
     "sourceMap": true,
-    "incremental": false,
+    "incremental": false
   },
-  "include": [
-    "client/**/*"
-  ],
+  "include": ["client/**/*"],
   "exclude": [
     "node_modules",
     "export",
@@ -29,6 +25,6 @@
     ".idea",
     ".vscode",
     "**/*.test.ts",
-    "**/*.cliTest.ts",
-  ],
+    "**/*.cliTest.ts"
+  ]
 }

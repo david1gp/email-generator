@@ -1,3 +1,6 @@
+import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
+import { language } from "../../../client/i18n/language.js"
+import type { EmailChangeV1Type } from "../../../client/types/EmailChangeV1Type.js"
 import type { TranslationBlock } from "../../i18n/TranslationBlock.js"
 import { tt0, tt1 } from "../../i18n/tt0.js"
 import { CodeBlock } from "../../template_parts/CodeBlock.js"
@@ -6,11 +9,8 @@ import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js
 import { LinkButton } from "../../template_parts/LinkButton.js"
 import { tbCopyAndPasteThisUrl } from "../../template_parts/tbCopyAndPasteThisUrl.js"
 import { tbOrUseTheMagicLinkBelow } from "../../template_parts/tbOrUseTheMagicLinkBelow.js"
-import { t4emailChange } from "./t4emailChange.js"
 import { classArr } from "../../utils/classArr.js"
-import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
-import { language } from "../../../client/i18n/language.js"
-import type { EmailChangeV1Type } from "../../../client/types/EmailChangeV1Type.js"
+import { t4emailChange } from "./t4emailChange.js"
 
 export function EmailChangeV1Template(p: EmailChangeV1Type) {
   const l = p.l ?? language.en

@@ -1,10 +1,10 @@
-import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
-import { languageSchemaFields } from "./parts/languageSchemaFields.js"
-import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
+import * as a from "valibot"
 import { language } from "../../../client/i18n/language.js"
 import { languageSchema } from "../../../client/i18n/languageSchema.js"
 import type { PasswordChangeV1Type } from "../../../client/types/PasswordChangeV1Type.js"
-import * as a from "valibot"
+import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
+import { languageSchemaFields } from "./parts/languageSchemaFields.js"
+import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
 
 export const passwordChangeV1Schema = a.pipe(
   a.object({

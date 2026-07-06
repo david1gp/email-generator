@@ -1,6 +1,6 @@
-import { stringSchema, stringSchema500 } from "./stringSchema.js"
-import type { FooterV1Type } from "../../../../client/index.js"
 import * as a from "valibot"
+import type { FooterV1Type } from "../../../../client/index.js"
+import { stringSchema, stringSchema500 } from "./stringSchema.js"
 
 export const footerV1SchemaFields = {
   homepageText: stringSchema,

@@ -1,8 +1,8 @@
+import * as a from "valibot"
+import type { InvitationV1Type } from "../../../client/types/InvitationV1Type.js"
 import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
 import { languageSchemaFields } from "./parts/languageSchemaFields.js"
 import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
-import type { InvitationV1Type } from "../../../client/types/InvitationV1Type.js"
-import * as a from "valibot"
 
 export const invitationV1Schema = a.pipe(
   a.object({

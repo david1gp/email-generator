@@ -1,6 +1,6 @@
-import { classArr } from "../utils/classArr.js"
 import { Container, Link, Text } from "@react-email/components"
 import type { FooterV1Type } from "../../client/types/FooterV1Type.js"
+import { classArr } from "../utils/classArr.js"
 import type { MayHaveClassName } from "../utils/MayHaveClassName.js"
 
 export interface FooterProps extends FooterV1Type, MayHaveClassName {}

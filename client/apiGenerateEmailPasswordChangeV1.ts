@@ -6,7 +6,7 @@ import type { PasswordChangeV1Type } from "./types/PasswordChangeV1Type.js"
 
 export async function apiGenerateEmailPasswordChangeV1(
   props: PasswordChangeV1Type,
-  baseUrl: string
+  baseUrl: string,
 ): PromiseResult<GeneratedEmailType> {
   const op = "apiGenerateEmailPasswordChangeV1"
   return generateEmailApiCall(op, emailTemplateName.passwordChangeV1, props, baseUrl)

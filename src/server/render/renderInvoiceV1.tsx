@@ -1,10 +1,10 @@
-import { tt0, tt1 } from "../../i18n/tt0.js"
-import InvoiceV1Template from "../../templates/invoice/InvoiceV1Template.js"
-import { t4invoice } from "../../templates/invoice/t4invoice.js"
 import { render } from "@react-email/render"
 import { language } from "../../../client/i18n/language.js"
 import type { GeneratedEmailType } from "../../../client/types/GeneratedEmailType.js"
 import type { InvoiceV1Type } from "../../../client/types/InvoiceV1Type.js"
+import { tt0, tt1 } from "../../i18n/tt0.js"
+import InvoiceV1Template from "../../templates/invoice/InvoiceV1Template.js"
+import { t4invoice } from "../../templates/invoice/t4invoice.js"
 
 export async function renderInvoiceV1(p: InvoiceV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en

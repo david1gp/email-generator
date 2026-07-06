@@ -6,7 +6,7 @@ import type { GeneratedEmailType } from "./types/GeneratedEmailType.js"
 
 export async function apiGenerateEmailEmailChangeV1(
   props: EmailChangeV1Type,
-  baseUrl: string
+  baseUrl: string,
 ): PromiseResult<GeneratedEmailType> {
   const op = "apiGenerateEmailEmailChangeV1"
   return generateEmailApiCall(op, emailTemplateName.emailChangeV1, props, baseUrl)

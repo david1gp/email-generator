@@ -92,9 +92,17 @@ export function t4invitation(entity?: string) {
     Join_x2_p1: invitationT.Join_x2_p1,
     Join_x2_p2: invitationT.Join_x2_p2,
     Hi_x: invitationT.Hi_x,
-    has_invited_you: isUndetermined ? invitationT.has_invited_you_default : isTeam ? invitationT.has_invited_you_team : invitationT.has_invited_you_organization,
+    has_invited_you: isUndetermined
+      ? invitationT.has_invited_you_default
+      : isTeam
+        ? invitationT.has_invited_you_team
+        : invitationT.has_invited_you_organization,
     entity_in: isUndetermined ? invitationT.default_in : isTeam ? invitationT.team_in : invitationT.organization_in,
-    Join_entity: isUndetermined ? invitationT.Join_default : isTeam ? invitationT.Join_team : invitationT.Join_organization,
+    Join_entity: isUndetermined
+      ? invitationT.Join_default
+      : isTeam
+        ? invitationT.Join_team
+        : invitationT.Join_organization,
   }
 }
 

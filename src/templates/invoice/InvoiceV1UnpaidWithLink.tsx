@@ -1,6 +1,6 @@
-import InvoiceV1Template from "./InvoiceV1Template.js"
-import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
 import type { InvoiceV1Type } from "../../../client/types/InvoiceV1Type.js"
+import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
+import InvoiceV1Template from "./InvoiceV1Template.js"
 
 /** Preview variant: unpaid invoice with a payment link. Renders the shared base template. */
 export function InvoiceV1UnpaidWithLink(p: InvoiceV1Type) {

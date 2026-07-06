@@ -1,8 +1,8 @@
-import { isOnlineHandler } from "../handlers/technical/isOnlineHandler.js"
-import { versionHandler } from "../handlers/technical/versionHandler.js"
-import type { HonoApp } from "../../utils/HonoApp.js"
 import { describeRoute, resolver } from "hono-openapi"
 import * as a from "valibot"
+import type { HonoApp } from "../../utils/HonoApp.js"
+import { isOnlineHandler } from "../handlers/technical/isOnlineHandler.js"
+import { versionHandler } from "../handlers/technical/versionHandler.js"
 
 export function addRoutesServer(app: HonoApp) {
   app.get(

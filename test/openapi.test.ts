@@ -8,7 +8,7 @@ describe("openapi endpoints", () => {
     const response = await fetch(BASE_URL + "/openapi")
     expect(response.status).toBe(200)
     expect(response.headers.get("Content-Type")).toBe("application/json")
-    const json = await response.json() as { openapi: string; info: { title: string } }
+    const json = (await response.json()) as { openapi: string; info: { title: string } }
     expect(json).toHaveProperty("openapi")
     expect(json).toHaveProperty("info")
     expect(json.info.title).toContain("email-generator")
