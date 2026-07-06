@@ -8,4 +8,5 @@ export const emailTemplateName = {
   teamInvitationV1: "teamInvitationV1",
   passwordChangeV1: "passwordChangeV1",
   emailChangeV1: "emailChangeV1",
+  invoiceV1: "invoiceV1",
 } as const

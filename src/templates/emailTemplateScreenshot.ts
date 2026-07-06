@@ -10,4 +10,5 @@ export const emailTemplateScreenshot = {
   passwordChangeV1: `${imageHostingPrefix}/passwordChangeV1.jpg`,
   emailChangeV1: `${imageHostingPrefix}/emailChangeV1.jpg`,
   teamInvitationV1: `${imageHostingPrefix}/teamInvitationV1.jpg`,
+  invoiceV1: `${imageHostingPrefix}/invoiceV1.jpg`,
 } as const satisfies Record<EmailTemplateName, string>
