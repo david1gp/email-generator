@@ -1,5 +1,7 @@
 import { expect, test } from "bun:test"
 import { apiGenerateEmailSignInV1 } from "../client/apiGenerateEmailSignInV1.js"
+import { apiPathRenderEmailTemplate } from "../client/apiPathRenderEmailTemplate.js"
+import { emailTemplateName } from "../client/emailTemplateName.js"
 import type { SignInV1Type } from "../client/types/SignInV1Type.js"
 import { footerV1ExampleData } from "../src/template_parts/footerV1ExampleData.js"
 import { getTargetBaseUrl, targetEnv } from "./targetEnv.js"
@@ -24,6 +26,13 @@ async function testFn() {
   const data = result.data
   expect(data.html).toContain(exampleProps.code)
   expect(data.text).toContain(exampleProps.code)
+
+  const response = await fetch(`${baseUrl}/${apiPathRenderEmailTemplate}/${emailTemplateName.signInV1}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(exampleProps),
+  })
+  expect(response.headers.get("Cache-Control")).toBe("no-store")
 }
 
 const name = "apiSignIn"

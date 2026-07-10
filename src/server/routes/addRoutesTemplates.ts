@@ -9,7 +9,7 @@ import type { ApiRouteDefType } from "../api/ApiRouteDefType.js"
 
 export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteDefType<any>[]) {
   for (const def of apiRouteDef) {
-    const apiPath = "/" + apiPathRenderEmailTemplate + "/" + def.name
+    const apiPath = `/${apiPathRenderEmailTemplate}/${def.name}`
     app.post(
       apiPath,
       describeRoute({
@@ -56,7 +56,9 @@ export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteD
       async (c) => {
         const body = await c.req.json()
         const result = await def.renderFn(body)
-        return c.json(result)
+        const response = c.json(result)
+        response.headers.set("Cache-Control", "no-store")
+        return response
       },
     )
   }

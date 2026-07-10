@@ -7,6 +7,9 @@ workers_dev = true
 pattern = "email-generator-worker.my-domain.com"
 custom_domain = true
 
+[version_metadata]
+binding = "CF_VERSION_METADATA"
+
 [observability]
 enabled = true
 head_sampling_rate = 1

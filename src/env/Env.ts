@@ -3,4 +3,5 @@ export interface Env {
   ENV_NAME: string
   HEADER_CORS_ALLOW_ORIGIN?: string
   HEADER_CORS_MAX_AGE?: string
+  CF_VERSION_METADATA?: WorkerVersionMetadata
 }

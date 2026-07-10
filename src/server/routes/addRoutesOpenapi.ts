@@ -2,6 +2,7 @@ import { describeRoute, openAPIRouteHandler, resolver } from "hono-openapi"
 import * as a from "valibot"
 import { packageVersion } from "../../env/packageVersion.js"
 import type { HonoApp } from "../../utils/HonoApp.js"
+import { withDocumentationCacheHeaders } from "../cache/workerCache.js"
 
 export function addRoutesOpenapi(app: HonoApp) {
   const openApiOptions = {
@@ -31,6 +32,8 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
     },
   }
 
+  const openApiHandler = openAPIRouteHandler(app, openApiOptions)
+
   app.get(
     "/openapi",
     describeRoute({
@@ -46,7 +49,7 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
         },
       },
     }),
-    openAPIRouteHandler(app, openApiOptions),
+    async (c, next) => withDocumentationCacheHeaders((await openApiHandler(c, next)) ?? c.res),
   )
 
   addRoutesOpenapiSwagger(app)
@@ -96,7 +99,7 @@ export function addRoutesOpenapiSwagger(app: HonoApp) {
   </script>
 </body>
 </html>`
-      return c.html(uiHtml)
+      return withDocumentationCacheHeaders(c.html(uiHtml))
     },
   )
 }
