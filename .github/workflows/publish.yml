@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
 
 permissions:
   id-token: write # Required for OIDC
@@ -25,7 +26,7 @@ jobs:
       # Setup Node.js only for npm publishing with OIDC until Bun adds support for it - https://github.com/oven-sh/bun/issues/15601
       - uses: actions/setup-node@v6
         with:
-          node-version: "24"
+          node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
       # Use Bun for everything except publishing
@@ -33,8 +34,8 @@ jobs:
       - run: bun run build
       # - run: bun test
 
-      # Ensure npm 11.5.1 or later is installed
+      # Pin npm to a known-good OIDC/provenance-capable version.
       - name: Update npm
-        run: npm install -g npm@latest
+        run: npm install -g npm@11.5.1
       # Use npm only for publishing with OIDC support
       - run: npm publish --access public --provenance
