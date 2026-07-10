@@ -26,7 +26,7 @@ jobs:
       # Setup Node.js only for npm publishing with OIDC until Bun adds support for it - https://github.com/oven-sh/bun/issues/15601
       - uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
       # Use Bun for everything except publishing
@@ -34,8 +34,7 @@ jobs:
       - run: bun run build
       # - run: bun test
 
-      # Pin npm to a known-good OIDC/provenance-capable version.
-      - name: Update npm
-        run: npm install -g npm@11.5.1
+      # Use the npm version bundled with the selected Node.js toolchain.
+      - run: npm --version
       # Use npm only for publishing with OIDC support
       - run: npm publish --access public --provenance
