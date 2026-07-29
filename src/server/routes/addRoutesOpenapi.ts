@@ -25,15 +25,8 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
 - npm - [https://www.npmjs.com/package/@adaptive-ds/email-generator](https://www.npmjs.com/package/@adaptive-ds/email-generator)
 - react email docs - [https://react.email/docs/getting-started/manual-setup](https://react.email/docs/getting-started/manual-setup)
 `,
-      },
-      components: {
-        securitySchemes: {
-          bearerAuth: {
-            type: "http" as const,
-            scheme: "bearer",
-            bearerFormat: "JWT",
-            description: "Bearer authentication token for trusted endpoints (e.g. markdownV1)",
-          },
+        components: {
+          securitySchemes: {},
         },
       },
     },

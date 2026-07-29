@@ -5,8 +5,6 @@ import { serverPortBun } from "../src/server/ports/serverPortBun.js"
 const BASE_URL = `http://localhost:${serverPortBun}`
 const HEALTH_URL = BASE_URL + "/health"
 
-process.env.MARKDOWN_RENDER_TOKEN = process.env.MARKDOWN_RENDER_TOKEN || "dev-only-markdown-token"
-
 let serverProcess: ChildProcess | null = null
 let didStartServer = false
 
