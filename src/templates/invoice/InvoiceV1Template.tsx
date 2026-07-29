@@ -1,22 +1,9 @@
-import {
-  Body,
-  Column,
-  Container,
-  Head,
-  Heading,
-  Html,
-  Link,
-  Preview,
-  Row,
-  Section,
-  Tailwind,
-  Text,
-} from "@react-email/components"
+import { Column, Heading, Link, Row, Section, Text } from "@react-email/components"
 import { language } from "../../../client/i18n/language.js"
 import type { InvoiceV1Type } from "../../../client/types/InvoiceV1Type.js"
 import type { TranslationBlock } from "../../i18n/TranslationBlock.js"
 import { tt0, tt1 } from "../../i18n/tt0.js"
-import Footer from "../../template_parts/Footer.js"
+import { EmailLayout } from "../../template_parts/EmailLayout.js"
 import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
 import { LinkButton } from "../../template_parts/LinkButton.js"
 import { tbCopyAndPasteThisUrl } from "../../template_parts/tbCopyAndPasteThisUrl.js"
@@ -55,62 +42,49 @@ export function InvoiceV1Template(p: InvoiceV1Type) {
   if (p.amount) details.push({ label: t0(tt.Amount), value: p.amount })
 
   return (
-    <Html>
-      <Head />
-      <Preview>{title}</Preview>
-      <Tailwind>
-        <Body className={"bg-gray-50 my-auto font-sans px-2"}>
-          <Container
-            className={classArr(
-              "max-w-[600px]",
-              "bg-white",
-              "mt-10 mb-0 p-4",
-              "border border-solid border-[#eaeaea] rounded-xl",
-            )}
-          >
-            <Heading className={"text-2xl font-semibold mb-0"}>{title}</Heading>
+    <EmailLayout
+      l={l}
+      preview={title}
+      homepageText={p.homepageText}
+      homepageUrl={p.homepageUrl}
+      hompageSubtitle={p.hompageSubtitle}
+    >
+      <Heading className={"text-2xl font-semibold mb-0"}>{title}</Heading>
 
-            <Section className={""}>
-              <Text className={sectionTextClass}>{intro}</Text>
-            </Section>
+      <Section className={""}>
+        <Text className={sectionTextClass}>{intro}</Text>
+      </Section>
 
-            {details.length > 0 && (
-              <Section
-                className={classArr("mt-2 p-3", "bg-gray-50", "border border-solid border-[#eaeaea] rounded-lg")}
-              >
-                {details.map((d) => (
-                  <Row key={d.label} className={"mb-1"}>
-                    <Column className={"text-gray-600 text-lg"}>{d.label}</Column>
-                    <Column className={"text-right font-semibold text-lg"}>{d.value}</Column>
-                  </Row>
-                ))}
-              </Section>
-            )}
+      {details.length > 0 && (
+        <Section className={classArr("mt-2 p-3", "bg-gray-50", "border border-solid border-[#eaeaea] rounded-lg")}>
+          {details.map((d) => (
+            <Row key={d.label} className={"mb-1"}>
+              <Column className={"text-gray-600 text-lg"}>{d.label}</Column>
+              <Column className={"text-right font-semibold text-lg"}>{d.value}</Column>
+            </Row>
+          ))}
+        </Section>
+      )}
 
-            {p.url ? (
-              <>
-                <Section className={"mt-3"}>
-                  <LinkButton url={p.url} text={buttonText} />
-                </Section>
+      {p.url ? (
+        <>
+          <Section className={"mt-3"}>
+            <LinkButton url={p.url} text={buttonText} />
+          </Section>
 
-                <Section className={sectionClass}>
-                  <Text className={sectionTextClass}>{t0(tbCopyAndPasteThisUrl)} </Text>
-                  <Link href={p.url} className="text-blue-600 no-underline text-lg">
-                    {p.url}
-                  </Link>
-                </Section>
-              </>
-            ) : (
-              <Section className={"mt-3"}>
-                <Text className={sectionTextClass}>{t0(tt.Invoice_attached)}</Text>
-              </Section>
-            )}
-          </Container>
-
-          <Footer homepageText={p.homepageText} homepageUrl={p.homepageUrl} hompageSubtitle={p.hompageSubtitle} />
-        </Body>
-      </Tailwind>
-    </Html>
+          <Section className={sectionClass}>
+            <Text className={sectionTextClass}>{t0(tbCopyAndPasteThisUrl)} </Text>
+            <Link href={p.url} className="text-blue-600 no-underline text-lg">
+              {p.url}
+            </Link>
+          </Section>
+        </>
+      ) : (
+        <Section className={"mt-3"}>
+          <Text className={sectionTextClass}>{t0(tt.Invoice_attached)}</Text>
+        </Section>
+      )}
+    </EmailLayout>
   )
 }
 

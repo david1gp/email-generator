@@ -11,7 +11,7 @@
     // dom
     //
     "lib": ["esnext", "WebWorker"],
-    "types": ["@cloudflare/workers-types", "bun"],
+    "types": ["@cloudflare/workers-types", "@types/react", "bun"],
     //
     // performance
     //

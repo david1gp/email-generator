@@ -1,3 +1,4 @@
+import { createResultError } from "@adaptive-ds/result"
 import { resultErrSchema } from "@adaptive-ds/result/resultErrSchema.js"
 import { toJsonSchema } from "@valibot/to-json-schema"
 import { describeRoute, resolver } from "hono-openapi"
@@ -15,6 +16,7 @@ export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteD
       describeRoute({
         description: `Render ${def.name} email template`,
         tags: ["templates"],
+        security: def.requiresBearerAuth ? [{ bearerAuth: [] }] : [],
         requestBody: {
           description: getDescriptionFromSchema(def.schema),
           required: true,
@@ -45,6 +47,26 @@ export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteD
               "application/json": { schema: resolver(resultErrSchema) },
             },
           },
+          ...(def.requiresBearerAuth
+            ? {
+                401: {
+                  description: "Unauthorized - missing or invalid bearer token",
+                  content: {
+                    "application/json": { schema: resolver(resultErrSchema) },
+                  },
+                },
+              }
+            : {}),
+          ...(def.maxBodyBytes
+            ? {
+                413: {
+                  description: "Payload too large - request body exceeds size limit",
+                  content: {
+                    "application/json": { schema: resolver(resultErrSchema) },
+                  },
+                },
+              }
+            : {}),
           500: {
             description: "Internal server error",
             content: {
@@ -54,11 +76,80 @@ export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteD
         },
       }),
       async (c) => {
-        const body = await c.req.json()
-        const result = await def.renderFn(body)
-        const response = c.json(result)
-        response.headers.set("Cache-Control", "no-store")
-        return response
+        if (def.requiresBearerAuth) {
+          const authHeader = c.req.header("Authorization") || c.req.header("authorization")
+          const expectedToken = c.env?.MARKDOWN_RENDER_TOKEN || process.env.MARKDOWN_RENDER_TOKEN
+          if (
+            !authHeader?.startsWith("Bearer ") ||
+            !expectedToken ||
+            authHeader.substring(7).trim() !== expectedToken
+          ) {
+            const response = c.json(createResultError(def.name, "Unauthorized"), 401)
+            response.headers.set("Cache-Control", "no-store")
+            return response
+          }
+        }
+
+        if (def.maxBodyBytes) {
+          const contentLengthStr = c.req.header("Content-Length") || c.req.header("content-length")
+          if (contentLengthStr) {
+            const contentLength = Number.parseInt(contentLengthStr, 10)
+            if (!Number.isNaN(contentLength) && contentLength > def.maxBodyBytes) {
+              const response = c.json(createResultError(def.name, "Payload Too Large"), 413)
+              response.headers.set("Cache-Control", "no-store")
+              return response
+            }
+          }
+        }
+
+        let jsonText: string
+        try {
+          jsonText = await c.req.text()
+        } catch {
+          const response = c.json(createResultError(def.name, "Invalid request body"), 400)
+          response.headers.set("Cache-Control", "no-store")
+          return response
+        }
+
+        if (!jsonText) {
+          const response = c.json(createResultError(def.name, "Missing JSON body"), 400)
+          response.headers.set("Cache-Control", "no-store")
+          return response
+        }
+
+        if (def.maxBodyBytes && new TextEncoder().encode(jsonText).byteLength > def.maxBodyBytes) {
+          const response = c.json(createResultError(def.name, "Payload Too Large"), 413)
+          response.headers.set("Cache-Control", "no-store")
+          return response
+        }
+
+        let body: unknown
+        try {
+          body = JSON.parse(jsonText)
+        } catch {
+          const response = c.json(createResultError(def.name, "Invalid JSON body"), 400)
+          response.headers.set("Cache-Control", "no-store")
+          return response
+        }
+
+        const parsing = a.safeParse(def.schema, body)
+        if (!parsing.success) {
+          const errorMessage = a.summarize(parsing.issues)
+          const response = c.json(createResultError(def.name, errorMessage), 400)
+          response.headers.set("Cache-Control", "no-store")
+          return response
+        }
+
+        try {
+          const result = await def.renderFn(parsing.output)
+          const response = c.json(result)
+          response.headers.set("Cache-Control", "no-store")
+          return response
+        } catch {
+          const response = c.json(createResultError(def.name, "Internal server error"), 500)
+          response.headers.set("Cache-Control", "no-store")
+          return response
+        }
       },
     )
   }

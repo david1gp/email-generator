@@ -1,13 +1,12 @@
-import { Body, Container, Head, Heading, Html, Link, Preview, Section, Tailwind, Text } from "@react-email/components"
+import { Heading, Link, Section, Text } from "@react-email/components"
 import { language } from "../../../client/i18n/language.js"
 import type { InvitationV1Type } from "../../../client/types/InvitationV1Type.js"
 import type { TranslationBlock } from "../../i18n/TranslationBlock.js"
 import { tt0, tt1, tt2 } from "../../i18n/tt0.js"
-import Footer from "../../template_parts/Footer.js"
+import { EmailLayout } from "../../template_parts/EmailLayout.js"
 import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
 import { LinkButton } from "../../template_parts/LinkButton.js"
 import { tbCopyAndPasteThisUrl } from "../../template_parts/tbCopyAndPasteThisUrl.js"
-import { classArr } from "../../utils/classArr.js"
 import { t4invitation } from "./t4invitation.js"
 
 export function InvitationV1Template(p: InvitationV1Type) {
@@ -32,54 +31,42 @@ export function InvitationV1Template(p: InvitationV1Type) {
   const buttonText = t0(tt.Join_entity)
 
   return (
-    <Html>
-      <Head />
-      <Preview>{title}</Preview>
-      <Tailwind>
-        <Body className={"bg-gray-50 my-auto font-sans px-2"}>
-          <Container
-            className={classArr(
-              "max-w-[600px]",
-              "bg-white",
-              "mt-10 mb-0 p-4",
-              "border border-solid border-[#eaeaea] rounded-xl",
-            )}
-          >
-            <Heading className="text-2xl font-normal mb-0">
-              {t0(tt.Join_x2_p1)} <strong>{p.entityName}</strong> {t0(tt.Join_x2_p2)} <strong>{p.homepageText}</strong>
-            </Heading>
+    <EmailLayout
+      l={l}
+      preview={title}
+      homepageText={p.homepageText}
+      homepageUrl={p.homepageUrl}
+      hompageSubtitle={p.hompageSubtitle}
+    >
+      <Heading className="text-2xl font-normal mb-0">
+        {t0(tt.Join_x2_p1)} <strong>{p.entityName}</strong> {t0(tt.Join_x2_p2)} <strong>{p.homepageText}</strong>
+      </Heading>
 
-            <Text className="text-lg">{hi}</Text>
+      <Text className="text-lg">{hi}</Text>
 
-            <Text className="text-lg">
-              <strong>{p.invitedByName}</strong>
-              {p.invitedByEmail && (
-                <>
-                  <span> (</span>
-                  <Link href={`mailto:${p.invitedByEmail}`} className="text-blue-600 no-underline">
-                    {p.invitedByEmail}
-                  </Link>
-                  <span>) </span>
-                </>
-              )}{" "}
-              {t0(tt.has_invited_you)} <strong>{p.entityName}</strong> {t0(tt.entity_in)}{" "}
-              <strong>{p.homepageText}</strong>.
-            </Text>
-
-            <Section className={"mt-2"}>
-              <LinkButton url={p.url} text={buttonText} />
-            </Section>
-
-            <Text className="mt-4 mb-1 text-lg">{t0(tbCopyAndPasteThisUrl)} </Text>
-            <Link href={p.url} className="text-blue-600 no-underline text-lg">
-              {p.url}
+      <Text className="text-lg">
+        <strong>{p.invitedByName}</strong>
+        {p.invitedByEmail && (
+          <>
+            <span> (</span>
+            <Link href={`mailto:${p.invitedByEmail}`} className="text-blue-600 no-underline">
+              {p.invitedByEmail}
             </Link>
-          </Container>
+            <span>) </span>
+          </>
+        )}{" "}
+        {t0(tt.has_invited_you)} <strong>{p.entityName}</strong> {t0(tt.entity_in)} <strong>{p.homepageText}</strong>.
+      </Text>
 
-          <Footer homepageText={p.homepageText} homepageUrl={p.homepageUrl} hompageSubtitle={p.hompageSubtitle} />
-        </Body>
-      </Tailwind>
-    </Html>
+      <Section className={"mt-2"}>
+        <LinkButton url={p.url} text={buttonText} />
+      </Section>
+
+      <Text className="mt-4 mb-1 text-lg">{t0(tbCopyAndPasteThisUrl)} </Text>
+      <Link href={p.url} className="text-blue-600 no-underline text-lg">
+        {p.url}
+      </Link>
+    </EmailLayout>
   )
 }
 

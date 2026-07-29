@@ -3,6 +3,7 @@ import type {
   EmailChangeV1Type,
   InvitationV1Type,
   InvoiceV1Type,
+  MarkdownV1Type,
   PasswordChangeV1Type,
   SignInV1Type,
   SignUpV1Type,
@@ -10,11 +11,13 @@ import type {
 import { renderEmailChangeV1 } from "../render/renderEmailChangeV1.js"
 import { renderInvitationV1 } from "../render/renderInvitationV1.js"
 import { renderInvoiceV1 } from "../render/renderInvoiceV1.js"
+import { renderMarkdownV1 } from "../render/renderMarkdownV1.js"
 import { renderPasswordChangeV1 } from "../render/renderPasswordChangeV1.js"
 import { renderSignInV1 } from "../render/renderSignInV1.js"
 import { renderSignUpV1 } from "../render/renderSignUpV1.js"
 import { emailChangeV1Schema } from "../schemas/emailChangeV1Schema.js"
 import { invoiceV1Schema } from "../schemas/invoiceV1Schema.js"
+import { markdownV1Schema } from "../schemas/markdownV1Schema.js"
 import { invitationV1Schema } from "../schemas/orgInvitationV1Schema.js"
 import { passwordChangeV1Schema } from "../schemas/passwordChangeV1Schema.js"
 import { signInV1Schema } from "../schemas/signInV1Schema.js"
@@ -69,6 +72,14 @@ export const apiDefInvoiceV1 = {
   renderFn: renderInvoiceV1,
 } as const satisfies ApiRouteDefType<InvoiceV1Type>
 
+export const apiDefMarkdownV1 = {
+  name: emailTemplateName.markdownV1,
+  schema: markdownV1Schema,
+  renderFn: renderMarkdownV1,
+  requiresBearerAuth: true,
+  maxBodyBytes: 32768,
+} as const satisfies ApiRouteDefType<MarkdownV1Type>
+
 export const apiRouteDef = [
   apiDefRegisterEmailV1,
   apiDefLoginCodeV1,
@@ -78,4 +89,5 @@ export const apiRouteDef = [
   apiDefPasswordChangeV1,
   apiDefEmailChangeV1,
   apiDefInvoiceV1,
+  apiDefMarkdownV1,
 ] as const satisfies readonly ApiRouteDefType<any>[]

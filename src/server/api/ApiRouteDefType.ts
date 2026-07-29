@@ -6,4 +6,6 @@ export type ApiRouteDefType<T> = {
   name: EmailTemplateName
   schema: BaseSchema<unknown, unknown, BaseIssue<unknown>>
   renderFn: (props: T) => Promise<GeneratedEmailType>
+  requiresBearerAuth?: boolean
+  maxBodyBytes?: number
 }
