@@ -88,7 +88,9 @@ describe("TrustedMarkdownContent and MarkdownV1Template", () => {
 
     // Labeled link has color and no underline
     expect(markdownHtml).toMatch(/<a[^>]*href="https:\/\/example\.com\/details"[^>]*style="[^"]*color:#155dfc[^"]*"/)
-    expect(markdownHtml).toMatch(/<a[^>]*href="https:\/\/example\.com\/details"[^>]*style="[^"]*text-decoration:none[^"]*"/)
+    expect(markdownHtml).toMatch(
+      /<a[^>]*href="https:\/\/example\.com\/details"[^>]*style="[^"]*text-decoration:none[^"]*"/,
+    )
 
     // Links must NOT have their own font-size — they inherit from the parent context
     const linkStyles = markdownHtml.match(/<a[^>]*style="([^"]*)"/g) ?? []

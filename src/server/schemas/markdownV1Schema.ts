@@ -27,12 +27,12 @@ export const markdownV1Schema = a.pipe(
     subject: a.pipe(subjectSchema, a.description("Email subject line (plain text, no CR/LF)")),
     preview: a.optional(a.pipe(stringSchema200, a.description("Email preview text"))),
     heading: a.optional(a.pipe(stringSchema200, a.description("Visible heading in email body"))),
-    markdown: a.pipe(markdownSchema, a.description("Trusted Markdown content body")),
+    markdown: a.pipe(markdownSchema, a.description("Markdown content body")),
     ...footerV1SchemaFields,
   }),
   a.metadata({
     title: "Markdown Email",
-    description: "Trusted self-authored Markdown email template with paragraphs, bold, links, lists, and two-column tables",
+    description: "Markdown email template with paragraphs, bold, links, lists, and two-column tables",
   }),
 )
 

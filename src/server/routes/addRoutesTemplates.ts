@@ -16,7 +16,6 @@ export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteD
       describeRoute({
         description: `Render ${def.name} email template`,
         tags: ["templates"],
-        security: def.requiresBearerAuth ? [{ bearerAuth: [] }] : [],
         requestBody: {
           description: getDescriptionFromSchema(def.schema),
           required: true,
@@ -47,16 +46,6 @@ export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteD
               "application/json": { schema: resolver(resultErrSchema) },
             },
           },
-          ...(def.requiresBearerAuth
-            ? {
-                401: {
-                  description: "Unauthorized - missing or invalid bearer token",
-                  content: {
-                    "application/json": { schema: resolver(resultErrSchema) },
-                  },
-                },
-              }
-            : {}),
           ...(def.maxBodyBytes
             ? {
                 413: {
@@ -76,20 +65,6 @@ export function addRoutesTemplates(app: HonoApp, apiRouteDef: readonly ApiRouteD
         },
       }),
       async (c) => {
-        if (def.requiresBearerAuth) {
-          const authHeader = c.req.header("Authorization") || c.req.header("authorization")
-          const expectedToken = c.env?.MARKDOWN_RENDER_TOKEN || process.env.MARKDOWN_RENDER_TOKEN
-          if (
-            !authHeader?.startsWith("Bearer ") ||
-            !expectedToken ||
-            authHeader.substring(7).trim() !== expectedToken
-          ) {
-            const response = c.json(createResultError(def.name, "Unauthorized"), 401)
-            response.headers.set("Cache-Control", "no-store")
-            return response
-          }
-        }
-
         if (def.maxBodyBytes) {
           const contentLengthStr = c.req.header("Content-Length") || c.req.header("content-length")
           if (contentLengthStr) {

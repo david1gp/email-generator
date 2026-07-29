@@ -6,8 +6,6 @@ import type { MarkdownV1Type } from "../client/types/MarkdownV1Type.js"
 import { footerV1ExampleData } from "../src/template_parts/footerV1ExampleData.js"
 import { getTargetBaseUrl, targetEnv } from "./targetEnv.js"
 
-const TEST_TOKEN = "dev-only-markdown-token"
-
 const supportedMarkdownFixture = `A paragraph with **bold text** and a [labeled link](https://example.com/details).
 
 Second paragraph with a bare URL: https://example.com/status
@@ -36,17 +34,11 @@ const validProps: MarkdownV1Type = {
 }
 
 describe("apiMarkdown integration tests", () => {
-  const getBaseUrl = () => {
-    // Ensure test environment token is present for test requests
-    if (!process.env.MARKDOWN_RENDER_TOKEN) {
-      process.env.MARKDOWN_RENDER_TOKEN = TEST_TOKEN
-    }
-    return getTargetBaseUrl(targetEnv.readFromEnv)
-  }
+  const getBaseUrl = () => getTargetBaseUrl(targetEnv.readFromEnv)
 
-  test("apiGenerateEmailMarkdownV1 succeeds with valid bearer token", async () => {
+  test("apiGenerateEmailMarkdownV1 succeeds with valid input", async () => {
     const baseUrl = getBaseUrl()
-    const result = await apiGenerateEmailMarkdownV1(validProps, baseUrl, TEST_TOKEN)
+    const result = await apiGenerateEmailMarkdownV1(validProps, baseUrl)
 
     if (!result.success) {
       console.error(result)
@@ -69,7 +61,6 @@ describe("apiMarkdown integration tests", () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${TEST_TOKEN}`,
       },
       body: JSON.stringify(validProps),
     })
@@ -78,42 +69,12 @@ describe("apiMarkdown integration tests", () => {
     expect(response.headers.get("Cache-Control")).toBe("no-store")
   })
 
-  test("returns 401 when Authorization header is missing", async () => {
-    const baseUrl = getBaseUrl()
-    const response = await fetch(`${baseUrl}/${apiPathRenderEmailTemplate}/${emailTemplateName.markdownV1}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(validProps),
-    })
-
-    expect(response.status).toBe(401)
-    const err = await response.json()
-    expect(err).toHaveProperty("success", false)
-  })
-
-  test("returns 401 when Authorization token is invalid", async () => {
-    const baseUrl = getBaseUrl()
-    const response = await fetch(`${baseUrl}/${apiPathRenderEmailTemplate}/${emailTemplateName.markdownV1}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer wrong-token-value",
-      },
-      body: JSON.stringify(validProps),
-    })
-
-    expect(response.status).toBe(401)
-    const err = await response.json()
-    expect(err).toHaveProperty("success", false)
-  })
-
   test("returns 400 on malformed JSON body", async () => {
     const baseUrl = getBaseUrl()
     const response = await fetch(`${baseUrl}/${apiPathRenderEmailTemplate}/${emailTemplateName.markdownV1}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${TEST_TOKEN}`,
       },
       body: "{ malformed json",
     })
@@ -128,7 +89,6 @@ describe("apiMarkdown integration tests", () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${TEST_TOKEN}`,
       },
       body: JSON.stringify(invalidProps),
     })
@@ -145,7 +105,6 @@ describe("apiMarkdown integration tests", () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${TEST_TOKEN}`,
       },
       body: JSON.stringify(invalidProps),
     })
@@ -160,7 +119,6 @@ describe("apiMarkdown integration tests", () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${TEST_TOKEN}`,
       },
       body: JSON.stringify(invalidProps),
     })
@@ -176,7 +134,6 @@ describe("apiMarkdown integration tests", () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${TEST_TOKEN}`,
       },
       body: JSON.stringify(invalidProps),
     })
@@ -186,28 +143,16 @@ describe("apiMarkdown integration tests", () => {
 
   test("returns 413 when total request body exceeds size limit (32,768 bytes)", async () => {
     const baseUrl = getBaseUrl()
-    // Body padded beyond 32KB
     const oversizedPadding = " ".repeat(35000)
     const bodyStr = JSON.stringify({ ...validProps, padding: oversizedPadding })
     const response = await fetch(`${baseUrl}/${apiPathRenderEmailTemplate}/${emailTemplateName.markdownV1}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${TEST_TOKEN}`,
       },
       body: bodyStr,
     })
 
     expect(response.status).toBe(413)
-  })
-
-  /**
-   * Trusted Author Security Boundary Note:
-   * Built-in React Email Markdown relies on Marked with dangerouslySetInnerHTML.
-   * Authentication guarantees author identity; it does not sanitize raw HTML or invalid protocols.
-   * If untrusted author content must be rendered in the future, migrate to an AST renderer.
-   */
-  test("preserves explicit trusted delivery boundary requirement", () => {
-    expect(validProps.markdown).toContain("https://example.com")
   })
 })
