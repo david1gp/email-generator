@@ -76,6 +76,7 @@ export const apiDefMarkdownV1 = {
   name: emailTemplateName.markdownV1,
   schema: markdownV1Schema,
   renderFn: renderMarkdownV1,
+  requiresBearerAuth: true,
   maxBodyBytes: 32768,
 } as const satisfies ApiRouteDefType<MarkdownV1Type>
 

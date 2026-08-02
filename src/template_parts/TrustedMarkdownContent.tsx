@@ -1,3 +1,31 @@
+/**
+ * TrustedMarkdownContent — trust-explicit built-in Markdown wrapper.
+ *
+ * WARNING: This component renders trusted, self-authored Markdown only.
+ * The underlying React Email Markdown component uses Marked and dangerouslySetInnerHTML.
+ * It does NOT sanitize input, reject raw HTML, or enforce URL protocols.
+ *
+ * Do NOT pass user-generated, CMS-sourced, database-stored, or webhook-delivered content.
+ * All content must be authored by trusted internal callers and delivered through an
+ * authenticated/private boundary.
+ *
+ * Approved syntax: paragraphs, bold, HTTPS URLs/links, unordered bullet lists,
+ * and simple GFM pipe-delimited tables with one header row.
+ *
+ * Authoring contract — tables:
+ *   - At most two columns, one header row, short breakable cell text.
+ *   - Use labeled links, not bare URLs, inside cells.
+ *   - For records with three or more displayed fields, use a bullet list instead.
+ *   - This is trusted-author policy; the parser does not enforce column count.
+ *
+ * Link typography is intentionally contextual: links inherit font-size and
+ * line-height from their directly styled parent (p, li, or td/th). Only color
+ * and text-decoration are set directly on anchors. This keeps table-cell links
+ * at the compact 16 px baseline and paragraph/list links at 18 px without
+ * requiring descendant selectors or media queries.
+ *
+ * Move to a constrained AST/component renderer before accepting untrusted content.
+ */
 import { Markdown } from "@react-email/components"
 import type React from "react"
 

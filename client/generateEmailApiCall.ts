@@ -8,10 +8,15 @@ export async function generateEmailApiCall<T>(
   name: string,
   props: T,
   baseUrl: string,
+  extraHeaders?: Record<string, string>,
 ): PromiseResult<GeneratedEmailType> {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    ...extraHeaders,
+  }
   const response = await fetch(baseUrl + "/" + apiPathRenderEmailTemplate + "/" + name, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(props),
   })
   const text = await response.text()
