@@ -18,7 +18,7 @@
     "tail": "wrangler tail email-generator-worker",
     "test": "bun test --preload ./test/setup.ts",
     "test:w": "bun test --preload ./test/setup.ts --watch",
-    "uploadImages": "rclone sync -v --progress --track-renames ~/Coding/adaptive/email-generator/public-images/ email-generator-images:email-generator-images/",
+    "uploadImages": "rclone sync -v --progress --track-renames ~/Coding/adaptive/email-generator/images/ email-generator-images:email-generator-images/",
     "generateJpg": "bash ./ops/generateJpg.sh",
     "release": "bash ./ops/release.sh",
     "format": "biome format --write client src test package.json tsconfig.json tsconfig.lib.json biome.json",
