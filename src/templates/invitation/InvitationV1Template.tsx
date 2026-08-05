@@ -25,44 +25,52 @@ export function InvitationV1Template(p: InvitationV1Type) {
     return tt2(l, tb, x1, x2)
   }
 
-  const title = t2(tt.Join_x2, p.invitedByName, p.entityName)
-  const hi = t1(tt.Hi_x, p.invitedName)
-
-  const buttonText = t0(tt.Join_entity)
+  const preview = p.subject ?? t2(tt.Join_x2, p.invitedByName, p.entityName)
+  const hi = p.greeting ?? t1(tt.Hi_x, p.invitedName)
+  const buttonText = p.buttonText ?? t0(tt.Join_entity)
+  const copyAndPasteUrlText = p.copyAndPasteUrlText ?? t0(tbCopyAndPasteThisUrl)
 
   return (
     <EmailLayout
       l={l}
-      preview={title}
+      preview={preview}
       homepageText={p.homepageText}
       homepageUrl={p.homepageUrl}
       hompageSubtitle={p.hompageSubtitle}
     >
-      <Heading className="text-2xl font-normal mb-0">
-        {t0(tt.Join_x2_p1)} <strong>{p.entityName}</strong> {t0(tt.Join_x2_p2)} <strong>{p.homepageText}</strong>
-      </Heading>
+      {p.heading ? (
+        <Heading className="text-2xl font-normal mb-0">{p.heading}</Heading>
+      ) : (
+        <Heading className="text-2xl font-normal mb-0">
+          {t0(tt.Join_x2_p1)} <strong>{p.entityName}</strong> {t0(tt.Join_x2_p2)} <strong>{p.homepageText}</strong>
+        </Heading>
+      )}
 
       <Text className="text-lg">{hi}</Text>
 
-      <Text className="text-lg">
-        <strong>{p.invitedByName}</strong>
-        {p.invitedByEmail && (
-          <>
-            <span> (</span>
-            <Link href={`mailto:${p.invitedByEmail}`} className="text-blue-600 no-underline">
-              {p.invitedByEmail}
-            </Link>
-            <span>) </span>
-          </>
-        )}{" "}
-        {t0(tt.has_invited_you)} <strong>{p.entityName}</strong> {t0(tt.entity_in)} <strong>{p.homepageText}</strong>.
-      </Text>
+      {p.body ? (
+        <Text className="text-lg">{p.body}</Text>
+      ) : (
+        <Text className="text-lg">
+          <strong>{p.invitedByName}</strong>
+          {p.invitedByEmail && (
+            <>
+              <span> (</span>
+              <Link href={`mailto:${p.invitedByEmail}`} className="text-blue-600 no-underline">
+                {p.invitedByEmail}
+              </Link>
+              <span>) </span>
+            </>
+          )}{" "}
+          {t0(tt.has_invited_you)} <strong>{p.entityName}</strong> {t0(tt.entity_in)} <strong>{p.homepageText}</strong>.
+        </Text>
+      )}
 
       <Section className={"mt-2"}>
         <LinkButton url={p.url} text={buttonText} />
       </Section>
 
-      <Text className="mt-4 mb-1 text-lg">{t0(tbCopyAndPasteThisUrl)} </Text>
+      <Text className="mt-4 mb-1 text-lg">{copyAndPasteUrlText} </Text>
       <Link href={p.url} className="text-blue-600 no-underline text-lg">
         {p.url}
       </Link>

@@ -8,4 +8,17 @@ export interface InvitationV1Type extends MayHaveLanguageType, FooterV1Type {
   entity?: string
   entityName: string
   url: string
+
+  /** overrides the email subject and preview */
+  subject?: string
+  /** overrides the visible heading (replaces the composed “Join X in Y” heading) */
+  heading?: string
+  /** overrides the greeting line */
+  greeting?: string
+  /** overrides the invitation body paragraph (replaces the composed invite sentence) */
+  body?: string
+  /** overrides the CTA button text */
+  buttonText?: string
+  /** overrides the “copy and paste this URL” instruction */
+  copyAndPasteUrlText?: string
 }
