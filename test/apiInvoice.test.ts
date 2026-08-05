@@ -21,6 +21,17 @@ const paidProps = {
   url: "https://example.com/invoices/INV-1024",
 } as const satisfies InvoiceV1Type
 
+const overrideProps = {
+  ...unpaidProps,
+  subject: "Dein Angebot ist bereit",
+  intro: "wir haben dein individuelles Angebot vorbereitet.",
+  buttonText: "Angebot ansehen",
+  invoiceIdLabel: "Angebot",
+  customerIdLabel: "Kunde",
+  amountLabel: "Positionen",
+  copyAndPasteUrlText: "oder kopiere diesen Link:",
+} as const satisfies InvoiceV1Type
+
 async function testFn() {
   const baseUrl = getTargetBaseUrl(targetEnv.readFromEnv)
 
@@ -37,6 +48,18 @@ async function testFn() {
   expect(paid.success).toBeTruthy()
   if (!paid.success) return
   expect(paid.data.html).toContain(paidProps.invoiceId)
+
+  const overridden = await apiGenerateEmailInvoiceV1(overrideProps, baseUrl)
+  if (!overridden.success) console.error(overridden)
+  expect(overridden.success).toBeTruthy()
+  if (!overridden.success) return
+  expect(overridden.data.subject).toBe(overrideProps.subject)
+  expect(overridden.data.html).toContain(overrideProps.intro)
+  expect(overridden.data.html).toContain(overrideProps.buttonText)
+  expect(overridden.data.html).toContain(overrideProps.invoiceIdLabel)
+  expect(overridden.data.html).toContain(overrideProps.customerIdLabel)
+  expect(overridden.data.html).toContain(overrideProps.amountLabel)
+  expect(overridden.data.html).toContain(overrideProps.copyAndPasteUrlText)
 }
 
 const name = "apiInvoice"

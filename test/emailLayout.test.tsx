@@ -243,6 +243,34 @@ describe("Pre-send HTML 90 KiB size budget across all supported templates", () =
     expect(new TextEncoder().encode(resultUnpaid.html).byteLength).toBeLessThan(PRE_SEND_BUDGET_BYTES)
   })
 
+  test("invoiceV1 label overrides replace fixed wording", async () => {
+    const result = await renderInvoiceV1({
+      l: "en",
+      isPaid: false,
+      url: "https://example.com/offers/offer-1",
+      customerId: "Alice",
+      invoiceId: "Angebot Sommer",
+      amount: "Container A — 120 €",
+      subject: "Dein Angebot ist bereit",
+      intro: "wir haben dein individuelles Angebot vorbereitet.",
+      buttonText: "Angebot ansehen",
+      invoiceIdLabel: "Angebot",
+      customerIdLabel: "Kunde",
+      amountLabel: "Positionen",
+      copyAndPasteUrlText: "oder kopiere diesen Link:",
+      ...footerV1ExampleData,
+    })
+    expect(result.subject).toBe("Dein Angebot ist bereit")
+    expect(result.html).toContain("wir haben dein individuelles Angebot vorbereitet.")
+    expect(result.html).toContain("Angebot ansehen")
+    expect(result.html).toContain("Angebot")
+    expect(result.html).toContain("Kunde")
+    expect(result.html).toContain("Positionen")
+    expect(result.html).toContain("oder kopiere diesen Link:")
+    expect(result.html).not.toContain("Pay invoice")
+    expect(result.html).not.toContain("Invoice ID")
+  })
+
   test("markdownV1 supported input profile generated pre-send HTML stays under 90 KiB", async () => {
     const header = "| Plan | Status |\n| --- | --- |\n"
     const row = "| Pro | **Active** |\n| Team | [Pending](https://example.com/team) |\n"
