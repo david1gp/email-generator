@@ -2,6 +2,7 @@ import * as a from "valibot"
 import type { SignUpV1Type } from "../../../client/types/SignUpV1Type.js"
 import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
 import { languageSchemaFields } from "./parts/languageSchemaFields.js"
+import { overrideStringSchema } from "./parts/overrideStringSchema.js"
 import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
 
 export const signUpV1Schema = a.pipe(
@@ -9,6 +10,11 @@ export const signUpV1Schema = a.pipe(
     ...languageSchemaFields,
     code: a.pipe(stringSchema, a.description("Verification code for email confirmation")),
     url: a.pipe(stringSchema500, a.description("URL to complete the sign up process")),
+    subject: overrideStringSchema,
+    codeLabel: overrideStringSchema,
+    magicLinkText: overrideStringSchema,
+    buttonText: overrideStringSchema,
+    copyAndPasteUrlText: overrideStringSchema,
     ...footerV1SchemaFields,
   }),
   a.metadata({

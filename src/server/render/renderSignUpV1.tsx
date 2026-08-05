@@ -8,7 +8,7 @@ import { t4signUp } from "../../templates/sign_up/t4signUp.js"
 
 export async function renderSignUpV1(p: SignUpV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en
-  const subject = tt1(l, t4signUp.Your_signup_code_x, p.code)
+  const subject = p.subject ?? tt1(l, t4signUp.Your_signup_code_x, p.code)
   return {
     subject,
     text: await render(<SignUpV1Template {...p} />, { plainText: true }),

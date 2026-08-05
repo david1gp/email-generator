@@ -23,7 +23,11 @@ export function SignUpV1Template(p: SignUpV1Type) {
     return tt1(l, tb, x1)
   }
 
-  const title = t1(tt.Your_signup_code_x, p.code)
+  const title = p.subject ?? t1(tt.Your_signup_code_x, p.code)
+  const codeLabel = p.codeLabel ?? t0(tt.Copy_and_paste_this_signup_code)
+  const magicLinkText = p.magicLinkText ?? t0(tbOrUseTheMagicLinkBelow)
+  const buttonText = p.buttonText ?? t0(tt.Sign_up_link)
+  const copyAndPasteUrlText = p.copyAndPasteUrlText ?? t0(tbCopyAndPasteThisUrl)
 
   const sectionClass = "mt-1"
   const sectionTextClass = "mb-1 text-lg"
@@ -39,17 +43,17 @@ export function SignUpV1Template(p: SignUpV1Type) {
       <Heading className={"text-2xl font-semibold mb-0"}>{title}</Heading>
 
       <Section className={""}>
-        <Text className={sectionTextClass}>{t0(tt.Copy_and_paste_this_signup_code)}</Text>
+        <Text className={sectionTextClass}>{codeLabel}</Text>
         <CodeBlock className={"px-2"} text={p.code} />
       </Section>
 
       <Section className={sectionClass}>
-        <Text className={sectionTextClass}>{t0(tbOrUseTheMagicLinkBelow)} </Text>
-        <LinkButton url={p.url} text={t0(tt.Sign_up_link)} />
+        <Text className={sectionTextClass}>{magicLinkText} </Text>
+        <LinkButton url={p.url} text={buttonText} />
       </Section>
 
       <Section className={sectionClass}>
-        <Text className={sectionTextClass}>{t0(tbCopyAndPasteThisUrl)} </Text>
+        <Text className={sectionTextClass}>{copyAndPasteUrlText} </Text>
         <Link href={p.url} className="text-blue-600 no-underline text-lg">
           {p.url}
         </Link>
