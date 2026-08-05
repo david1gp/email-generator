@@ -22,24 +22,28 @@ export function InvoiceV1Template(p: InvoiceV1Type) {
     return tt1(l, tb, x1)
   }
 
-  const title = p.isPaid
-    ? p.invoiceId
-      ? t1(tt.Invoice_x_paid, p.invoiceId)
-      : t0(tt.Payment_received)
-    : p.invoiceId
-      ? t1(tt.Invoice_x_due, p.invoiceId)
-      : t0(tt.Payment_due)
+  const title =
+    p.subject ??
+    (p.isPaid
+      ? p.invoiceId
+        ? t1(tt.Invoice_x_paid, p.invoiceId)
+        : t0(tt.Payment_received)
+      : p.invoiceId
+        ? t1(tt.Invoice_x_due, p.invoiceId)
+        : t0(tt.Payment_due))
 
-  const intro = p.isPaid ? t0(tt.Thank_you_for_payment) : t0(tt.Please_find_invoice_details)
-  const buttonText = p.isPaid ? t0(tt.View_invoice) : t0(tt.Pay_invoice)
+  const intro = p.intro ?? (p.isPaid ? t0(tt.Thank_you_for_payment) : t0(tt.Please_find_invoice_details))
+  const buttonText = p.buttonText ?? (p.isPaid ? t0(tt.View_invoice) : t0(tt.Pay_invoice))
+  const invoiceAttachedText = p.invoiceAttachedText ?? t0(tt.Invoice_attached)
+  const copyAndPasteUrlText = p.copyAndPasteUrlText ?? t0(tbCopyAndPasteThisUrl)
+
+  const details: { label: string; value: string }[] = []
+  if (p.invoiceId) details.push({ label: p.invoiceIdLabel ?? t0(tt.Invoice_id), value: p.invoiceId })
+  if (p.customerId) details.push({ label: p.customerIdLabel ?? t0(tt.Customer_id), value: p.customerId })
+  if (p.amount) details.push({ label: p.amountLabel ?? t0(tt.Amount), value: p.amount })
 
   const sectionClass = "mt-1"
   const sectionTextClass = "mb-1 text-lg"
-
-  const details: { label: string; value: string }[] = []
-  if (p.invoiceId) details.push({ label: t0(tt.Invoice_id), value: p.invoiceId })
-  if (p.customerId) details.push({ label: t0(tt.Customer_id), value: p.customerId })
-  if (p.amount) details.push({ label: t0(tt.Amount), value: p.amount })
 
   return (
     <EmailLayout
@@ -73,7 +77,7 @@ export function InvoiceV1Template(p: InvoiceV1Type) {
           </Section>
 
           <Section className={sectionClass}>
-            <Text className={sectionTextClass}>{t0(tbCopyAndPasteThisUrl)} </Text>
+            <Text className={sectionTextClass}>{copyAndPasteUrlText} </Text>
             <Link href={p.url} className="text-blue-600 no-underline text-lg">
               {p.url}
             </Link>
@@ -81,7 +85,7 @@ export function InvoiceV1Template(p: InvoiceV1Type) {
         </>
       ) : (
         <Section className={"mt-3"}>
-          <Text className={sectionTextClass}>{t0(tt.Invoice_attached)}</Text>
+          <Text className={sectionTextClass}>{invoiceAttachedText}</Text>
         </Section>
       )}
     </EmailLayout>

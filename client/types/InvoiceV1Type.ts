@@ -9,4 +9,21 @@ export interface InvoiceV1Type extends MayHaveLanguageType, FooterV1Type {
   customerId?: string
   invoiceId?: string
   amount?: string
+
+  /** overrides the email subject and heading (defaults to translated invoice subject) */
+  subject?: string
+  /** overrides the intro body paragraph */
+  intro?: string
+  /** overrides the CTA button text */
+  buttonText?: string
+  /** overrides the “invoice attached” message when `url` is omitted */
+  invoiceAttachedText?: string
+  /** overrides the “copy and paste this URL” instruction */
+  copyAndPasteUrlText?: string
+  /** overrides the Invoice ID detail label */
+  invoiceIdLabel?: string
+  /** overrides the Customer ID detail label */
+  customerIdLabel?: string
+  /** overrides the Amount detail label */
+  amountLabel?: string
 }

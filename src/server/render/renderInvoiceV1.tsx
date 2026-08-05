@@ -8,13 +8,15 @@ import { t4invoice } from "../../templates/invoice/t4invoice.js"
 
 export async function renderInvoiceV1(p: InvoiceV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en
-  const subject = p.isPaid
-    ? p.invoiceId
-      ? tt1(l, t4invoice.Invoice_x_paid, p.invoiceId)
-      : tt0(l, t4invoice.Payment_received)
-    : p.invoiceId
-      ? tt1(l, t4invoice.Invoice_x_due, p.invoiceId)
-      : tt0(l, t4invoice.Payment_due)
+  const subject =
+    p.subject ??
+    (p.isPaid
+      ? p.invoiceId
+        ? tt1(l, t4invoice.Invoice_x_paid, p.invoiceId)
+        : tt0(l, t4invoice.Payment_received)
+      : p.invoiceId
+        ? tt1(l, t4invoice.Invoice_x_due, p.invoiceId)
+        : tt0(l, t4invoice.Payment_due))
   return {
     subject,
     text: await render(<InvoiceV1Template {...p} />, { plainText: true }),
