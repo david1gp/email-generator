@@ -63,7 +63,7 @@ The `/renderEmailTemplate/markdownV1` endpoint renders trusted, self-authored Ma
 | **signUpV1** - Sign-up / Registration<br>![signUpV1](https://f003.backblazeb2.com/file/email-generator-images/signUpV1.jpg)                        | **signInV1** - Sign-in / Login / Forgot password<br>![signInV1](https://f003.backblazeb2.com/file/email-generator-images/signInV1.jpg)       |
 | **passwordChangeV1** - Change/Reset Password<br>![passwordChangeV1](https://f003.backblazeb2.com/file/email-generator-images/passwordChangeV1.jpg) | **emailChangeV1** - Change Email<br>![EmailChangeV1](https://f003.backblazeb2.com/file/email-generator-images/emailChangeV1.jpg)             |
 | **orgInvitationV1** - Organization invitation<br>![orgInvitationV1](https://f003.backblazeb2.com/file/email-generator-images/orgInvitationV1.jpg)  | **teamInvitationV1** - Team invitation<br>![teamInvitationV1](https://f003.backblazeb2.com/file/email-generator-images/teamInvitationV1.jpg) |
-| **invoiceV1** - Invoice (paid / unpaid variants)<br>![invoiceV1](https://f003.backblazeb2.com/file/email-generator-images/invoiceV1.jpg)           |                                                                                                                                              |
+| **invoiceV1** - Invoice (paid / unpaid variants)<br>![invoiceV1](https://f003.backblazeb2.com/file/email-generator-images/invoiceV1.jpg)           | **markdownV1** - Trusted Markdown<br>![markdownV1](https://f003.backblazeb2.com/file/email-generator-images/markdownV1.jpg)                  |
 
 ## Prerequisites
 
