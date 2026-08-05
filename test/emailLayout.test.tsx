@@ -271,6 +271,126 @@ describe("Pre-send HTML 90 KiB size budget across all supported templates", () =
     expect(result.html).not.toContain("Invoice ID")
   })
 
+  test("signUpV1 / signInV1 copy overrides replace fixed wording", async () => {
+    const signUp = await renderSignUpV1({
+      l: "en",
+      code: "ABC-123",
+      url: "https://example.com/sign-up",
+      subject: "Custom signup subject",
+      codeLabel: "Custom code label",
+      magicLinkText: "Custom magic link",
+      buttonText: "Custom signup CTA",
+      copyAndPasteUrlText: "Custom paste URL",
+      ...footerV1ExampleData,
+    })
+    expect(signUp.subject).toBe("Custom signup subject")
+    expect(signUp.html).toContain("Custom code label")
+    expect(signUp.html).toContain("Custom magic link")
+    expect(signUp.html).toContain("Custom signup CTA")
+    expect(signUp.html).toContain("Custom paste URL")
+
+    const signIn = await renderSignInV1({
+      l: "en",
+      code: "XYZ-999",
+      url: "https://example.com/sign-in",
+      subject: "Custom signin subject",
+      codeLabel: "Custom signin code label",
+      magicLinkText: "Custom signin magic",
+      buttonText: "Custom signin CTA",
+      copyAndPasteUrlText: "Custom signin paste",
+      ...footerV1ExampleData,
+    })
+    expect(signIn.subject).toBe("Custom signin subject")
+    expect(signIn.html).toContain("Custom signin code label")
+    expect(signIn.html).toContain("Custom signin magic")
+    expect(signIn.html).toContain("Custom signin CTA")
+    expect(signIn.html).toContain("Custom signin paste")
+  })
+
+  test("invitationV1 copy overrides replace fixed wording", async () => {
+    const result = await renderInvitationV1({
+      l: "en",
+      invitedName: "Bob",
+      invitedByName: "Alice",
+      invitedByEmail: "alice@example.com",
+      entity: "organization",
+      entityName: "Acme",
+      url: "https://example.com/invite",
+      subject: "Custom invite subject",
+      heading: "Custom invite heading",
+      greeting: "Custom greeting",
+      body: "Custom invite body",
+      buttonText: "Custom join CTA",
+      copyAndPasteUrlText: "Custom invite paste",
+      ...footerV1ExampleData,
+    })
+    expect(result.subject).toBe("Custom invite subject")
+    expect(result.html).toContain("Custom invite heading")
+    expect(result.html).toContain("Custom greeting")
+    expect(result.html).toContain("Custom invite body")
+    expect(result.html).toContain("Custom join CTA")
+    expect(result.html).toContain("Custom invite paste")
+    expect(result.html).not.toContain("Join Organization")
+  })
+
+  test("passwordChangeV1 / emailChangeV1 copy overrides replace fixed wording", async () => {
+    const password = await renderPasswordChangeV1({
+      l: "en",
+      userName: "Bob",
+      code: "483920",
+      url: "https://example.com/reset",
+      subject: "Custom password subject",
+      requestText: "Custom password request",
+      codeLabel: "Custom password code",
+      magicLinkText: "Custom password magic",
+      buttonText: "Custom password CTA",
+      copyAndPasteUrlText: "Custom password paste",
+      expiryText: "Custom password expiry",
+      ignoreText: "Custom password ignore",
+      contactSupportText: "Custom password support",
+      supportUrl: "https://example.com/support",
+      ...footerV1ExampleData,
+    })
+    expect(password.subject).toBe("Custom password subject")
+    expect(password.html).toContain("Custom password request")
+    expect(password.html).toContain("Custom password code")
+    expect(password.html).toContain("Custom password magic")
+    expect(password.html).toContain("Custom password CTA")
+    expect(password.html).toContain("Custom password paste")
+    expect(password.html).toContain("Custom password expiry")
+    expect(password.html).toContain("Custom password ignore")
+    expect(password.html).toContain("Custom password support")
+
+    const email = await renderEmailChangeV1({
+      l: "en",
+      userName: "Bob",
+      code: "729481",
+      url: "https://example.com/change-email",
+      subject: "Custom email subject",
+      greeting: "Custom email greeting",
+      requestText: "Custom email request",
+      codeLabel: "Custom email code",
+      magicLinkText: "Custom email magic",
+      buttonText: "Custom email CTA",
+      copyAndPasteUrlText: "Custom email paste",
+      expiryText: "Custom email expiry",
+      ignoreText: "Custom email ignore",
+      contactSupportText: "Custom email support",
+      supportUrl: "https://example.com/support",
+      ...footerV1ExampleData,
+    })
+    expect(email.subject).toBe("Custom email subject")
+    expect(email.html).toContain("Custom email greeting")
+    expect(email.html).toContain("Custom email request")
+    expect(email.html).toContain("Custom email code")
+    expect(email.html).toContain("Custom email magic")
+    expect(email.html).toContain("Custom email CTA")
+    expect(email.html).toContain("Custom email paste")
+    expect(email.html).toContain("Custom email expiry")
+    expect(email.html).toContain("Custom email ignore")
+    expect(email.html).toContain("Custom email support")
+  })
+
   test("markdownV1 supported input profile generated pre-send HTML stays under 90 KiB", async () => {
     const header = "| Plan | Status |\n| --- | --- |\n"
     const row = "| Pro | **Active** |\n| Team | [Pending](https://example.com/team) |\n"
