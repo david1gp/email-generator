@@ -4,11 +4,8 @@ import { languageSchema } from "../../../client/i18n/languageSchema.js"
 import type { InvoiceV1Type } from "../../../client/types/InvoiceV1Type.js"
 import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
 import { languageSchemaFields } from "./parts/languageSchemaFields.js"
+import { overrideLabelSchema, overrideStringSchema } from "./parts/overrideStringSchema.js"
 import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
-
-const overrideString = a.optional(
-  a.pipe(stringSchema500, a.description("Optional override for a fixed template string")),
-)
 
 export const invoiceV1Schema = a.pipe(
   a.object({
@@ -27,14 +24,14 @@ export const invoiceV1Schema = a.pipe(
     customerId: a.optional(a.pipe(stringSchema, a.description("Customer identifier"))),
     invoiceId: a.optional(a.pipe(stringSchema, a.description("Invoice identifier"))),
     amount: a.optional(a.pipe(stringSchema, a.description("Formatted invoice amount, e.g. $149.00"))),
-    subject: a.optional(a.pipe(stringSchema500, a.description("Override for email subject and heading"))),
-    intro: overrideString,
-    buttonText: overrideString,
-    invoiceAttachedText: overrideString,
-    copyAndPasteUrlText: overrideString,
-    invoiceIdLabel: a.optional(a.pipe(stringSchema, a.description("Override for the Invoice ID detail label"))),
-    customerIdLabel: a.optional(a.pipe(stringSchema, a.description("Override for the Customer ID detail label"))),
-    amountLabel: a.optional(a.pipe(stringSchema, a.description("Override for the Amount detail label"))),
+    subject: overrideStringSchema,
+    intro: overrideStringSchema,
+    buttonText: overrideStringSchema,
+    invoiceAttachedText: overrideStringSchema,
+    copyAndPasteUrlText: overrideStringSchema,
+    invoiceIdLabel: overrideLabelSchema,
+    customerIdLabel: overrideLabelSchema,
+    amountLabel: overrideLabelSchema,
     ...footerV1SchemaFields,
   }),
   a.metadata({
