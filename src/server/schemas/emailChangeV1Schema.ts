@@ -4,6 +4,7 @@ import { languageSchema } from "../../../client/i18n/languageSchema.js"
 import type { EmailChangeV1Type } from "../../../client/types/EmailChangeV1Type.js"
 import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
 import { languageSchemaFields } from "./parts/languageSchemaFields.js"
+import { overrideStringSchema } from "./parts/overrideStringSchema.js"
 import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
 
 export const emailChangeV1Schema = a.pipe(
@@ -15,6 +16,16 @@ export const emailChangeV1Schema = a.pipe(
     url: a.pipe(stringSchema500, a.description("URL to confirm the email change")),
     expiryMinutes: a.optional(a.pipe(a.number(), a.description("Minutes until the verification code expires"))),
     supportUrl: a.optional(a.pipe(stringSchema500, a.description("URL to get help with email change"))),
+    subject: overrideStringSchema,
+    greeting: overrideStringSchema,
+    requestText: overrideStringSchema,
+    codeLabel: overrideStringSchema,
+    magicLinkText: overrideStringSchema,
+    buttonText: overrideStringSchema,
+    copyAndPasteUrlText: overrideStringSchema,
+    expiryText: overrideStringSchema,
+    ignoreText: overrideStringSchema,
+    contactSupportText: overrideStringSchema,
     ...footerV1SchemaFields,
   }),
   a.metadata({
