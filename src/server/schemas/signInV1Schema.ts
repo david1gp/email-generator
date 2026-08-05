@@ -4,6 +4,7 @@ import { languageSchema } from "../../../client/i18n/languageSchema.js"
 import type { SignInV1Type } from "../../../client/types/SignInV1Type.js"
 import { footerV1SchemaFields } from "./parts/footerV1SchemaFields.js"
 import { languageSchemaFields } from "./parts/languageSchemaFields.js"
+import { overrideStringSchema } from "./parts/overrideStringSchema.js"
 import { stringSchema, stringSchema500 } from "./parts/stringSchema.js"
 
 export const signInV1Schema = a.pipe(
@@ -12,6 +13,11 @@ export const signInV1Schema = a.pipe(
     l: a.fallback(languageSchema, language.en),
     code: a.pipe(stringSchema, a.description("One-time login verification code")),
     url: a.pipe(stringSchema500, a.description("URL to enter the verification code")),
+    subject: overrideStringSchema,
+    codeLabel: overrideStringSchema,
+    magicLinkText: overrideStringSchema,
+    buttonText: overrideStringSchema,
+    copyAndPasteUrlText: overrideStringSchema,
     ...footerV1SchemaFields,
   }),
   a.metadata({

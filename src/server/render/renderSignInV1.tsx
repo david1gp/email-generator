@@ -8,7 +8,7 @@ import { t4signIn } from "../../templates/sign_in/t4signIn.js"
 
 export async function renderSignInV1(p: SignInV1Type): Promise<GeneratedEmailType> {
   const l = p.l ?? language.en
-  const subject = tt1(l, t4signIn.Your_Sign_in_code_x, p.code)
+  const subject = p.subject ?? tt1(l, t4signIn.Your_Sign_in_code_x, p.code)
   return {
     subject,
     text: await render(<SignInV1Template {...p} />, { plainText: true }),
