@@ -24,6 +24,18 @@ export const invoiceV1Schema = a.pipe(
     customerId: a.optional(a.pipe(stringSchema, a.description("Customer identifier"))),
     invoiceId: a.optional(a.pipe(stringSchema, a.description("Invoice identifier"))),
     amount: a.optional(a.pipe(stringSchema, a.description("Formatted invoice amount, e.g. $149.00"))),
+    details: a.optional(
+      a.pipe(
+        a.array(
+          a.object({
+            label: a.pipe(stringSchema, a.description("Detail row label (caller-localized)")),
+            value: a.pipe(stringSchema, a.description("Detail row value")),
+          }),
+        ),
+        a.maxLength(20),
+        a.description("Extra detail rows after preset fields (invoiceId, customerId, amount); labels used as-is"),
+      ),
+    ),
     subject: overrideStringSchema,
     intro: overrideStringSchema,
     buttonText: overrideStringSchema,
@@ -45,6 +57,10 @@ export const invoiceV1Schema = a.pipe(
         customerId: "CUS-5567",
         invoiceId: "INV-1024",
         amount: "$149.00",
+        details: [
+          { label: "Due date", value: "2026-08-15" },
+          { label: "PO number", value: "PO-99" },
+        ],
         homepageText: "Example Corp",
         homepageUrl: "https://example.com",
         hompageSubtitle: "Excellency by design",

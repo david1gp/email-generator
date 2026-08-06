@@ -9,6 +9,11 @@ export interface InvoiceV1Type extends MayHaveLanguageType, FooterV1Type {
   customerId?: string
   invoiceId?: string
   amount?: string
+  /**
+   * Extra detail rows rendered after the preset fields (invoiceId, customerId, amount).
+   * Labels are used as-is (caller localizes); order is preserved.
+   */
+  details?: { label: string; value: string }[]
 
   /** overrides the email subject and heading (defaults to translated invoice subject) */
   subject?: string

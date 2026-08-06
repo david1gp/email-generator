@@ -41,6 +41,7 @@ export function InvoiceV1Template(p: InvoiceV1Type) {
   if (p.invoiceId) details.push({ label: p.invoiceIdLabel ?? t0(tt.Invoice_id), value: p.invoiceId })
   if (p.customerId) details.push({ label: p.customerIdLabel ?? t0(tt.Customer_id), value: p.customerId })
   if (p.amount) details.push({ label: p.amountLabel ?? t0(tt.Amount), value: p.amount })
+  if (p.details) details.push(...p.details)
 
   const sectionClass = "mt-1"
   const sectionTextClass = "mb-1 text-lg"
@@ -61,8 +62,8 @@ export function InvoiceV1Template(p: InvoiceV1Type) {
 
       {details.length > 0 && (
         <Section className={classArr("mt-2 p-3", "bg-gray-50", "border border-solid border-[#eaeaea] rounded-lg")}>
-          {details.map((d) => (
-            <Row key={d.label} className={"mb-1"}>
+          {details.map((d, i) => (
+            <Row key={`${i}-${d.label}`} className={"mb-1"}>
               <Column className={"text-gray-600 text-lg"}>{d.label}</Column>
               <Column className={"text-right font-semibold text-lg"}>{d.value}</Column>
             </Row>
