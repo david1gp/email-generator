@@ -75,6 +75,32 @@ describe("EmailLayout", () => {
     expect(html).toContain(footerV1ExampleData.homepageText)
   })
 
+  test("Invoice template renders custom details after presets", async () => {
+    const html = await render(
+      <InvoiceV1Template
+        l="en"
+        isPaid={false}
+        invoiceId="INV-1024"
+        amount="$149.00"
+        details={[
+          { label: "Due date", value: "2026-08-15" },
+          { label: "PO number", value: "PO-99" },
+        ]}
+        {...footerV1ExampleData}
+      />,
+    )
+
+    expect(html).toContain("INV-1024")
+    expect(html).toContain("$149.00")
+    expect(html).toContain("Due date")
+    expect(html).toContain("2026-08-15")
+    expect(html).toContain("PO number")
+    expect(html).toContain("PO-99")
+    // presets first, then custom details
+    expect(html.indexOf("INV-1024")).toBeLessThan(html.indexOf("Due date"))
+    expect(html.indexOf("Due date")).toBeLessThan(html.indexOf("PO number"))
+  })
+
   test("SignUp template works with EmailLayout", async () => {
     const html = await render(
       <SignUpV1Template l="en" code="XYZ-789" url="https://example.com/sign-up?code=XYZ789" {...footerV1ExampleData} />,
