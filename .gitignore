@@ -81,6 +81,7 @@ convex/_generated
 
 # Cloudflare / Deployment / Wrangler
 wrangler.*
+.wrangler/
 
 # Astro
 .astro
