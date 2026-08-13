@@ -61,7 +61,7 @@ export function InvoiceV1Template(p: InvoiceV1Type) {
       </Section>
 
       {details.length > 0 && (
-        <Section className={classArr("mt-2 p-3", "bg-gray-50", "border border-solid border-[#eaeaea] rounded-lg")}>
+        <Section className={classArr("mt-2 p-3", "bg-gray-50", "border border-solid border-[#eaeaea] rounded-[8px]")}>
           {details.map((d, i) => (
             <Row key={`${i}-${d.label}`} className={"mb-1"}>
               <Column className={"text-gray-600 text-lg"}>{d.label}</Column>

@@ -76,12 +76,28 @@ const sharedCellStyle: React.CSSProperties = {
   overflowWrap: "break-word",
 }
 
+/** Shared heading baseline; sizes are per-level and always in pixels. */
+const headingBase: React.CSSProperties = {
+  fontWeight: 600,
+  paddingTop: 20,
+  margin: "0 0 8px",
+  color: "#000000",
+}
+
 /**
  * Complete per-element inline style map. Every supported element gets
  * its critical styles directly — no wrapper descendant CSS, no Tailwind prose,
  * no arbitrary variants, no child/sibling selectors, no space-* utilities.
  */
 const markdownCustomStyles = {
+  // @react-email/markdown ships rem heading sizes, which classic Outlook cannot
+  // resolve; every heading level is overridden with pixels.
+  h1: { ...headingBase, fontSize: 32, lineHeight: "40px" },
+  h2: { ...headingBase, fontSize: 26, lineHeight: "34px" },
+  h3: { ...headingBase, fontSize: 22, lineHeight: "30px" },
+  h4: { ...headingBase, fontSize: 20, lineHeight: "28px" },
+  h5: { ...headingBase, fontSize: 18, lineHeight: "26px" },
+  h6: { ...headingBase, fontSize: 16, lineHeight: "24px" },
   p: {
     fontSize: 18,
     lineHeight: "28px",
