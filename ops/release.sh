@@ -98,6 +98,9 @@ gh release create "$TAG" \
   --notes-file "$CHANGELOG_FILE" \
   --repo "$REPO_NAME"
 
+echo "🚀 Deploying release v$NEW_VERSION..."
+bun run deploy
+
 git branch -f released
 
 echo "✅ Release v$NEW_VERSION complete!"
