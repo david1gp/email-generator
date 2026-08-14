@@ -45,6 +45,7 @@ export function EmailChangeV1Template(p: EmailChangeV1Type) {
       homepageText={p.homepageText}
       homepageUrl={p.homepageUrl}
       hompageSubtitle={p.hompageSubtitle}
+      legalCompanySignature={p.legalCompanySignature}
     >
       <Heading className={"text-2xl font-semibold mb-0"}>{title}</Heading>
 

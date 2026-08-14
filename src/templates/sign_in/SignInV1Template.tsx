@@ -5,7 +5,7 @@ import type { TranslationBlock } from "../../i18n/TranslationBlock.js"
 import { tt0, tt1 } from "../../i18n/tt0.js"
 import { CodeBlock } from "../../template_parts/CodeBlock.js"
 import { EmailLayout } from "../../template_parts/EmailLayout.js"
-import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
+import { footerV1LegalExampleData } from "../../template_parts/footerV1LegalExampleData.js"
 import { LinkButton } from "../../template_parts/LinkButton.js"
 import { tbCopyAndPasteThisUrl } from "../../template_parts/tbCopyAndPasteThisUrl.js"
 import { tbOrUseTheMagicLinkBelow } from "../../template_parts/tbOrUseTheMagicLinkBelow.js"
@@ -39,6 +39,7 @@ export function SignInV1Template(p: SignInV1Type) {
       homepageText={p.homepageText}
       homepageUrl={p.homepageUrl}
       hompageSubtitle={p.hompageSubtitle}
+      legalCompanySignature={p.legalCompanySignature}
     >
       <Heading className={"text-2xl font-semibold mb-0"}>{title}</Heading>
 
@@ -68,7 +69,7 @@ SignInV1Template.PreviewProps = {
   code: "ABC-123",
   url: "https://example.com/sign-in?code=ABC123",
   // footer
-  ...footerV1ExampleData,
+  ...footerV1LegalExampleData,
 } as SignInV1Type
 
 export default SignInV1Template

@@ -53,7 +53,12 @@ export function EmailLayout(p: EmailLayoutProps) {
           </MsoGhostTable>
 
           <MsoGhostTable padding={"0 16px 8px"}>
-            <Footer homepageText={p.homepageText} homepageUrl={p.homepageUrl} hompageSubtitle={p.hompageSubtitle} />
+            <Footer
+              homepageText={p.homepageText}
+              homepageUrl={p.homepageUrl}
+              hompageSubtitle={p.hompageSubtitle}
+              legalCompanySignature={p.legalCompanySignature}
+            />
           </MsoGhostTable>
         </Body>
       </Tailwind>

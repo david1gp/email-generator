@@ -2,7 +2,7 @@ import { Heading } from "@react-email/components"
 import { language } from "../../../client/i18n/language.js"
 import type { MarkdownV1Type } from "../../../client/types/MarkdownV1Type.js"
 import { EmailLayout } from "../../template_parts/EmailLayout.js"
-import { footerV1ExampleData } from "../../template_parts/footerV1ExampleData.js"
+import { footerV1LegalExampleData } from "../../template_parts/footerV1LegalExampleData.js"
 import { TrustedMarkdownContent } from "../../template_parts/TrustedMarkdownContent.js"
 
 export function MarkdownV1Template(p: MarkdownV1Type) {
@@ -17,6 +17,7 @@ export function MarkdownV1Template(p: MarkdownV1Type) {
       homepageText={p.homepageText}
       homepageUrl={p.homepageUrl}
       hompageSubtitle={p.hompageSubtitle}
+      legalCompanySignature={p.legalCompanySignature}
     >
       <Heading
         style={{
@@ -68,7 +69,7 @@ MarkdownV1Template.PreviewProps = {
   preview: "Highlights and plans",
   heading: "July update",
   markdown: exampleMarkdown,
-  ...footerV1ExampleData,
+  ...footerV1LegalExampleData,
 } as MarkdownV1Type
 
 export default MarkdownV1Template

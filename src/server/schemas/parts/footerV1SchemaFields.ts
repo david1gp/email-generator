@@ -6,6 +6,7 @@ export const footerV1SchemaFields = {
   homepageText: stringSchema,
   homepageUrl: stringSchema,
   hompageSubtitle: stringSchema500,
+  legalCompanySignature: a.optional(stringSchema500),
 } as const
 
 const footerV1Schema = a.object(footerV1SchemaFields)

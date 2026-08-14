@@ -37,6 +37,7 @@ export function InvitationV1Template(p: InvitationV1Type) {
       homepageText={p.homepageText}
       homepageUrl={p.homepageUrl}
       hompageSubtitle={p.hompageSubtitle}
+      legalCompanySignature={p.legalCompanySignature}
     >
       {p.heading ? (
         <Heading className="text-2xl font-normal mb-0">{p.heading}</Heading>
