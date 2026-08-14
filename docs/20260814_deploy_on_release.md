@@ -8,17 +8,20 @@ Deploy all configured email-generator workers after a successful release, and de
 
 - Run `bun run deploy` locally after GitHub release creation; do not add deployment to the npm publish workflow.
 - Let deployment failure fail the release command visibly; deployment remains non-transactional across targets.
+- Run Wrangler with a real Node runtime rather than Bun's `node` shim.
 - Verify the deployed version through existing deployment output and version endpoints where available.
 
 ## Approach
 
-Add the existing deployment command to the end of the local release workflow, verify the script change, then run the existing deployment command for the current version and confirm the workers report it.
+Add the existing deployment command to the end of the local release workflow, ensure the deployment launcher uses real Node for Wrangler, verify both changes, then deploy the current version and confirm the workers report it.
 
 ## Tasks
 
 1. **Done** — Add `bun run deploy` to the local release workflow after GitHub release creation.
 2. **Done** — Verify the release workflow change.
-3. **In progress** — Deploy the current release and verify target versions.
+3. **Done** — Fix the Wrangler launcher to use real Node.
+4. **Done** — Verify deployment subprocess behavior without uploading.
+5. **Done** — Deploy the current release and verify target versions.
 
 ## Paths
 

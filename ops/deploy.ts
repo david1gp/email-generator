@@ -1,7 +1,8 @@
 #!/usr/bin/env bun
 
+import { realpathSync } from "node:fs"
 import { copyFile, readFile } from "node:fs/promises"
-import { dirname, join } from "node:path"
+import { delimiter, dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { getPackageVersion } from "../src/ops/getPackageVersion.js"
 import { getEnvTargets } from "./getEnvTargets.js"
@@ -24,6 +25,7 @@ async function deployAllEnvironments() {
   }
 
   const packageVersion = getPackageVersion()
+  const nodeBin = findRealNodeBin()
 
   console.log(`Found environments: ${targets.map((target) => target.name).join(", ")}`)
   console.log(`Deploying version: ${packageVersion}`)
@@ -39,7 +41,7 @@ async function deployAllEnvironments() {
     })
 
     const process = Bun.spawn(
-      [wranglerBin, "deploy", "--var", `VERSION:${packageVersion}`, "--config", target.wranglerConfig],
+      [nodeBin, wranglerBin, "deploy", "--var", `VERSION:${packageVersion}`, "--config", target.wranglerConfig],
       {
         cwd: projectRoot,
         env,
@@ -57,6 +59,29 @@ async function deployAllEnvironments() {
 
     console.log("")
   }
+}
+
+function findRealNodeBin(): string {
+  const bunBin = realpathSync(process.execPath)
+  const nodeName = process.platform === "win32" ? "node.exe" : "node"
+
+  for (const directory of (Bun.env.PATH ?? "").split(delimiter)) {
+    if (!directory) {
+      continue
+    }
+
+    const candidate = join(directory, nodeName)
+
+    try {
+      if (realpathSync(candidate) !== bunBin) {
+        return candidate
+      }
+    } catch {
+      // Ignore PATH entries without an executable named node.
+    }
+  }
+
+  throw new Error("Wrangler requires a real Node.js runtime, but none was found on PATH")
 }
 
 async function readEnvFile(fileName: string): Promise<Record<string, string>> {
