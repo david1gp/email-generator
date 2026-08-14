@@ -1,0 +1,15 @@
+[Unit]
+Description=Email Generator React Email preview server (:3004)
+# Stable checkout path for the shared user service.
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/adaptive/email-generator
+Environment=PATH=%h/.local/bin:%h/.bun/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/env bun run dev:email -- --port 3004
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
