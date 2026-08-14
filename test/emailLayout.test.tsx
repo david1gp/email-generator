@@ -8,9 +8,11 @@ import { renderPasswordChangeV1 } from "../src/server/render/renderPasswordChang
 import { renderSignInV1 } from "../src/server/render/renderSignInV1.js"
 import { renderSignUpV1 } from "../src/server/render/renderSignUpV1.js"
 import { footerV1ExampleData } from "../src/template_parts/footerV1ExampleData.js"
+import { footerV1LegalExampleData } from "../src/template_parts/footerV1LegalExampleData.js"
 import EmailChangeV1Template from "../src/templates/email_change/EmailChangeV1Template.js"
 import InvitationV1Template from "../src/templates/invitation/InvitationV1Template.js"
 import InvoiceV1Template from "../src/templates/invoice/InvoiceV1Template.js"
+import MarkdownV1Template from "../src/templates/markdown/MarkdownV1Template.js"
 import PasswordChangeV1Template from "../src/templates/password_change/PasswordChangeV1Template.js"
 import SignInV1Template from "../src/templates/sign_in/SignInV1Template.js"
 import SignUpV1Template from "../src/templates/sign_up/SignUpV1Template.js"
@@ -20,7 +22,7 @@ describe("EmailLayout", () => {
     l: "en" as const,
     code: "ABC-123",
     url: "https://example.com/sign-in?code=ABC123",
-    ...footerV1ExampleData,
+    ...footerV1LegalExampleData,
   }
 
   test("SignIn template has one HTML document with preview, body, container, and footer", async () => {
@@ -54,6 +56,27 @@ describe("EmailLayout", () => {
     expect(footerPos).toBeGreaterThan(codePos)
   })
 
+  test("shared footer renders multiline legal signatures safely in HTML and useful plain text", async () => {
+    const legalCompanySignature = `${footerV1LegalExampleData.legalCompanySignature}\n<Register & Partner>`
+    const props = {
+      ...signInProps,
+      legalCompanySignature,
+    }
+
+    const html = await render(<SignInV1Template {...props} />)
+    expect(html).toContain("Nordlicht Software GmbH<br")
+    expect(html).toContain("10117 Berlin, Deutschland")
+    expect(html).toContain("&lt;Register &amp; Partner&gt;")
+    expect(html).not.toContain("<Register & Partner>")
+
+    const text = await render(<SignInV1Template {...props} />, { plainText: true })
+    expect(text).toContain("Nordlicht Software GmbH")
+    expect(text).toContain("Friedrichstraße 123")
+    expect(text).toContain("Register & Partner")
+    expect(text.indexOf("Nordlicht Software GmbH")).toBeLessThan(text.indexOf("Friedrichstraße 123"))
+    expect(text.indexOf("Friedrichstraße 123")).toBeLessThan(text.indexOf("Register & Partner"))
+  })
+
   test("Invoice template retains shell structure with EmailLayout", async () => {
     const invoiceProps = {
       l: "en" as const,
@@ -62,7 +85,7 @@ describe("EmailLayout", () => {
       customerId: "CUS-5567",
       invoiceId: "INV-1024",
       amount: "$149.00",
-      ...footerV1ExampleData,
+      ...footerV1LegalExampleData,
     }
 
     const html = await render(<InvoiceV1Template {...invoiceProps} />)
@@ -73,6 +96,26 @@ describe("EmailLayout", () => {
     expect(html).toContain("INV-1024")
     expect(html).toContain("$149.00")
     expect(html).toContain(footerV1ExampleData.homepageText)
+    expect(html).toContain("Nordlicht Software GmbH")
+  })
+
+  test("shared-layout templates accept the signature while templates omitting it still render", async () => {
+    const markdownHtml = await render(
+      <MarkdownV1Template
+        l="en"
+        subject="July update"
+        preview="Highlights and plans"
+        markdown="A short update."
+        {...footerV1LegalExampleData}
+      />,
+    )
+    const signUpHtml = await render(
+      <SignUpV1Template l="en" code="XYZ-789" url="https://example.com/sign-up?code=XYZ789" {...footerV1ExampleData} />,
+    )
+
+    expect(markdownHtml).toContain("Nordlicht Software GmbH")
+    expect(signUpHtml).toContain("XYZ-789")
+    expect(signUpHtml).not.toContain("Nordlicht Software GmbH")
   })
 
   test("Invoice template renders custom details after presets", async () => {
