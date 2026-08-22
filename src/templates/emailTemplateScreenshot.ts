@@ -9,6 +9,7 @@ export const emailTemplateScreenshot = {
   orgInvitationV1: `${imageHostingPrefix}/orgInvitationV1.jpg`,
   passwordChangeV1: `${imageHostingPrefix}/passwordChangeV1.jpg`,
   emailChangeV1: `${imageHostingPrefix}/emailChangeV1.jpg`,
+  securityNotificationV1: `${imageHostingPrefix}/securityNotificationV1.jpg`,
   teamInvitationV1: `${imageHostingPrefix}/teamInvitationV1.jpg`,
   invoiceV1: `${imageHostingPrefix}/invoiceV1.jpg`,
   markdownV1: `${imageHostingPrefix}/markdownV1.jpg`,
