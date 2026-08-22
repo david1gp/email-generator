@@ -21,7 +21,7 @@ Whether you need a quick drop-in solution or a fully open-source foundation for 
 - Supports internationalization (English and German).
 - Validates input using Valibot schemas.
 - Includes server timing headers for performance monitoring.
-- Endpoints: `/renderEmailTemplate/signUpV1`, `/renderEmailTemplate/signInV1`, `/renderEmailTemplate/orgInvitationV1`, `/renderEmailTemplate/teamInvitationV1`, `/renderEmailTemplate/invoiceV1`, and `/renderEmailTemplate/markdownV1`.
+- Endpoints: `/renderEmailTemplate/signUpV1`, `/renderEmailTemplate/signInV1`, `/renderEmailTemplate/orgInvitationV1`, `/renderEmailTemplate/teamInvitationV1`, `/renderEmailTemplate/securityNotificationV1`, `/renderEmailTemplate/invoiceV1`, and `/renderEmailTemplate/markdownV1`.
 
 ## Pre-Send HTML Size Budget (90 KiB)
 
